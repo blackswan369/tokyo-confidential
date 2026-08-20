@@ -173,7 +173,7 @@ export function HowItWorks() {
                     <h3 className="mt-2 font-body text-base font-medium leading-[140%] text-[#D4AF37]">
                       {step.title}
                     </h3>
-                    <p className="mt-3 max-w-[280px] font-body text-sm leading-[160%] text-[#D6D6D6] md:max-w-none md:text-base">
+                    <p className="mx-auto mt-3 max-w-[280px] font-body text-sm leading-[160%] text-[#D6D6D6] md:max-w-none md:text-base">
                       {step.description}
                     </p>
                   </div>
