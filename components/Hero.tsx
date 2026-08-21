@@ -23,9 +23,9 @@ export function Hero() {
       <div className="absolute inset-0 bg-[rgba(0,0,0,0.35)] max-md:bg-[rgba(0,0,0,0.22)]" />
       <div className="absolute inset-0 bg-gradient-to-r from-[rgba(11,11,11,0.78)] via-[rgba(11,11,11,0.48)] to-transparent max-md:from-[rgba(11,11,11,0.55)] max-md:via-[rgba(11,11,11,0.30)]" />
 
-      <div className="relative mx-auto flex h-full max-w-[1440px] items-center px-8 max-md:items-start max-md:pt-[72px] md:px-10 lg:px-12">
+      <div className="relative mx-auto flex h-full max-w-[1440px] items-center px-8 max-md:items-start max-md:pt-[84px] md:px-10 lg:px-12">
         <div className="max-w-[560px] max-md:translate-y-0 md:translate-y-6">
-          <h1 className="max-w-[520px] font-heading text-[48px] font-bold leading-[110%] text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.35)] md:text-[56px]">
+          <h1 className="max-w-[520px] font-heading text-[42px] font-bold leading-[110%] text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.35)] md:text-[56px]">
           Experience Tokyo Like Never Before
           </h1>
 

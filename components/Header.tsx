@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { TokyoTowerAccent } from "./TokyoTowerAccent";
 
 const navItems = ["Companions", "How It Works", "Reviews", "FAQ"] as const;
 
@@ -73,7 +73,7 @@ export function Header() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const mobileQuery = window.matchMedia("(max-width: 767px)");
+    const mobileQuery = window.matchMedia("(max-width: 1279px)");
 
     const handleScroll = () => {
       const mobile = mobileQuery.matches;
@@ -100,27 +100,63 @@ export function Header() {
 
   return (
     <header
-      className={`top-0 right-0 left-0 z-50 h-[58px] transition-colors duration-300 md:fixed md:h-[96px] ${
-        mobileOverlay ? "absolute" : "fixed"
-      } ${
+      className={`absolute top-0 right-0 left-0 z-50 h-[58px] transition-colors duration-300 xl:h-[96px] ${
         scrolled
           ? "bg-[#0B0B0B]"
-          : "bg-transparent max-md:bg-gradient-to-b max-md:from-[rgba(11,11,11,0.55)] max-md:via-[rgba(11,11,11,0.2)] max-md:to-transparent"
+          : "bg-transparent max-xl:bg-gradient-to-b max-xl:from-[rgba(11,11,11,0.55)] max-xl:via-[rgba(11,11,11,0.2)] max-xl:to-transparent"
       }`}
     >
-      <div className="mx-auto grid h-full max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center px-4 py-1 md:grid-cols-[auto_1fr_auto] md:px-10 md:py-3 lg:px-12">
-        <div className="flex min-w-0 items-center justify-start md:pr-10">
-          <Link href="/" className="inline-flex min-w-0 shrink-0 items-center gap-2 md:gap-4">
-            <span className="inline-flex shrink-0 translate-y-px items-center">
-              <TokyoTowerAccent />
-            </span>
-            <span className="whitespace-nowrap font-body text-lg leading-none tracking-wide text-[#D4AF37]">
-              Tokyo Confidential
-            </span>
+      <div className="mx-auto flex h-full max-w-[1440px] items-center gap-1.5 px-4 py-1 xl:grid xl:grid-cols-[auto_1fr_auto] xl:items-center xl:gap-0 xl:px-12 xl:py-3">
+        <button
+          type="button"
+          className="inline-flex h-11 w-11 shrink-0 items-center justify-center xl:hidden"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-nav-menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <MenuIcon />
+        </button>
+        <span
+          className="inline-flex h-[34px] shrink-0 items-center justify-center gap-1 rounded-full bg-[linear-gradient(135deg,#FF8A00_0%,#FF5A00_55%,#FF3D00_100%)] px-3 font-body text-xs font-medium leading-none text-white shadow-[0_0_8px_rgba(255,106,0,0.45),0_0_18px_rgba(255,90,0,0.22)] xl:hidden"
+          aria-label="Call Now — phone number coming soon"
+        >
+          <CallNowPhoneIcon size={15} />
+          Call Now
+        </span>
+        <Link
+          href="/"
+          className="ml-auto inline-flex min-h-0 min-w-0 shrink items-center xl:hidden"
+          aria-label="HENTAI PARADISE TOKYO home"
+        >
+          <Image
+            src="/images/hentai-paradise-tokyo-logo-mobile.png"
+            alt="HENTAI PARADISE TOKYO"
+            width={1402}
+            height={468}
+            priority
+            className="min-h-0 h-[54px] max-h-[54px] w-[162px] max-w-[162px] object-contain object-left"
+          />
+        </Link>
+
+        <div className="hidden min-w-0 items-center xl:flex xl:pr-4">
+          <Link
+            href="/"
+            className="inline-flex min-h-0 min-w-0 shrink items-center"
+            aria-label="HENTAI PARADISE TOKYO home"
+          >
+            <Image
+              src="/images/hentai-paradise-tokyo-logo.png"
+              alt="HENTAI PARADISE TOKYO"
+              width={1693}
+              height={313}
+              priority
+              className="h-auto w-[384px] max-w-[384px] object-contain object-left-bottom"
+            />
           </Link>
         </div>
 
-        <nav className="hidden w-full min-w-0 flex-nowrap items-center justify-center gap-4 pr-4 md:flex lg:gap-7 lg:pr-6 xl:gap-10">
+        <nav className="hidden w-full min-w-0 flex-nowrap items-center justify-center gap-4 pr-4 xl:flex xl:gap-10 xl:pr-6">
           {navItems.map((item) => (
             <a
               key={item}
@@ -132,7 +168,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center justify-end gap-5 md:flex lg:gap-6">
+        <div className="hidden items-center justify-end gap-5 xl:flex xl:gap-6">
           <span
             className="inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#FF8A00_0%,#FF5A00_55%,#FF3D00_100%)] px-5 py-2.5 font-body text-sm font-medium text-white shadow-[0_0_8px_rgba(255,106,0,0.45),0_0_18px_rgba(255,90,0,0.22)]"
             aria-label="Call Now — phone number coming soon"
@@ -149,30 +185,11 @@ export function Header() {
           </a>
         </div>
 
-        <div className="flex items-center justify-end gap-1.5 md:hidden">
-          <span
-            className="inline-flex h-[34px] shrink-0 items-center justify-center gap-1 rounded-full bg-[linear-gradient(135deg,#FF8A00_0%,#FF5A00_55%,#FF3D00_100%)] px-3 font-body text-xs font-medium leading-none text-white shadow-[0_0_8px_rgba(255,106,0,0.45),0_0_18px_rgba(255,90,0,0.22)]"
-            aria-label="Call Now — phone number coming soon"
-          >
-            <CallNowPhoneIcon size={15} />
-            Call Now
-          </span>
-          <button
-            type="button"
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center"
-            aria-expanded={menuOpen}
-            aria-controls="mobile-nav-menu"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            <MenuIcon />
-          </button>
-        </div>
       </div>
 
       <div
         id="mobile-nav-menu"
-        className={`absolute top-full right-0 left-0 bg-[#0B0B0B] px-8 py-6 md:hidden ${
+        className={`absolute top-full right-0 left-0 bg-[#0B0B0B] px-8 py-6 xl:hidden ${
           menuOpen ? "block" : "hidden"
         }`}
       >
