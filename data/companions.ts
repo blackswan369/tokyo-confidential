@@ -5,6 +5,7 @@ export type Companion = {
   image: string;
   introduction: string[];
   available: boolean;
+  area: string;
 };
 
 export const featuredCompanions: Companion[] = [
@@ -18,6 +19,7 @@ export const featuredCompanions: Companion[] = [
       "Enjoys art, wine, and quiet evenings.",
     ],
     available: true,
+    area: "SHINJUKU",
   },
   {
     id: "sayaka",
@@ -29,6 +31,7 @@ export const featuredCompanions: Companion[] = [
       "Loves anime, wellness, and good conversation.",
     ],
     available: true,
+    area: "SHIBUYA",
   },
   {
     id: "mina",
@@ -40,6 +43,7 @@ export const featuredCompanions: Companion[] = [
       "Enjoys art, books, and museums.",
     ],
     available: true,
+    area: "IKEBUKURO",
   },
   {
     id: "miyu",
@@ -51,6 +55,7 @@ export const featuredCompanions: Companion[] = [
       "Enjoys books, jazz, and deep talks.",
     ],
     available: true,
+    area: "SHIBUYA",
   },
   {
     id: "akari",
@@ -62,5 +67,6 @@ export const featuredCompanions: Companion[] = [
       "Loves cafe hopping and movies.",
     ],
     available: true,
+    area: "SHINJUKU",
   },
 ];

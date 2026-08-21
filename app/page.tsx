@@ -11,8 +11,10 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <Header />
-      <Hero />
+      <div className="relative">
+        <Hero />
+        <Header />
+      </div>
       <WhyChooseUs />
       <FeaturedCompanions />
       <HowItWorks />
