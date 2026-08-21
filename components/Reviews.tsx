@@ -115,6 +115,32 @@ export function Reviews() {
     };
   }, [updateScrollButtons]);
 
+  useEffect(() => {
+    const container = trackRef.current;
+    if (!container) return;
+
+    const handleWheel = (event: WheelEvent) => {
+      const { deltaX, deltaY } = event;
+      if (Math.abs(deltaX) <= Math.abs(deltaY)) return;
+
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+      const atLeft = scrollLeft <= 0;
+      const atRight = scrollLeft + clientWidth >= scrollWidth - 1;
+
+      if (atLeft && event.deltaX < 0) {
+        event.preventDefault();
+      } else if (atRight && event.deltaX > 0) {
+        event.preventDefault();
+      }
+    };
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
   const scrollToSlide = (direction: "prev" | "next") => {
     const container = trackRef.current;
     if (!container) return;
@@ -158,7 +184,7 @@ export function Reviews() {
           <div className="relative mt-12 md:mt-16">
             <div
               ref={trackRef}
-              className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory [overscroll-behavior-x:contain] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               role="region"
               aria-roledescription="carousel"
               aria-label="Customer reviews"

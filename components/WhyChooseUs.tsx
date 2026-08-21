@@ -10,8 +10,8 @@ type Feature = {
 function ShieldCheckIcon({ color }: { color: string }) {
   return (
     <svg
-      width="32"
-      height="32"
+      width="36"
+      height="36"
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -37,8 +37,8 @@ function ShieldCheckIcon({ color }: { color: string }) {
 function BadgeCheckIcon({ color }: { color: string }) {
   return (
     <svg
-      width="32"
-      height="32"
+      width="36"
+      height="36"
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -74,8 +74,8 @@ function BadgeCheckIcon({ color }: { color: string }) {
 function TagIcon({ color }: { color: string }) {
   return (
     <svg
-      width="32"
-      height="32"
+      width="36"
+      height="36"
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -95,8 +95,8 @@ function TagIcon({ color }: { color: string }) {
 function ReceiptIcon({ color }: { color: string }) {
   return (
     <svg
-      width="32"
-      height="32"
+      width="36"
+      height="36"
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -121,8 +121,8 @@ function ReceiptIcon({ color }: { color: string }) {
 function ScaleIcon({ color }: { color: string }) {
   return (
     <svg
-      width="32"
-      height="32"
+      width="36"
+      height="36"
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -195,7 +195,15 @@ export function WhyChooseUs() {
           <div className="mt-12 grid grid-cols-1 gap-10 md:mt-16 md:grid-cols-5 md:gap-8">
             {features.map((feature) => (
               <div key={feature.title} className="flex flex-col items-center text-center md:items-start md:text-left">
-                <div className="mb-4 inline-flex shrink-0">{feature.icon}</div>
+                <div
+                  className={`mb-4 inline-flex shrink-0 ${
+                    feature.accent === "green"
+                      ? "[filter:drop-shadow(0_0_5px_rgba(34,197,94,0.60))_drop-shadow(0_0_12px_rgba(34,197,94,0.32))]"
+                      : "[filter:drop-shadow(0_0_5px_rgba(212,175,55,0.60))_drop-shadow(0_0_12px_rgba(212,175,55,0.32))]"
+                  }`}
+                >
+                  {feature.icon}
+                </div>
                 <h3 className="font-body text-base font-medium leading-[140%] text-white">
                   {feature.title}
                 </h3>
