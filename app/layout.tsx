@@ -15,8 +15,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Tokyo Confidential",
-  description: "Experience Japan Like Never Before.",
+  title: "HENTAI PARADISE TOKYO",
+  description: "Experience Tokyo Like Never Before.",
 };
 
 export default function RootLayout({
