@@ -18,9 +18,9 @@ export default function Home() {
       <WhyChooseUs />
       <FeaturedCompanions />
       <HowItWorks />
+      <PersonalConcierge />
       <Reviews />
       <FAQ />
-      <PersonalConcierge />
       <Footer />
     </>
   );
