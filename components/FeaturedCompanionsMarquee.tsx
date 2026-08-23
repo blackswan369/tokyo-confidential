@@ -17,6 +17,18 @@ const SCROLL_IDLE_MS = 150;
 const SCROLLBAR_HIDDEN =
   "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
 
+function MobileCompanionMarquee({ slides }: { slides: ReactNode }) {
+  return (
+    <div
+      className={`overflow-x-auto ${SCROLLBAR_HIDDEN} [overscroll-behavior-x:contain]`}
+      role="group"
+      aria-label="Featured companions showcase"
+    >
+      <div className="flex w-max gap-4">{slides}</div>
+    </div>
+  );
+}
+
 function usePrefersReducedMotion() {
   return useSyncExternalStore(
     (onStoreChange) => {
@@ -447,7 +459,6 @@ type FeaturedCompanionsMarqueeProps = {
 export function FeaturedCompanionsMarquee({
   loopSlides,
   staticSlides,
-  mobileLoopSlides,
   mobileStaticSlides,
 }: FeaturedCompanionsMarqueeProps) {
   return (
@@ -457,10 +468,7 @@ export function FeaturedCompanionsMarquee({
         role="region"
         aria-label="Featured companions showcase"
       >
-        <InteractiveCompanionMarquee
-          loopSlides={mobileLoopSlides}
-          staticSlides={mobileStaticSlides}
-        />
+        <MobileCompanionMarquee slides={mobileStaticSlides} />
       </div>
 
       <div
