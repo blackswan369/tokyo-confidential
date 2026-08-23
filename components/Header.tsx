@@ -189,9 +189,18 @@ export function Header() {
 
       </div>
 
+      {menuOpen && (
+        <button
+          type="button"
+          className="fixed inset-0 top-[58px] z-40 xl:hidden"
+          aria-label="Close menu"
+          onClick={closeMenu}
+        />
+      )}
+
       <div
         id="mobile-nav-menu"
-        className={`absolute top-full right-0 left-0 bg-[#0B0B0B] px-8 py-6 xl:hidden ${
+        className={`absolute top-full right-0 left-0 z-50 bg-[#0B0B0B] px-8 py-6 xl:hidden ${
           menuOpen ? "block" : "hidden"
         }`}
       >
