@@ -117,13 +117,14 @@ export function Header() {
         >
           <MenuIcon />
         </button>
-        <span
+        <a
+          href="tel:0362659181"
           className="inline-flex h-[34px] shrink-0 items-center justify-center gap-1 rounded-full bg-[linear-gradient(135deg,#FF8A00_0%,#FF5A00_55%,#FF3D00_100%)] px-3 font-body text-xs font-medium leading-none text-white shadow-[0_0_8px_rgba(255,106,0,0.45),0_0_18px_rgba(255,90,0,0.22)] xl:hidden"
-          aria-label="Call Now — phone number coming soon"
+          aria-label="Call Now"
         >
           <CallNowPhoneIcon size={15} />
           Call Now
-        </span>
+        </a>
         <Link
           href="/"
           className="ml-auto inline-flex min-h-0 min-w-0 shrink items-center xl:hidden"
@@ -169,13 +170,14 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center justify-end gap-5 xl:flex xl:gap-6">
-          <span
+          <a
+            href="tel:0362659181"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#FF8A00_0%,#FF5A00_55%,#FF3D00_100%)] px-5 py-2.5 font-body text-sm font-medium text-white shadow-[0_0_8px_rgba(255,106,0,0.45),0_0_18px_rgba(255,90,0,0.22)]"
-            aria-label="Call Now — phone number coming soon"
+            aria-label="Call Now"
           >
             <CallNowPhoneIcon />
             Call Now
-          </span>
+          </a>
           <a
             href="#companions"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#FFE58A_0%,#F6D365_45%,#E8B936_100%)] px-6 py-2.5 font-body text-sm font-medium text-[#0B0B0B]"

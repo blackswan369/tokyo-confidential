@@ -6,6 +6,7 @@ const PHONE_NEON_BLUE = "#00BFFF";
 type ContactMethod = {
   label: "WHATSAPP" | "LINE" | "PHONE" | "TELEGRAM";
   icon: React.ReactNode;
+  href?: string;
 };
 
 function WhatsAppIcon() {
@@ -144,6 +145,7 @@ const contactMethods: ContactMethod[] = [
   {
     label: "PHONE",
     icon: <PhoneIcon />,
+    href: "tel:0362659181",
   },
   {
     label: "TELEGRAM",
@@ -151,12 +153,12 @@ const contactMethods: ContactMethod[] = [
   },
 ];
 
+const contactMethodClassName =
+  "flex h-[68px] w-full items-center rounded-2xl border border-[#D4AF37]/40 bg-[#141414] pl-5 pr-5 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B0B]";
+
 function ContactMethodButton({ method }: { method: ContactMethod }) {
-  return (
-    <button
-      type="button"
-      className="flex h-[68px] w-full items-center rounded-2xl border border-[#D4AF37]/40 bg-[#141414] pl-5 pr-5 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B0B]"
-    >
+  const content = (
+    <>
       <span className="inline-flex w-7 shrink-0 items-center justify-start">
         {method.icon}
       </span>
@@ -164,6 +166,20 @@ function ContactMethodButton({ method }: { method: ContactMethod }) {
         {method.label}
       </span>
       <span className="w-7 shrink-0" aria-hidden="true" />
+    </>
+  );
+
+  if (method.href) {
+    return (
+      <a href={method.href} className={contactMethodClassName}>
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <button type="button" className={contactMethodClassName}>
+      {content}
     </button>
   );
 }
