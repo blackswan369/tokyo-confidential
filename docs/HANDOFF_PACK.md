@@ -1,5 +1,5 @@
 # HENTAI PARADISE TOKYO
-# MASTER HANDOFF PACK v1.0
+# MASTER HANDOFF PACK v1.1
 
 **DATE:** 2026-08-24  
 **STATUS:** OPERATIONAL HANDOFF DOCUMENT  
@@ -579,21 +579,427 @@ Mark items as unresolved rather than inventing details.
 
 ---
 
-## 37. TERMINOLOGY
+## 37. PROJECT TERMINOLOGY & SHARED LANGUAGE
 
-| Term | Meaning |
+This section defines project-specific operational language. The goal is **behavior transfer**: a new agent or developer should know what to do, what not to assume, and when a task is actually complete.
+
+---
+
+### TIER 1 — CRITICAL
+
+Misunderstanding these terms can cause production damage, frozen-spec violations, or false completion reports.
+
+---
+
+#### MASTER FREEZE
+
+| | |
 |---|---|
-| **MASTER FREEZE** | Authoritative frozen specification document |
-| **FROZEN** | Approved and locked until explicit revision |
-| **HANDOFF PACK** | This operational continuity document |
-| **INVESTIGATE ONLY** | Read/search/diagnose without code changes |
-| **MINIMAL FIX** | Smallest correct diff for the approved scope |
-| **COMPANION** | Featured companion profile on the LP |
-| **PERSONAL CONCIERGE** | Contact / concierge section (`#find-your-match`) |
-| **FIND YOUR MATCH** | Primary CTA label → companions discovery flow |
-| **SERVICE BRAND** | HENTAI PARADISE TOKYO (customer-facing) |
-| **COMPANY / OPERATOR** | XOZE Inc. (legal/operator contexts, e.g. Footer) |
-| **PRODUCTION PASS** | Verified on live Production after Vercel Ready |
+| **Plain meaning** | A locked specification document |
+| **Project-specific meaning** | Highest approved **product/design specification** (`docs/MASTER_FREEZE.md`). Current authoritative version: **V3.2**. Governs brand, IA, section behavior, copy, footer rules, and other frozen decisions. |
+| **Agent must** | Read relevant Master Freeze sections first. Stop and report conflicts. Do not silently override. |
+| **Must not assume** | Handoff Pack, Complete Work Log, AI memory, old conversations, or implementation convenience can override it. |
+| **Example** | Footer operator is **XOZE Inc.** per V3.2 — do not revert to Tokyo Confidential without a new approved Master Freeze revision. |
+
+---
+
+#### SSOT
+
+| | |
+|---|---|
+| **Plain meaning** | Single Source of Truth — the one authoritative document for a domain |
+| **Project-specific meaning** | **MASTER FREEZE is the SSOT for frozen product/design decisions.** Other sources serve different roles (see below). |
+| **Agent must** | Treat Master Freeze as SSOT for *what should be true* for frozen specs. Verify *what is* in Git and current code separately. |
+| **Must not assume** | Handoff Pack, Work Log, or AI memory are design SSOT. |
+| **Clarification** | **MASTER FREEZE** = what SHOULD be true (frozen product/design). **Current code / verified implementation** = what IS implemented. **HANDOFF PACK** = HOW to work + current operational context. **COMPLETE WORK LOG** = historical record. If these conflict: **do not silently reconcile — report the conflict.** |
+| **Example** | Mobile Featured Companions = native manual scroll (V3.0+) — Master Freeze wins over old conversation memory citing V2.4 auto-scroll. |
+
+---
+
+#### FROZEN
+
+| | |
+|---|---|
+| **Plain meaning** | Prefer not to change |
+| **Project-specific meaning** | **Hard lock.** No change without explicit project-owner approval. If the change affects a frozen specification, Master Freeze must be appropriately versioned/updated. |
+| **Agent must** | Stop. Request approval. Update Master Freeze when the change is spec-level. |
+| **Must not assume** | FROZEN means "prefer not to change," or that small fixes/cleanup/improvements are allowed. |
+| **Example** | Hero copy, phone number, section order, service brand, company/operator, approved interaction behavior — all frozen until explicitly approved and documented. |
+
+---
+
+#### INVESTIGATE ONLY
+
+| | |
+|---|---|
+| **Plain meaning** | Look into something |
+| **Project-specific meaning** | **Inspect and report only.** No file modification. No automatic fix. No refactor. Wait for approval. Read-only commands and analysis are allowed. |
+| **Agent must** | Read code, Git, and docs. Run read-only investigation. Produce findings. Stop before implementing. |
+| **Must not assume** | Investigation implies permission to implement. |
+| **Example** | "Investigate footer overflow" → report cause and recommended fix scope; do not patch until approved. |
+
+---
+
+#### DO NOT MODIFY
+
+| | |
+|---|---|
+| **Plain meaning** | Leave files alone |
+| **Project-specific meaning** | **Hard scope boundary** for the current task. No edits to named files or areas, even for cleanup. |
+| **Agent must** | Touch only files explicitly approved for the task. |
+| **Must not assume** | "Do not modify" applies only to the main change — unrelated files in scope are still off limits. |
+| **Example** | During Handoff Pack work with "do not modify production code," do not fix Header.tsx even if a linter warning is visible. |
+
+---
+
+#### DO NOT TOUCH
+
+| | |
+|---|---|
+| **Plain meaning** | Do not change |
+| **Project-specific meaning** | **Hard scope boundary** (see also §35). Agent must not edit, refactor, clean up, rename, reformat, fix warnings, or make adjacent improvements inside excluded scope. |
+| **Agent must** | Treat listed frozen areas and explicitly excluded files as completely off limits for the task. |
+| **Must not assume** | Cleanup, lint fixes, or "while I'm here" improvements are harmless. |
+| **Example** | If Header.tsx is DO NOT TOUCH during Footer work, an unused Header variable must remain untouched. |
+
+---
+
+#### PRODUCTION PASS
+
+| | |
+|---|---|
+| **Plain meaning** | Deploy succeeded |
+| **Project-specific meaning** | **Full applicable verification chain completed.** Does NOT mean Git push succeeded alone. |
+| **Agent must** | Confirm each applicable step before marking complete: local verification → real iPhone when relevant → commit → push → Vercel Production Ready → actual live Production verification. |
+| **Must not assume** | Push alone, or Vercel Ready alone without live site check, equals PRODUCTION PASS. |
+| **Example** | XOZE Inc. footer update required Mac localhost + real iPhone pass before commit; push and live verification still required for full PRODUCTION PASS. |
+
+---
+
+#### APPROVED
+
+| | |
+|---|---|
+| **Plain meaning** | Someone said yes |
+| **Project-specific meaning** | **Explicit project-owner approval** for a scoped change, often after INVESTIGATE ONLY. Master Freeze revisions are marked APPROVED with version/date. |
+| **Agent must** | Wait for explicit approval before implementing spec or production changes. |
+| **Must not assume** | AI suggestion, investigation recommendation, or implementation convenience equals approval. |
+| **Example** | Terminology audit recommendations are not approval to implement Handoff Pack v1.1 until the owner explicitly approves. |
+
+---
+
+#### AUTHORITY ORDER / MASTER FREEZE WINS
+
+| | |
+|---|---|
+| **Plain meaning** | Which document wins in a conflict |
+| **Project-specific meaning** | Fixed hierarchy (see §1): (1) Latest approved MASTER FREEZE → (2) Current production code / verified implementation → (3) HANDOFF PACK → (4) Latest COMPLETE WORK LOG → (5) Older Work Logs → (6) Previous AI conversations / temporary notes. **If Master Freeze conflicts with Handoff Pack: MASTER FREEZE WINS.** If Master Freeze conflicts with current implementation: **do not automatically change either** — report mismatch and wait for owner direction. |
+| **Agent must** | On any contradiction: **STOP. REPORT. DO NOT GUESS. DO NOT AUTO-RESOLVE.** |
+| **Must not assume** | Newest chat message, AI memory, or stale docs override Master Freeze. |
+| **Example** | Handoff Pack v1.0 listed HEAD `cc8d84b`; if Git has moved, verify current HEAD — but Master Freeze V3.2 still governs frozen design. |
+
+---
+
+### TIER 2 — WORKFLOW
+
+Important for reproducing the project's working method.
+
+---
+
+#### MINIMAL FIX
+
+| | |
+|---|---|
+| **Plain meaning** | Small change |
+| **Project-specific meaning** | Smallest correct diff for the **approved scope only**. No unrelated refactor. No adjacent improvements. No "while I'm here" changes. |
+| **Agent must** | Change only what was approved. Match existing conventions. |
+| **Must not assume** | Nearby code should be improved in the same pass. |
+| **Example** | Footer operator rename = two text strings only in `Footer.tsx`. |
+
+---
+
+#### CURRENT STATE / ACTUAL STATE
+
+| | |
+|---|---|
+| **Plain meaning** | How things are now |
+| **Project-specific meaning** | Verified **NOW** using Git HEAD, `git status`, current files, current browser/runtime behavior, and current device behavior where relevant. Takes precedence over remembered assumptions. |
+| **Agent must** | Re-verify at task start. Cite current HEAD when reporting save points. |
+| **Must not assume** | A HEAD hash written in an older Handoff Pack is still current. |
+| **Example** | §4 documents a save point — always run `git rev-parse HEAD` before citing it. |
+
+---
+
+#### NO-LOOP
+
+| | |
+|---|---|
+| **Plain meaning** | Don't repeat failed attempts |
+| **Project-specific meaning** | Before the next troubleshooting step, track: **Action → Result → Current State.** Do not repeat a failed action without new evidence, changed hypothesis, or new reason. |
+| **Agent must** | Document what was tried and what changed before retrying. |
+| **Must not assume** | Running the same fix again will work without new diagnosis. |
+| **Example** | If mobile marquee RAF approach failed, do not retry identically — inspect runtime evidence first (see §25). |
+
+---
+
+#### REAL IPHONE TEST
+
+| | |
+|---|---|
+| **Plain meaning** | Test on a phone |
+| **Project-specific meaning** | **Actual iPhone Safari / real-device verification.** Desktop responsive emulation is NOT automatically equivalent. |
+| **Agent must** | Use when change affects mobile, responsive layout, touch, swipe, mobile navigation, phone behavior, or viewport behavior. Use LAN dev server (`npm run dev -- --hostname 0.0.0.0`; IP may change). |
+| **Must not assume** | Chrome DevTools mobile emulation substitutes for real iPhone. |
+| **Example** | Footer text change required real iPhone localhost verification before commit. |
+
+---
+
+#### LOCALHOST CHECK
+
+| | |
+|---|---|
+| **Plain meaning** | Verify on local dev server |
+| **Project-specific meaning** | Manual verification of affected behavior at `http://localhost:3000` before commit. |
+| **Agent must** | Confirm affected sections work as expected locally. |
+| **Must not assume** | Code review alone satisfies this step. |
+| **Example** | After Footer change, scroll full page on Mac localhost before commit. |
+
+---
+
+#### VISUAL CHECK
+
+| | |
+|---|---|
+| **Plain meaning** | Look at the UI |
+| **Project-specific meaning** | Manual inspection of affected appearance/layout on localhost (or device). |
+| **Agent must** | Visually confirm UI when the task is visual or layout-related. |
+| **Must not assume** | Lint or build success replaces visual verification for UI tasks. |
+| **Example** | Confirm Footer company label and copyright render without overflow. |
+
+---
+
+#### VERCEL READY
+
+| | |
+|---|---|
+| **Plain meaning** | Deployment finished |
+| **Project-specific meaning** | Expected **Production deployment has successfully reached Ready** in Vercel. |
+| **Agent must** | Confirm Vercel Production status after push. |
+| **Must not assume** | VERCEL READY alone completes PRODUCTION PASS without live site check. |
+| **Example** | After push to `origin main`, confirm Production deployment shows Ready in Vercel dashboard. |
+
+---
+
+#### PRODUCTION CHECK
+
+| | |
+|---|---|
+| **Plain meaning** | Check the live site |
+| **Project-specific meaning** | **Manually verify the actual live Production website** (URL may require Vercel dashboard or owner records — not stored in repo). |
+| **Agent must** | Open live site and confirm affected behavior after VERCEL READY. |
+| **Must not assume** | Successful push or VERCEL READY means live site is verified. |
+| **Example** | Confirm Footer shows XOZE Inc. on the live Production URL. |
+
+---
+
+#### GIT CLEAN
+
+| | |
+|---|---|
+| **Plain meaning** | No stray changes |
+| **Project-specific meaning** | **Before commit:** only intended files modified/staged. **After push:** working tree clean; local HEAD equals `origin/main`. |
+| **Agent must** | Run `git status` pre-commit and post-push. |
+| **Must not assume** | Unrelated modified files can be included "since we're committing anyway." |
+| **Example** | Handoff Pack commit should include only `docs/HANDOFF_PACK.md`. |
+
+---
+
+#### RECOVERY POINT
+
+| | |
+|---|---|
+| **Plain meaning** | Safe rollback state |
+| **Project-specific meaning** | Known verified Git/project state safe to return to (specific commit on `main`, verified and synced). |
+| **Agent must** | Record commit hash after verified saves. Use Git restore/revert to known good commits when directed. |
+| **Must not assume** | Any old commit is safe without verification context. |
+| **Example** | `8a564f6` after Handoff Pack v1.0 push — verify HEAD before treating as current recovery point. |
+
+---
+
+#### CURRENT SAVE POINT
+
+| | |
+|---|---|
+| **Plain meaning** | Latest checkpoint |
+| **Project-specific meaning** | Latest verified checkpoint: commit hash, branch, sync with `origin/main`, working tree state, and relevant production verification when applicable. Documented in §4. |
+| **Agent must** | Re-verify Git state; do not copy stale hashes from old docs without checking. |
+| **Must not assume** | CURRENT SAVE POINT is the same as DEV RECOVERY (`.next` restart). |
+| **Example** | §4 CURRENT SAVE POINT vs §29 `.next` deletion — different recovery types. |
+
+---
+
+#### COMPLETE WORK LOG
+
+| | |
+|---|---|
+| **Plain meaning** | Project diary |
+| **Project-specific meaning** | Historical record of completed work. Useful for context and timeline. **NOT design SSOT.** Not present in repo at v1.0 handoff time. |
+| **Agent must** | Use for background only. Verify against Master Freeze + Git if conflict. |
+| **Must not assume** | Work Log overrides Master Freeze. |
+| **Example** | If Work Log mentions Tokyo Confidential as operator, Master Freeze V3.2 (XOZE Inc.) wins. |
+
+---
+
+#### HANDOFF PACK
+
+| | |
+|---|---|
+| **Plain meaning** | Handover document |
+| **Project-specific meaning** | **Operational continuity guide** (this document). Explains HOW to work, WHERE the project is, recovery procedures, workflow, terminology, and unresolved items. **Does NOT supersede Master Freeze.** |
+| **Agent must** | Read after Master Freeze. Follow STANDARD LP WORKFLOW. |
+| **Must not assume** | Handoff Pack overrides frozen product/design specs. |
+| **Example** | v1.1 expands terminology only — Master Freeze remains V3.2. |
+
+---
+
+#### STANDARD LP WORKFLOW
+
+| | |
+|---|---|
+| **Plain meaning** | Required process for LP changes |
+| **Project-specific meaning** | Approved operating sequence (full detail in §24): **INVESTIGATE ONLY → Review findings → Approve exact change → Minimal implementation → localhost verification → Real iPhone when relevant → Commit → Push → Vercel Ready → Production verification.** Only then mark task complete. |
+| **Agent must** | Follow Steps 1–10 in §24 for technical changes. |
+| **Must not assume** | Steps can be skipped when "the change is small." |
+| **Example** | Mobile menu behavior change requires Step 6 real iPhone verification. |
+
+---
+
+#### BUILD SAFETY RULE
+
+| | |
+|---|---|
+| **Plain meaning** | Be careful when building |
+| **Project-specific meaning** | **Do NOT run `npm run build` while the active development server is running.** Known reason: potential `.next` development artifact conflict / Internal Server Error pattern (see §28). |
+| **Agent must** | Stop dev server before production build, or avoid build during active dev unless explicitly instructed. |
+| **Must not assume** | Running build alongside dev is safe. |
+| **Example** | ENOENT on `_buildManifest` after build-with-dev-running → use §29 DEV RECOVERY. |
+
+---
+
+### TIER 3 — PRODUCT LANGUAGE
+
+Preserves approved brand and LP vocabulary.
+
+---
+
+#### HENTAI PARADISE TOKYO / SERVICE BRAND
+
+| | |
+|---|---|
+| **Plain meaning** | The customer-facing website/service name |
+| **Project-specific meaning** | **Canonical service / website / customer-facing brand.** |
+| **Agent must** | Use in Header logos, page title, metadata, Hero/service identity, and customer-facing service contexts. |
+| **Must not assume** | XOZE Inc., Tokyo Confidential, or repo/internal names (`tokyo-confidential`) are interchangeable as service brand. |
+| **Example** | `app/layout.tsx` title: HENTAI PARADISE TOKYO. |
+
+---
+
+#### XOZE Inc. / COMPANY / OPERATOR
+
+| | |
+|---|---|
+| **Plain meaning** | The operating company name |
+| **Project-specific meaning** | **Current Company / Operator** (Master Freeze V3.2). Approved in Footer company label and copyright: © XOZE INC. ALL RIGHTS RESERVED. |
+| **Agent must** | Use in company/operator contexts only. |
+| **Must not assume** | Legal/company-name/trademark verification is complete — do not claim legal clearance. |
+| **Must not use for** | Header logo, page title, Hero identity (those use service brand). |
+| **Example** | Footer displays **XOZE Inc.** — not HENTAI PARADISE TOKYO. |
+
+---
+
+#### COMPANION
+
+| | |
+|---|---|
+| **Plain meaning** | A person accompanying someone |
+| **Project-specific meaning** | Approved product term. **Featured Companion** cards in `#companions` section represent companions. |
+| **Agent must** | Use COMPANION in product/LP context consistently. |
+| **Must not assume** | MEET THIS COMPANION is active — it remains **disabled** until a future destination is approved. |
+| **Example** | Disabled button on companion cards; do not wire booking URL without approval. |
+
+---
+
+#### PERSONAL CONCIERGE
+
+| | |
+|---|---|
+| **Plain meaning** | Dedicated support contact |
+| **Project-specific meaning** | Approved contact/support section. Current section ID: **`#find-your-match`**. Methods: WhatsApp, LINE, PHONE, Telegram. |
+| **Agent must** | Distinguish from FIND YOUR MATCH CTA (navigates to `#companions`). |
+| **Must not assume** | All four methods have frozen destinations — **only PHONE** has frozen `tel:` behavior. |
+| **Example** | WhatsApp/LINE/Telegram are buttons without href until destinations are frozen. |
+
+---
+
+#### FIND YOUR MATCH
+
+| | |
+|---|---|
+| **Plain meaning** | Search/match CTA |
+| **Project-specific meaning** | **Primary CTA label.** Current intended navigation: **`#companions`**. |
+| **Agent must** | Use label consistently in Header and Hero CTAs. |
+| **Must not assume** | FIND YOUR MATCH links to `#find-your-match` — that is the Personal Concierge **section ID**, not the CTA destination. |
+| **Example** | Header Find Your Match → `#companions`; Personal Concierge section → `#find-your-match`. |
+
+---
+
+#### ON HOLD
+
+| | |
+|---|---|
+| **Plain meaning** | Waiting for later |
+| **Project-specific meaning** | Deliberately excluded pending future approval. No placeholder implementation. |
+| **Agent must** | Do not implement ON HOLD items without explicit approval and Master Freeze update. |
+| **Must not assume** | ON HOLD means "use temporary placeholders." |
+| **Example** | **PRICING** — no pricing section, no placeholder prices. |
+
+---
+
+#### NOT FROZEN
+
+| | |
+|---|---|
+| **Plain meaning** | Not yet locked |
+| **Project-specific meaning** | Something may exist in UI but its final behavior/destination is not yet locked in Master Freeze. |
+| **Agent must** | Mark as unresolved. Do not invent behavior or URLs. |
+| **Must not assume** | UI presence implies approved destination. |
+| **Example** | WhatsApp / LINE / Telegram buttons exist but destinations are NOT FROZEN. |
+
+---
+
+### DEPRECATED / INCORRECT SUBSTITUTIONS
+
+| Incorrect | Correct |
+|---|---|
+| Tokyo Confidential as **service brand** | **HENTAI PARADISE TOKYO** |
+| Tokyo Confidential as **current Company / Operator** | **XOZE Inc.** |
+| **XOZE Inc.** in Header / page title | **HENTAI PARADISE TOKYO** |
+| **HENTAI PARADISE TOKYO** in company copyright | **XOZE INC.** |
+| "Transparent Pricing" interpreted as permission to create prices | **Incorrect** — trust copy only; Pricing remains **ON HOLD** |
+
+---
+
+### AI_PROJECT_RULES STALE WARNING
+
+`docs/AI_PROJECT_RULES.md` is currently **partially stale**. Known stale areas include:
+
+- Tokyo Confidential naming (project identity is now HENTAI PARADISE TOKYO / XOZE Inc.)
+- Older build / CHANGELOG workflow
+- Missing current iPhone / Vercel verification chain
+
+**Until separately audited and updated:** when `AI_PROJECT_RULES.md` conflicts with **Master Freeze V3.2** or **Handoff Pack v1.1 mandatory workflow** — **STOP and report the conflict.** Do not silently follow the stale rule.
+
+**Do not modify `AI_PROJECT_RULES.md` as part of routine LP tasks** — that requires a separate future audit/update.
 
 ---
 
@@ -601,6 +1007,7 @@ Mark items as unresolved rather than inventing details.
 
 - [ ] Read `docs/MASTER_FREEZE.md` **V3.2** in full (or relevant sections for your task)
 - [ ] Read this `docs/HANDOFF_PACK.md`
+- [ ] Read **Section 37 — PROJECT TERMINOLOGY & SHARED LANGUAGE** before editing
 - [ ] Run `git status` and confirm clean/sync state
 - [ ] Note current HEAD: `cc8d84b` (verify — do not assume if later commits exist)
 - [ ] Confirm service brand vs company/operator distinction
@@ -660,4 +1067,14 @@ Now wait for my specific task. Begin with INVESTIGATE ONLY unless I explicitly a
 
 ---
 
-**END OF MASTER HANDOFF PACK v1.0**
+---
+
+### REVISION HISTORY
+
+**v1.1 — 2026-08-24** — Expanded project terminology and shared operational language for cross-agent/developer continuity. No product/design specification changed. Master Freeze remains V3.2.
+
+**v1.0 — 2026-08-24** — Initial operational handoff pack.
+
+---
+
+**END OF MASTER HANDOFF PACK v1.1**
