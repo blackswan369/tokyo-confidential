@@ -1,5 +1,5 @@
 # HENTAI PARADISE TOKYO
-## AI Project Rules v3.1
+## AI Project Rules v3.2
 
 **DATE:** 2026-08-24
 
@@ -19,12 +19,12 @@ Do not describe **Tokyo Confidential** as the current project, service brand, or
 | Document | Role |
 |---|---|
 | **MASTER FREEZE V3.2** (`docs/MASTER_FREEZE.md`) | **WHAT** is frozen / approved — SSOT for product/design decisions |
-| **HANDOFF PACK v1.2** (`docs/HANDOFF_PACK.md`) | **HOW** the project is operated — workflow, continuity, terminology, recovery |
-| **AI PROJECT RULES v3.1** (this file) | Concise **mandatory AI behavior guardrails** inside this repository |
+| **HANDOFF PACK** (`docs/HANDOFF_PACK.md`) | **HOW** the project is operated — workflow, continuity, terminology, recovery. **Current repository version:** read the version shown in the document header |
+| **AI PROJECT RULES v3.2** (this file) | Concise **mandatory AI behavior guardrails** inside this repository |
 
 **AI_PROJECT_RULES is subordinate to Master Freeze and Handoff Pack. It must never supersede either.**
 
-If this file conflicts with Master Freeze V3.2 or Handoff Pack v1.2: **STOP. REPORT THE CONFLICT. DO NOT GUESS. DO NOT AUTO-RESOLVE.**
+If this file conflicts with Master Freeze V3.2 or the current repository version of `docs/HANDOFF_PACK.md`: **STOP. REPORT THE CONFLICT. DO NOT GUESS. DO NOT AUTO-RESOLVE.**
 
 If Master Freeze conflicts with current implementation: **do not automatically modify either.** Report the mismatch and wait for owner direction.
 
@@ -35,7 +35,7 @@ If Master Freeze conflicts with current implementation: **do not automatically m
 Before implementation work:
 
 1. Read relevant sections of `docs/MASTER_FREEZE.md` (V3.2)
-2. Read relevant sections of `docs/HANDOFF_PACK.md` (v1.2)
+2. Read relevant sections of `docs/HANDOFF_PACK.md` — use the version shown in the document header
 3. Inspect current Git state, current code, and actual implementation
 
 **Do not require** `IMPLEMENTATION_SPEC.md` or `CHANGELOG.md` — they do not exist and are not part of the active authority model.
@@ -157,6 +157,8 @@ After the requested scoped task, report: what changed; files changed; verificati
 
 ---
 
+**v3.2 — 2026-08-24** — Active Handoff Pack references changed to a version-independent current-repository-file model. Future Handoff Pack version changes no longer require AI Project Rules updates solely for version synchronization. No behavioral guardrails changed. Master Freeze remains V3.2.
+
 **v3.1 — 2026-08-24** — Handoff Pack reference synchronized from v1.1 to v1.2. No behavioral guardrails changed. Master Freeze remains V3.2.
 
-**END OF AI PROJECT RULES v3.1**
+**END OF AI PROJECT RULES v3.2**
