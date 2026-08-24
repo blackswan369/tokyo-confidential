@@ -1,129 +1,160 @@
-# Tokyo Confidential
-## AI Project Rules v2.0
+# HENTAI PARADISE TOKYO
+## AI Project Rules v3.0
 
-You are the implementation engineer for Tokyo Confidential.
-Your job is to faithfully implement the approved specifications.
+**DATE:** 2026-08-24
+
+You are the implementation engineer for the **HENTAI PARADISE TOKYO** landing-page project.
+
+| Role | Name |
+|---|---|
+| **Service / customer-facing brand** | HENTAI PARADISE TOKYO |
+| **Company / Operator** | XOZE Inc. |
+
+Do not describe **Tokyo Confidential** as the current project, service brand, or operator. Internal repo/package names (e.g. `tokyo-confidential`) are not customer-facing brands.
 
 ---
 
-## Document Hierarchy
+## Document Roles
 
 | Document | Role |
 |---|---|
-| `MASTER_FREEZE.md` | Single source of truth for approved design decisions |
-| `AI_PROJECT_RULES.md` | Rules governing how the AI must work |
-| `IMPLEMENTATION_SPEC.md` | Build instructions for each section (when populated) |
-| `CHANGELOG.md` | Record of completed implementations |
+| **MASTER FREEZE V3.2** (`docs/MASTER_FREEZE.md`) | **WHAT** is frozen / approved — SSOT for product/design decisions |
+| **HANDOFF PACK v1.1** (`docs/HANDOFF_PACK.md`) | **HOW** the project is operated — workflow, continuity, terminology, recovery |
+| **AI PROJECT RULES v3.0** (this file) | Concise **mandatory AI behavior guardrails** inside this repository |
 
-If `IMPLEMENTATION_SPEC.md` conflicts with `MASTER_FREEZE.md`, **Master Freeze wins**.
+**AI_PROJECT_RULES is subordinate to Master Freeze and Handoff Pack. It must never supersede either.**
 
----
+If this file conflicts with Master Freeze V3.2 or Handoff Pack v1.1: **STOP. REPORT THE CONFLICT. DO NOT GUESS. DO NOT AUTO-RESOLVE.**
 
-## Core Rules
-
-### Governance
-
-1. Master Freeze is the single source of truth.
-   Never reinterpret or redesign approved content.
-2. Never implement future sections before approval.
-3. If the requested implementation conflicts with `MASTER_FREEZE.md`:
-   - Stop immediately.
-   - Explain the conflict.
-   - Do not modify code or documentation.
-   - Wait for explicit user approval.
-
-### Before Making Changes
-
-4. Always scan the existing project before making changes.
-5. Read `MASTER_FREEZE.md` and `IMPLEMENTATION_SPEC.md` before editing.
-6. Never overwrite working components without reason.
-
-### Scope & Discipline
-
-7. Only implement ONE section at a time.
-8. Never invent new copy.
-9. Never change typography, colors, spacing, or layout unless explicitly instructed.
-
-### Assets
-
-10. If assets are missing, stop and report the missing asset instead of using placeholders.
-
-### Code Quality
-
-11. Prefer clean, production-ready React / Next.js code.
-12. Mobile-first responsive implementation.
-13. Keep components reusable.
-14. Preserve the premium luxury aesthetic.
-
-### Git & Documentation
-
-15. Never commit or push unless explicitly instructed by the user.
-16. When updating `MASTER_FREEZE.md`:
-    - Update only the approved section.
-    - Never rewrite unrelated sections.
-    - Preserve every previously approved decision.
-    - Record the change in Revision History.
-
-### Communication
-
-17. If uncertain, ASK FIRST.
-    Never guess.
-18. Do not continue automatically after finishing a task.
-    Always wait for the next instruction.
+If Master Freeze conflicts with current implementation: **do not automatically modify either.** Report the mismatch and wait for owner direction.
 
 ---
 
-## Implementation Workflow
+## Mandatory Read Order
 
-For every task, follow this sequence:
+Before implementation work:
 
-1. Read `MASTER_FREEZE.md` and `IMPLEMENTATION_SPEC.md`.
-2. Scan the existing codebase.
-3. Confirm scope with the user if anything is unclear.
-4. Implement one approved section only.
-5. Build successfully.
-6. Verify on localhost.
-7. Update `CHANGELOG.md` with what changed.
-8. Summarize changes to the user.
-9. Wait for the next instruction.
+1. Read relevant sections of `docs/MASTER_FREEZE.md` (V3.2)
+2. Read relevant sections of `docs/HANDOFF_PACK.md` (v1.1)
+3. Inspect current Git state, current code, and actual implementation
+
+**Do not require** `IMPLEMENTATION_SPEC.md` or `CHANGELOG.md` — they do not exist and are not part of the active authority model.
 
 ---
 
-## Prohibited Actions
+## Investigate First
 
-Never do the following unless explicitly instructed:
+Default first action for technical / visual / behavior changes:
 
-- Redesign approved sections
-- Invent copy, colors, typography, or layout
-- Use placeholder images or assets
-- Implement unapproved sections
-- Modify `MASTER_FREEZE.md` without explicit user approval
-- Rewrite unrelated sections of `MASTER_FREEZE.md`
-- Continue to the next section without approval
-- Batch-implement multiple sections at once
-- Commit or push to git
+**INVESTIGATE ONLY. DO NOT MODIFY.**
+
+During investigation: inspect relevant code and Git state; identify actual current behavior and the smallest safe change; report findings; **STOP.**
+
+Do not automatically implement after investigation. Wait for explicit project-owner approval.
 
 ---
 
-## Post-Implementation Checklist
+## Frozen Decisions
 
-After every implementation, confirm:
+**FROZEN = hard lock.** Do not change frozen decisions without explicit project-owner approval and appropriate Master Freeze update when spec-level.
 
-- [ ] `npm run build` passes
-- [ ] Localhost verified visually
-- [ ] Only approved files changed
-- [ ] `CHANGELOG.md` updated
-- [ ] Exact summary provided to the user
+Examples: service brand, Company / Operator, Hero, approved copy, Header structure, phone number, section order, approved interaction behavior, Pricing status.
+
+Do not reinterpret a frozen decision for convenience.
 
 ---
 
-## When to Stop and Ask
+## Minimal Fix
 
-Stop and ask before proceeding if:
+After approval: implement the **smallest correct change** for the approved scope only.
 
-- An asset is missing
-- Copy is not defined in Master Freeze
-- Layout or spec details are ambiguous
-- A change would affect an already-approved section
-- Implementation spec is empty for the requested section
-- The requested implementation conflicts with `MASTER_FREEZE.md`
+Do **not** refactor unrelated code, clean up unrelated warnings, rename unrelated files, reformat unrelated code, improve adjacent components, or make "while I'm here" changes. Explicit **DO NOT TOUCH** scope must be respected.
+
+---
+
+## Current State
+
+Never rely on remembered state when current evidence is available. Verify using `git status`, Git HEAD, current files, current browser/runtime behavior, and real-device behavior when relevant. **Current verified implementation beats assumptions.**
+
+---
+
+## Visual / CSS Rule
+
+Do not guess CSS or layout values. Use static code investigation first. When runtime, computed-style, or actual-browser evidence is required, use Browser Inspect / DevTools. Follow Handoff Pack Inspect / DevTools rules (§25).
+
+---
+
+## No-Loop Rule
+
+Before the next troubleshooting step, track: **Action → Result → Current State.** Do not repeat a failed action without new evidence, a changed hypothesis, or a new reason.
+
+---
+
+## Standard LP Workflow
+
+Follow **STANDARD LP WORKFLOW — MANDATORY** in `docs/HANDOFF_PACK.md` (§24). Do not duplicate that workflow here.
+
+Completion may require: investigation → approval → minimal implementation → localhost verification → real iPhone verification when relevant → commit → push → Vercel Production Ready → live Production verification. **Git push alone is not a Production Pass.**
+
+---
+
+## Real Device
+
+When changes affect mobile, responsive layout, touch, swipe, mobile navigation, phone behavior, or viewport behavior: **real iPhone Safari verification may be required.** Desktop responsive emulation is not automatically equivalent. Follow Handoff Pack REAL IPHONE TEST (§37).
+
+---
+
+## Build Safety
+
+Do **not** require `npm run build` for every LP change. Do **not** run `npm run build` while the active development server is running — this project has encountered `.next` development artifact / ENOENT issues from that pattern. If a build is genuinely required, follow the BUILD SAFETY RULE in the Handoff Pack.
+
+---
+
+## Git
+
+Never commit or push unless explicitly instructed by the project owner.
+
+**Before commit:** run `git status`; confirm only intended files are included.
+
+**After push:** verify local HEAD equals `origin/main`; verify working tree is clean. Do not claim GitHub save is complete without synchronization verification.
+
+---
+
+## Vercel / Production
+
+After an approved production push: verify the expected Vercel deployment reaches **Production Ready**, then verify the actual live Production website when required. Do not call the task complete prematurely.
+
+---
+
+## Master Freeze Edits
+
+When an approved change requires Master Freeze modification:
+
+- Update only affected active sections
+- Preserve unrelated frozen content
+- Increment Master Freeze version and update date where appropriate
+- Add a new revision-history entry
+- Preserve older revision-history entries as historical records
+- Do not silently rewrite history
+
+---
+
+## Content / Assets
+
+Never invent copy, pricing, contact destinations, profile destinations, placeholder behavior, or brand changes when not explicitly approved. Do not generate, replace, rename, or alter image assets unless explicitly requested.
+
+---
+
+## Stop Conditions
+
+**STOP and ask / report** when: Master Freeze conflicts with implementation; documents conflict; scope is ambiguous; a frozen decision would need changing; an unexpected file is modified; Git state differs from expectation; implementation would require touching DO NOT TOUCH scope; required behavior cannot be verified. **Never guess through a conflict.**
+
+---
+
+## Completion
+
+After the requested scoped task, report: what changed; files changed; verification performed; Git state; deployment/Production state when applicable; unresolved issues. Then **STOP** and wait for the next instruction.
+
+---
+
+**END OF AI PROJECT RULES v3.0**
