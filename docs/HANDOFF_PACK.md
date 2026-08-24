@@ -1,5 +1,5 @@
 # HENTAI PARADISE TOKYO
-# MASTER HANDOFF PACK v1.1
+# MASTER HANDOFF PACK v1.2
 
 **DATE:** 2026-08-24  
 **STATUS:** OPERATIONAL HANDOFF DOCUMENT  
@@ -62,10 +62,10 @@ Verified from Git at handoff creation time:
 | Item | Value |
 |---|---|
 | **Branch** | `main` |
-| **Local HEAD** | `cc8d84ba0504f2b272287d777f4676a11d6cd743` |
-| **Short hash** | `cc8d84b` |
-| **Latest commit message** | `Update company operator to XOZE Inc.` |
-| **origin/main** | `cc8d84ba0504f2b272287d777f4676a11d6cd743` |
+| **Local HEAD** | `5671939b451f68856c0d51beaf29f43b2af6fbca` |
+| **Short hash** | `5671939` |
+| **Latest commit message** | `Update AI Project Rules to v3.0` |
+| **origin/main** | `5671939b451f68856c0d51beaf29f43b2af6fbca` |
 | **HEAD equals origin/main** | **Yes** |
 | **Working tree** | Clean |
 | **Remote** | `https://github.com/blackswan369/tokyo-confidential.git` |
@@ -367,7 +367,7 @@ Do not add pricing without explicit future Master Freeze approval.
 |---|---|
 | `docs/MASTER_FREEZE.md` | **Authoritative design SSOT** (V3.2) |
 | `docs/HANDOFF_PACK.md` | This operational handoff document |
-| `docs/AI_PROJECT_RULES.md` | AI implementation rules (secondary to Master Freeze) |
+| `docs/AI_PROJECT_RULES.md` | **AI Project Rules v3.0** — concise mandatory AI behavior guardrails; subordinate to Master Freeze and Handoff Pack |
 | `app/page.tsx` | Page section order |
 | `app/layout.tsx` | Metadata + fonts |
 | `app/globals.css` | Global styles / Tailwind |
@@ -989,17 +989,20 @@ Preserves approved brand and LP vocabulary.
 
 ---
 
-### AI_PROJECT_RULES STALE WARNING
+### AI PROJECT RULES v3.0 — CURRENT
 
-`docs/AI_PROJECT_RULES.md` is currently **partially stale**. Known stale areas include:
+`docs/AI_PROJECT_RULES.md` is the **current mandatory AI behavior guardrail document**.
 
-- Tokyo Confidential naming (project identity is now HENTAI PARADISE TOKYO / XOZE Inc.)
-- Older build / CHANGELOG workflow
-- Missing current iPhone / Vercel verification chain
+It is aligned with:
 
-**Until separately audited and updated:** when `AI_PROJECT_RULES.md` conflicts with **Master Freeze V3.2** or **Handoff Pack v1.1 mandatory workflow** — **STOP and report the conflict.** Do not silently follow the stale rule.
+- Master Freeze V3.2
+- Handoff Pack v1.2 operational workflow
 
-**Do not modify `AI_PROJECT_RULES.md` as part of routine LP tasks** — that requires a separate future audit/update.
+It is **subordinate to both**.
+
+If AI Project Rules conflicts with Master Freeze or Handoff Pack:
+
+**STOP. REPORT THE CONFLICT. DO NOT GUESS. DO NOT AUTO-RESOLVE.**
 
 ---
 
@@ -1007,9 +1010,10 @@ Preserves approved brand and LP vocabulary.
 
 - [ ] Read `docs/MASTER_FREEZE.md` **V3.2** in full (or relevant sections for your task)
 - [ ] Read this `docs/HANDOFF_PACK.md`
+- [ ] Read `docs/AI_PROJECT_RULES.md` — **AI Project Rules v3.0**
 - [ ] Read **Section 37 — PROJECT TERMINOLOGY & SHARED LANGUAGE** before editing
 - [ ] Run `git status` and confirm clean/sync state
-- [ ] Note current HEAD: `cc8d84b` (verify — do not assume if later commits exist)
+- [ ] Note current HEAD: `5671939` (verify — do not assume if later commits exist)
 - [ ] Confirm service brand vs company/operator distinction
 - [ ] Inspect affected components before editing
 - [ ] If task is technical: start with **INVESTIGATE ONLY**
@@ -1030,8 +1034,9 @@ You are continuing the HENTAI PARADISE TOKYO landing-page project.
 
 READ ORDER (mandatory before any edit):
 1. docs/MASTER_FREEZE.md — latest approved version (currently V3.2). This is the highest authority.
-2. docs/HANDOFF_PACK.md — operational handoff (secondary to Master Freeze).
-3. Git state and current production code — verify HEAD, branch, and working tree before changing anything.
+2. docs/HANDOFF_PACK.md — operational handoff (currently v1.2; secondary to Master Freeze).
+3. docs/AI_PROJECT_RULES.md — AI Project Rules v3.0 (mandatory AI behavior guardrails; subordinate to Master Freeze and Handoff Pack).
+4. Git state and current production code — verify HEAD, branch, and working tree before changing anything.
 
 PROJECT IDENTITY:
 - Service / customer-facing brand: HENTAI PARADISE TOKYO
@@ -1071,10 +1076,12 @@ Now wait for my specific task. Begin with INVESTIGATE ONLY unless I explicitly a
 
 ### REVISION HISTORY
 
+**v1.2 — 2026-08-24** — Synchronized Handoff Pack with AI Project Rules v3.0. Removed obsolete AI_PROJECT_RULES stale warning. Documented AI Project Rules v3.0 as current subordinate AI guardrails. Updated current Git save point to 5671939. Updated new-agent/read-order references. No product/design specification changed. Master Freeze remains V3.2. Production code unchanged.
+
 **v1.1 — 2026-08-24** — Expanded project terminology and shared operational language for cross-agent/developer continuity. No product/design specification changed. Master Freeze remains V3.2.
 
 **v1.0 — 2026-08-24** — Initial operational handoff pack.
 
 ---
 
-**END OF MASTER HANDOFF PACK v1.1**
+**END OF MASTER HANDOFF PACK v1.2**
