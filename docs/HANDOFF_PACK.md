@@ -1,5 +1,5 @@
 # HENTAI PARADISE TOKYO
-# MASTER HANDOFF PACK v1.2
+# MASTER HANDOFF PACK v1.3
 
 **DATE:** 2026-08-24  
 **STATUS:** OPERATIONAL HANDOFF DOCUMENT  
@@ -55,19 +55,45 @@ Always verify against Git and live code before editing. Do not rely on memory or
 
 ---
 
-## 4. CURRENT SAVE POINT
+## 4. GIT STATE / SESSION START
 
-Verified from Git at handoff creation time:
+**NEVER assume a Git hash written in the Handoff Pack is still current.** Git and current repository state must be verified live at the start of every work session.
+
+### SESSION START — VERIFY GIT
+
+At the start of every work session, run:
+
+```
+git status
+git branch --show-current
+git rev-parse HEAD
+git fetch origin
+git rev-parse origin/main
+```
+
+Then confirm and report:
+
+- Current branch
+- Working tree state
+- Live local HEAD
+- Live `origin/main`
+- Whether HEAD equals `origin/main`
+
+### LAST DOCUMENTED CHECKPOINT (historical reference only)
+
+**DO NOT treat this hash as current. Always verify Git at session start.** This checkpoint is not updated after every commit and is not authoritative.
+
+Recorded at Handoff Pack v1.3 edit time:
 
 | Item | Value |
 |---|---|
 | **Branch** | `main` |
-| **Local HEAD** | `5671939b451f68856c0d51beaf29f43b2af6fbca` |
-| **Short hash** | `5671939` |
-| **Latest commit message** | `Update AI Project Rules to v3.0` |
-| **origin/main** | `5671939b451f68856c0d51beaf29f43b2af6fbca` |
-| **HEAD equals origin/main** | **Yes** |
-| **Working tree** | Clean |
+| **Local HEAD** | `0e8170486d44b08b04cc646aebc2c8a25193aa18` |
+| **Short hash** | `0e81704` |
+| **Latest commit message** | `Sync AI Project Rules with Handoff v1.2` |
+| **origin/main** | `0e8170486d44b08b04cc646aebc2c8a25193aa18` |
+| **HEAD equals origin/main** | **Yes** (at checkpoint time) |
+| **Working tree** | Clean (at checkpoint time) |
 | **Remote** | `https://github.com/blackswan369/tokyo-confidential.git` |
 
 ### Vercel / Production context
@@ -367,7 +393,7 @@ Do not add pricing without explicit future Master Freeze approval.
 |---|---|
 | `docs/MASTER_FREEZE.md` | **Authoritative design SSOT** (V3.2) |
 | `docs/HANDOFF_PACK.md` | This operational handoff document |
-| `docs/AI_PROJECT_RULES.md` | **AI Project Rules v3.0** — concise mandatory AI behavior guardrails; subordinate to Master Freeze and Handoff Pack |
+| `docs/AI_PROJECT_RULES.md` | **Current repository version** — read the version shown in the document header. Concise mandatory AI behavior guardrails; subordinate to Master Freeze and Handoff Pack |
 | `app/page.tsx` | Page section order |
 | `app/layout.tsx` | Metadata + fonts |
 | `app/globals.css` | Global styles / Tailwind |
@@ -989,16 +1015,18 @@ Preserves approved brand and LP vocabulary.
 
 ---
 
-### AI PROJECT RULES v3.0 — CURRENT
+### AI PROJECT RULES — CURRENT REPOSITORY VERSION
 
-`docs/AI_PROJECT_RULES.md` is the **current mandatory AI behavior guardrail document**.
+**File:** `docs/AI_PROJECT_RULES.md`
+
+Read the version shown in its document header. It is the **current mandatory AI behavior guardrail document** in the repository.
 
 It is aligned with:
 
 - Master Freeze V3.2
-- Handoff Pack v1.2 operational workflow
+- The Handoff Pack operational workflow
 
-It is **subordinate to both**.
+It is **subordinate to both** (Master Freeze and Handoff Pack).
 
 If AI Project Rules conflicts with Master Freeze or Handoff Pack:
 
@@ -1009,11 +1037,11 @@ If AI Project Rules conflicts with Master Freeze or Handoff Pack:
 ## 38. NEW AGENT / DEVELOPER STARTUP CHECKLIST
 
 - [ ] Read `docs/MASTER_FREEZE.md` **V3.2** in full (or relevant sections for your task)
-- [ ] Read this `docs/HANDOFF_PACK.md`
-- [ ] Read `docs/AI_PROJECT_RULES.md` — **AI Project Rules v3.0**
+- [ ] Read this `docs/HANDOFF_PACK.md` — use the version shown in the document header
+- [ ] Read `docs/AI_PROJECT_RULES.md` — use the version shown in the document header
 - [ ] Read **Section 37 — PROJECT TERMINOLOGY & SHARED LANGUAGE** before editing
-- [ ] Run `git status` and confirm clean/sync state
-- [ ] Note current HEAD: `5671939` (verify — do not assume if later commits exist)
+- [ ] Run **SESSION START — VERIFY GIT** (§4): confirm branch, working tree, live HEAD, live `origin/main`, and sync
+- [ ] Verify and report live Git HEAD using Git commands — **do not assume** a hash from this document
 - [ ] Confirm service brand vs company/operator distinction
 - [ ] Inspect affected components before editing
 - [ ] If task is technical: start with **INVESTIGATE ONLY**
@@ -1034,9 +1062,9 @@ You are continuing the HENTAI PARADISE TOKYO landing-page project.
 
 READ ORDER (mandatory before any edit):
 1. docs/MASTER_FREEZE.md — latest approved version (currently V3.2). This is the highest authority.
-2. docs/HANDOFF_PACK.md — operational handoff (currently v1.2; secondary to Master Freeze).
-3. docs/AI_PROJECT_RULES.md — AI Project Rules v3.0 (mandatory AI behavior guardrails; subordinate to Master Freeze and Handoff Pack).
-4. Git state and current production code — verify HEAD, branch, and working tree before changing anything.
+2. docs/HANDOFF_PACK.md — current repository Handoff Pack; use the version shown in its document header (secondary to Master Freeze).
+3. docs/AI_PROJECT_RULES.md — current repository AI Project Rules; use the version shown in its document header (mandatory AI behavior guardrails; subordinate to Master Freeze and Handoff Pack).
+4. Verify current Git state and production code live — report HEAD, branch, sync with origin/main, and working tree before changing anything.
 
 PROJECT IDENTITY:
 - Service / customer-facing brand: HENTAI PARADISE TOKYO
@@ -1076,6 +1104,8 @@ Now wait for my specific task. Begin with INVESTIGATE ONLY unless I explicitly a
 
 ### REVISION HISTORY
 
+**v1.3 — 2026-08-24** — Eliminated active hardcoded AI Project Rules version references. Changed cross-document references to current repository file + read-header model. Removed authoritative fixed Git HEAD from active current-state instructions. Added mandatory live Git verification at session start. Historical checkpoint concept clarified as non-authoritative. No workflow/terminology/product/design behavior changed. Master Freeze remains V3.2. AI Project Rules unchanged in this task.
+
 **v1.2 — 2026-08-24** — Synchronized Handoff Pack with AI Project Rules v3.0. Removed obsolete AI_PROJECT_RULES stale warning. Documented AI Project Rules v3.0 as current subordinate AI guardrails. Updated current Git save point to 5671939. Updated new-agent/read-order references. No product/design specification changed. Master Freeze remains V3.2. Production code unchanged.
 
 **v1.1 — 2026-08-24** — Expanded project terminology and shared operational language for cross-agent/developer continuity. No product/design specification changed. Master Freeze remains V3.2.
@@ -1084,4 +1114,4 @@ Now wait for my specific task. Begin with INVESTIGATE ONLY unless I explicitly a
 
 ---
 
-**END OF MASTER HANDOFF PACK v1.2**
+**END OF MASTER HANDOFF PACK v1.3**
