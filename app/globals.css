@@ -20,4 +20,7 @@ body {
   background: var(--tc-background);
   color: var(--tc-white);
   font-family: var(--font-inter), sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }

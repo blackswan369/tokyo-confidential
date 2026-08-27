@@ -54,7 +54,12 @@ const faqs: FaqItem[] = [
   {
     question: "CAN I USE ANY HOTEL?",
     answer:
-      "MOST MAJOR HOTELS AND AIRBNBS ARE ACCEPTABLE. HOWEVER, PLEASE ENSURE YOUR BOOKING ALLOWS GUESTS TO VISIT YOUR ROOM. YOU MUST ALREADY BE CHECKED INTO YOUR ROOM BEFORE CALLING OUR CONCIERGE.",
+      "MOST MAJOR HOTELS AND AIRBNBS ARE ACCEPTABLE. PLEASE ENSURE YOUR ACCOMMODATION ALLOWS GUESTS. YOU MUST BE CHECKED INTO YOUR ROOM BEFORE THE COMPANION ARRIVES, BUT YOU CAN ABSOLUTELY MAKE ADVANCE RESERVATIONS PRIOR TO YOUR CHECK-IN.",
+  },
+  {
+    question: "WHEN DO I PAY FOR THE SERVICE?",
+    answer:
+      "PAYMENT IS MADE DIRECTLY TO YOUR COMPANION IN CASH (JPY) UPON HER ARRIVAL AT YOUR ROOM, STRICTLY BEFORE THE SERVICE BEGINS.",
   },
 ];
 
@@ -144,8 +149,9 @@ export function FAQ() {
     setOpenIndex((current) => (current === index ? null : index));
   };
 
-  const firstColumn = faqs.slice(0, 4);
-  const secondColumn = faqs.slice(4);
+  const midpoint = Math.ceil(faqs.length / 2);
+  const leftFaqs = faqs.slice(0, midpoint);
+  const rightFaqs = faqs.slice(midpoint);
 
   return (
     <section id="faq" className="bg-[#0B0B0B] px-8 py-20 md:px-10 md:py-24 lg:px-12">
@@ -157,7 +163,7 @@ export function FAQ() {
         <div className="md:mx-auto md:w-[85%]">
           <div className="mt-12 md:mt-16 md:grid md:grid-cols-2 md:gap-8">
             <div className="flex flex-col">
-              {firstColumn.map((faq, columnIndex) => (
+              {leftFaqs.map((faq, columnIndex) => (
                 <FaqAccordionItem
                   key={faq.question}
                   index={columnIndex}
@@ -169,13 +175,13 @@ export function FAQ() {
               ))}
             </div>
             <div className="flex flex-col">
-              {secondColumn.map((faq, columnIndex) => (
+              {rightFaqs.map((faq, columnIndex) => (
                 <FaqAccordionItem
                   key={faq.question}
-                  index={columnIndex + firstColumn.length}
+                  index={columnIndex + leftFaqs.length}
                   question={faq.question}
                   answer={faq.answer}
-                  isOpen={openIndex === columnIndex + firstColumn.length}
+                  isOpen={openIndex === columnIndex + leftFaqs.length}
                   onToggle={handleToggle}
                 />
               ))}
