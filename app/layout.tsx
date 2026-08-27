@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import { AgeVerification } from "@/components/AgeVerification";
 import "./globals.css";
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${cormorantGaramond.variable} ${inter.variable} antialiased`}
       >
+        <AgeVerification />
         {children}
       </body>
     </html>
