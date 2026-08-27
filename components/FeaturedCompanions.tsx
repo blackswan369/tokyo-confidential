@@ -4,8 +4,8 @@ import { FeaturedCompanionsMarquee } from "@/components/FeaturedCompanionsMarque
 
 function CompanionCard({ companion }: { companion: Companion }) {
   return (
-    <article className="flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#0B0B0B] shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
-      <div className="relative aspect-[4/5] w-full overflow-hidden">
+    <article className="flex h-full w-full flex-col overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
+      <div className="relative aspect-[3/4] w-full overflow-hidden rounded-t-2xl">
         <Image
           src={companion.image}
           alt={`${companion.name} portrait`}
@@ -15,28 +15,30 @@ function CompanionCard({ companion }: { companion: Companion }) {
         />
       </div>
 
-      <div className="flex flex-1 flex-col px-5 py-6 md:px-6 md:py-7">
+      <div className="flex flex-1 flex-col rounded-b-2xl border border-gray-800 bg-[#0A0A0A] px-4 py-4 md:px-5 md:py-5">
         <h3 className="font-body text-lg font-medium leading-[140%] text-white">
           {companion.name},{" "}
           <span className="font-normal text-[#D6D6D6]">{companion.age}</span>
         </h3>
-        <div className="mt-auto flex flex-col gap-2 pt-3">
+
+        <p className="mt-2 font-body text-[10px] uppercase tracking-widest">
           {companion.available && (
-            <span className="inline-flex w-fit rounded-full border border-[#22C55E] px-3 py-1 font-body text-xs font-medium uppercase tracking-wide text-[#22C55E]">
-              AVAILABLE TODAY
-            </span>
+            <>
+              <span className="text-[#E8B936]">AVAILABLE TODAY</span>
+              <span className="text-gray-500"> • </span>
+            </>
           )}
-          <span className="inline-flex w-fit rounded-full border border-[#F472B6] px-3 py-1 font-body text-xs font-medium uppercase tracking-wide text-[#F472B6]">
-            {companion.area}
-          </span>
-        </div>
+          <span className="text-gray-400">{companion.area}</span>
+        </p>
+
         <button
           type="button"
           disabled
           aria-disabled="true"
-          className="mt-4 inline-flex h-[52px] w-full cursor-not-allowed items-center justify-center rounded-[999px] bg-[linear-gradient(135deg,#FFE58A_0%,#F6D365_45%,#E8B936_100%)] px-6 font-body text-sm font-medium text-[#0B0B0B] opacity-60"
+          className="mt-4 inline-flex cursor-not-allowed items-center gap-2 self-start font-body text-sm tracking-widest text-[#E8B936] opacity-60 transition-opacity hover:opacity-70"
         >
-          MEET THIS COMPANION
+          VIEW PROFILE
+          <span aria-hidden="true">→</span>
         </button>
       </div>
     </article>

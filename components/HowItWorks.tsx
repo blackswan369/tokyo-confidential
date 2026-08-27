@@ -114,26 +114,29 @@ const steps: Step[] = [
   {
     number: "01",
     title: "CONTACT US",
-    description: "REACH OUT VIA WHATSAPP, LINE, OR PHONE.",
+    description:
+      "REACH OUT VIA WHATSAPP OR TELEGRAM TO OUR ENGLISH-SPEAKING CONCIERGE.",
     icon: <ContactIcon />,
   },
   {
     number: "02",
-    title: "CHOOSE YOUR COMPANION",
+    title: "CHOOSE COMPANION",
     description:
-      "SELECT YOUR PREFERRED COMPANION WITH ASSISTANCE FROM OUR CONCIERGE.",
+      "SELECT YOUR PREFERRED COMPANION. ADVANCE RESERVATIONS ARE HIGHLY WELCOMED.",
     icon: <CompanionIcon />,
   },
   {
     number: "03",
-    title: "CONFIRM YOUR BOOKING",
-    description: "FINALIZE THE SCHEDULE AND BOOKING DETAILS.",
+    title: "CONFIRM BOOKING",
+    description:
+      "FINALIZE THE DETAILS. YOU MUST BE CHECKED INTO YOUR HOTEL ROOM BEFORE HER ARRIVAL.",
     icon: <BookingIcon />,
   },
   {
     number: "04",
-    title: "ENJOY YOUR EXPERIENCE",
-    description: "MEET YOUR COMPANION AND ENJOY YOUR TOKYO EXPERIENCE.",
+    title: "PAY & ENJOY",
+    description:
+      "PAY IN JPY CASH DIRECTLY TO HER UPON ARRIVAL, STRICTLY BEFORE THE SERVICE BEGINS.",
     icon: <ExperienceIcon />,
   },
 ];
