@@ -24,7 +24,7 @@ export function Footer() {
                 <TokyoTowerAccent />
               </span>
               <span className="whitespace-nowrap font-body text-lg leading-none tracking-wide text-[#D4AF37]">
-                XOZE Inc.
+                HENTAI PARADISE TOKYO
               </span>
             </Link>
           </div>
@@ -60,7 +60,7 @@ export function Footer() {
         </div>
 
         <p className="mt-12 border-t border-[#2A2A2A] pt-8 text-center font-body text-sm leading-[140%] text-[#D6D6D6] md:mt-16">
-          © XOZE INC. ALL RIGHTS RESERVED.
+          © HENTAI PARADISE TOKYO. ALL RIGHTS RESERVED.
         </p>
       </div>
     </footer>
