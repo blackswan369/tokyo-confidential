@@ -19,6 +19,15 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "HENTAI PARADISE TOKYO",
   description: "Experience Tokyo Like Never Before.",
+  openGraph: {
+    title: "HENTAI PARADISE TOKYO",
+  },
+  twitter: {
+    title: "HENTAI PARADISE TOKYO",
+  },
+  verification: {
+    google: "pvzAZ7Gs7iXlK6UPjpeXOiQU51La35j2Q5okW4_Zi5c",
+  },
 };
 
 export default function RootLayout({
