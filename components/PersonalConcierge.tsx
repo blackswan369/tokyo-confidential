@@ -7,6 +7,7 @@ type ContactMethod = {
   label: "WHATSAPP" | "LINE" | "PHONE" | "TELEGRAM";
   icon: React.ReactNode;
   href?: string;
+  external?: boolean;
 };
 
 function WhatsAppIcon() {
@@ -137,10 +138,13 @@ const contactMethods: ContactMethod[] = [
   {
     label: "WHATSAPP",
     icon: <WhatsAppIcon />,
+    href: "#",
   },
   {
     label: "LINE",
     icon: <LineIcon />,
+    href: "https://line.me/ti/p/DUj4HSqfK2",
+    external: true,
   },
   {
     label: "PHONE",
@@ -150,6 +154,8 @@ const contactMethods: ContactMethod[] = [
   {
     label: "TELEGRAM",
     icon: <TelegramIcon />,
+    href: "https://t.me/HP_TokyoConcierge",
+    external: true,
   },
 ];
 
@@ -171,7 +177,13 @@ function ContactMethodButton({ method }: { method: ContactMethod }) {
 
   if (method.href) {
     return (
-      <a href={method.href} className={contactMethodClassName}>
+      <a
+        href={method.href}
+        className={contactMethodClassName}
+        {...(method.external
+          ? { target: "_blank", rel: "noopener noreferrer" }
+          : {})}
+      >
         {content}
       </a>
     );
