@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const navItems = ["Companions", "How It Works", "Reviews", "FAQ"] as const;
+const navItems = ["Companions", "Pricing", "How It Works", "Reviews", "FAQ"] as const;
 
 function SearchIcon({ size = 17 }: { size?: number }) {
   return (
