@@ -4,11 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import type { Locale } from "@/i18n-config";
 import type { HeaderDictionary } from "@/types/dictionary";
 
 type HeaderProps = {
   dict: HeaderDictionary;
+  lang?: Locale;
+  variant?: "overlay" | "solid";
 };
+
+function localizedHref(lang: Locale | undefined, hash: string): string {
+  return lang ? `/${lang}${hash}` : hash;
+}
 
 type NavKey =
   | "nav_companions"
@@ -89,11 +96,20 @@ function MenuIcon() {
   );
 }
 
-export function Header({ dict }: HeaderProps) {
-  const [scrolled, setScrolled] = useState(false);
+export function Header({
+  dict,
+  lang,
+  variant = "overlay",
+}: HeaderProps) {
+  const [scrolled, setScrolled] = useState(variant === "solid");
   const [menuOpen, setMenuOpen] = useState(false);
+  const homeHref = lang ? `/${lang}` : "/";
 
   useEffect(() => {
+    if (variant === "solid") {
+      return;
+    }
+
     const mobileQuery = window.matchMedia("(max-width: 1279px)");
 
     const handleScroll = () => {
@@ -109,14 +125,17 @@ export function Header({ dict }: HeaderProps) {
       window.removeEventListener("scroll", handleScroll);
       mobileQuery.removeEventListener("change", handleScroll);
     };
-  }, []);
+  }, [variant]);
 
   const closeMenu = () => setMenuOpen(false);
+  const navHref = (hash: string) => localizedHref(lang, hash);
 
   return (
     <header
-      className={`absolute top-0 right-0 left-0 z-50 h-[58px] transition-colors duration-300 xl:h-[96px] ${
-        scrolled
+      className={`${
+        variant === "solid" ? "sticky" : "absolute"
+      } top-0 right-0 left-0 z-50 h-[58px] transition-colors duration-300 xl:h-[96px] ${
+        scrolled || variant === "solid"
           ? "bg-[#0B0B0B]"
           : "bg-transparent max-xl:bg-gradient-to-b max-xl:from-[rgba(11,11,11,0.55)] max-xl:via-[rgba(11,11,11,0.2)] max-xl:to-transparent"
       }`}
@@ -125,7 +144,7 @@ export function Header({ dict }: HeaderProps) {
         <div className="flex h-[58px] w-full items-center justify-between px-4 xl:hidden">
           {/* 左側: ロゴ */}
           <Link
-            href="/"
+            href={homeHref}
             className="flex shrink-0 items-center"
             aria-label={dict.home_aria_label}
           >
@@ -165,7 +184,7 @@ export function Header({ dict }: HeaderProps) {
 
         <div className="hidden min-w-0 items-center xl:flex xl:pr-4">
           <Link
-            href="/"
+            href={homeHref}
             className="inline-flex min-h-0 min-w-0 shrink items-center"
             aria-label={dict.home_aria_label}
           >
@@ -184,7 +203,7 @@ export function Header({ dict }: HeaderProps) {
           {NAV_LINKS.map((item) => (
             <a
               key={item.href}
-              href={item.href}
+              href={navHref(item.href)}
               className="inline-flex flex-none font-body text-base font-medium text-white"
             >
               <span className="whitespace-nowrap">{dict[item.key]}</span>
@@ -203,7 +222,7 @@ export function Header({ dict }: HeaderProps) {
             {dict.call_now}
           </a>
           <a
-            href="#companions"
+            href={navHref("#companions")}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#FFE58A_0%,#F6D365_45%,#E8B936_100%)] px-6 py-2.5 font-body text-sm font-medium text-[#0B0B0B]"
           >
             <SearchIcon size={17} />
@@ -232,7 +251,7 @@ export function Header({ dict }: HeaderProps) {
           {NAV_LINKS.map((item) => (
             <a
               key={item.href}
-              href={item.href}
+              href={navHref(item.href)}
               className="inline-flex font-body text-base font-medium text-white"
               onClick={closeMenu}
             >
@@ -244,7 +263,7 @@ export function Header({ dict }: HeaderProps) {
           <LanguageSwitcher onNavigate={closeMenu} />
         </div>
         <a
-          href="#companions"
+          href={navHref("#companions")}
           className="mt-6 inline-flex h-[60px] w-full items-center justify-center gap-2 rounded-[999px] bg-[linear-gradient(135deg,#FFE58A_0%,#F6D365_45%,#E8B936_100%)] px-8 font-body text-base font-medium text-[#0B0B0B]"
           onClick={closeMenu}
         >

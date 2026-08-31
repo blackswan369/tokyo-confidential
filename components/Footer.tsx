@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TokyoTowerAccent } from "./TokyoTowerAccent";
+import type { Locale } from "@/i18n-config";
 import type { FooterDictionary } from "@/types/dictionary";
 
 const linkClassName =
@@ -12,9 +13,16 @@ const headingClassName =
 
 type FooterProps = {
   dict: FooterDictionary;
+  lang?: Locale;
 };
 
-export function Footer({ dict }: FooterProps) {
+function localizedHref(lang: Locale | undefined, hash: string): string {
+  return lang ? `/${lang}${hash}` : hash;
+}
+
+export function Footer({ dict, lang }: FooterProps) {
+  const homeHref = lang ? `/${lang}` : "/";
+
   return (
     <footer className="border-t border-[#2A2A2A] bg-[#0B0B0B] px-8 pt-16 pb-10 md:px-10 md:pt-20 md:pb-12 lg:px-12">
       <div className="mx-auto max-w-[1440px]">
@@ -22,7 +30,7 @@ export function Footer({ dict }: FooterProps) {
           <div>
             <p className={headingClassName}>{dict.company_heading}</p>
             <Link
-              href="/"
+              href={homeHref}
               className="mt-4 inline-flex items-center gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B0B]"
             >
               <span className="inline-flex shrink-0 translate-y-px items-center">
@@ -38,10 +46,10 @@ export function Footer({ dict }: FooterProps) {
             <p className={headingClassName}>{dict.about_heading}</p>
             <div className="mt-4 flex flex-col items-start gap-3">
               <span className={staticClassName}>{dict.about_link}</span>
-              <Link href="#faq" className={linkClassName}>
+              <Link href={localizedHref(lang, "#faq")} className={linkClassName}>
                 {dict.faq_link}
               </Link>
-              <Link href="#companions" className={linkClassName}>
+              <Link href={localizedHref(lang, "#companions")} className={linkClassName}>
                 {dict.companions_link}
               </Link>
             </div>
@@ -50,7 +58,7 @@ export function Footer({ dict }: FooterProps) {
           <div>
             <p className={headingClassName}>{dict.contact_heading}</p>
             <div className="mt-4">
-              <Link href="#find-your-match" className={linkClassName}>
+              <Link href={localizedHref(lang, "#find-your-match")} className={linkClassName}>
                 {dict.contact_link}
               </Link>
             </div>

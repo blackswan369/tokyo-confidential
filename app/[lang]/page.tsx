@@ -22,22 +22,23 @@ export default async function Home({
     notFound();
   }
 
-  const dictionary = await getDictionary(lang as Locale);
+  const locale = lang as Locale;
+  const dictionary = await getDictionary(locale);
 
   return (
     <>
       <div className="relative">
         <Hero dict={dictionary.hero} />
-        <Header dict={dictionary.header} />
+        <Header dict={dictionary.header} lang={locale} />
       </div>
       <WhyChooseUs dict={dictionary.why_choose_us} />
       <Pricing dict={dictionary.pricing} />
-      <FeaturedCompanions dict={dictionary.featured_companions} />
+      <FeaturedCompanions dict={dictionary.featured_companions} lang={locale} />
       <HowItWorks dict={dictionary.how_it_works} />
       <PersonalConcierge dict={dictionary.personal_concierge} />
       <Reviews dict={dictionary.reviews} />
       <FAQ dict={dictionary.faq} />
-      <Footer dict={dictionary.footer} />
+      <Footer dict={dictionary.footer} lang={locale} />
     </>
   );
 }

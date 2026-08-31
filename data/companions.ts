@@ -6,3 +6,13 @@ export type Companion = {
   available: boolean;
   area: string;
 };
+
+export type CompanionProfile = Companion & {
+  gallery: string[];
+  introduction?: string;
+  height?: string;
+  languages?: string;
+  interests?: string;
+  personality?: string;
+  services?: string;
+};

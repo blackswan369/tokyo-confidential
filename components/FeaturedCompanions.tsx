@@ -1,12 +1,14 @@
 import { getFeaturedCompanions } from "@/lib/companions";
 import { FeaturedCompanionsMarquee } from "@/components/FeaturedCompanionsMarquee";
+import type { Locale } from "@/i18n-config";
 import type { FeaturedCompanionsDictionary } from "@/types/dictionary";
 
 type FeaturedCompanionsProps = {
   dict: FeaturedCompanionsDictionary;
+  lang: Locale;
 };
 
-export async function FeaturedCompanions({ dict }: FeaturedCompanionsProps) {
+export async function FeaturedCompanions({ dict, lang }: FeaturedCompanionsProps) {
   const companions = await getFeaturedCompanions();
 
   return (
@@ -17,7 +19,7 @@ export async function FeaturedCompanions({ dict }: FeaturedCompanionsProps) {
         </h2>
 
         <div className="md:mx-auto md:w-[85%]">
-          <FeaturedCompanionsMarquee companions={companions} dict={dict} />
+          <FeaturedCompanionsMarquee companions={companions} dict={dict} lang={lang} />
         </div>
       </div>
     </section>

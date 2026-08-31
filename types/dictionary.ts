@@ -9,6 +9,7 @@ export type HowItWorksDictionary = Dictionary["how_it_works"];
 export type FaqDictionary = Dictionary["faq"];
 export type WhyChooseUsDictionary = Dictionary["why_choose_us"];
 export type FeaturedCompanionsDictionary = Dictionary["featured_companions"];
+export type CompanionProfileDictionary = Dictionary["companion_profile"];
 export type PersonalConciergeDictionary = Dictionary["personal_concierge"];
 export type ReviewsDictionary = Dictionary["reviews"];
 export type ReviewItem = ReviewsDictionary["items"][number];

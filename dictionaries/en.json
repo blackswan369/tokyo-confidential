@@ -161,6 +161,24 @@
     "available_today": "AVAILABLE TODAY",
     "view_profile": "VIEW PROFILE"
   },
+  "companion_profile": {
+    "back_to_companions": "BACK TO COMPANIONS",
+    "profile_label": "COMPANION PROFILE",
+    "portrait_alt_suffix": "portrait",
+    "gallery_aria_label": "Companion photo gallery",
+    "available_today": "AVAILABLE TODAY",
+    "introduction": "INTRODUCTION",
+    "details_heading": "PROFILE DETAILS",
+    "height": "HEIGHT",
+    "languages": "LANGUAGES",
+    "interests": "INTERESTS",
+    "personality": "PERSONALITY",
+    "services": "SERVICES",
+    "cta_heading": "READY TO MEET?",
+    "cta_description": "Our concierge team is available to answer your questions and assist with your booking from start to finish.",
+    "book_companion": "BOOK THIS COMPANION",
+    "contact_concierge": "CONTACT CONCIERGE"
+  },
   "personal_concierge": {
     "title": "YOUR PERSONAL CONCIERGE",
     "headline": "READY TO FIND YOUR PERFECT COMPANION?",

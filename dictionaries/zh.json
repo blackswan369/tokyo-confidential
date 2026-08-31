@@ -161,6 +161,24 @@
     "available_today": "今日可约",
     "view_profile": "查看资料"
   },
+  "companion_profile": {
+    "back_to_companions": "返回伴游列表",
+    "profile_label": "伴游资料",
+    "portrait_alt_suffix": "肖像",
+    "gallery_aria_label": "伴游照片画廊",
+    "available_today": "今日可约",
+    "introduction": "个人介绍",
+    "details_heading": "详细资料",
+    "height": "身高",
+    "languages": "语言",
+    "interests": "兴趣",
+    "personality": "性格",
+    "services": "服务",
+    "cta_heading": "准备好见面了吗？",
+    "cta_description": "我们的礼宾团队随时为您解答疑问，并全程协助您的预约。",
+    "book_companion": "预约此伴游",
+    "contact_concierge": "联系礼宾"
+  },
   "personal_concierge": {
     "title": "您的专属礼宾",
     "headline": "准备好寻找您的完美伴游了吗？",

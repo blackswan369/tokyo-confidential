@@ -1,10 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Companion } from "@/data/companions";
+import type { Locale } from "@/i18n-config";
 import type { FeaturedCompanionsDictionary } from "@/types/dictionary";
 
 type CompanionCardProps = {
   companion: Companion;
   dict: FeaturedCompanionsDictionary;
+  lang: Locale;
 };
 
 function isComingSoonCompanion(companion: Companion): boolean {
@@ -71,9 +74,11 @@ function TeaserCompanionDetails({
 function RegularCompanionDetails({
   companion,
   dict,
+  lang,
 }: {
   companion: Companion;
   dict: FeaturedCompanionsDictionary;
+  lang: Locale;
 }) {
   return (
     <div className="flex flex-grow flex-col justify-between rounded-b-2xl border border-gray-800 bg-[#0A0A0A] px-4 py-4 md:px-5 md:py-5">
@@ -94,20 +99,18 @@ function RegularCompanionDetails({
         </p>
       </div>
 
-      <button
-        type="button"
-        disabled
-        aria-disabled="true"
-        className="mt-4 inline-flex cursor-not-allowed items-center gap-2 self-start font-body text-sm tracking-widest text-[#E8B936] opacity-60 transition-opacity hover:opacity-70"
+      <Link
+        href={`/${lang}/companions/${companion.id}`}
+        className="mt-4 inline-flex items-center gap-2 self-start font-body text-sm tracking-widest text-[#E8B936] transition-opacity hover:opacity-80"
       >
         {dict.view_profile}
         <span aria-hidden="true">→</span>
-      </button>
+      </Link>
     </div>
   );
 }
 
-export function CompanionCard({ companion, dict }: CompanionCardProps) {
+export function CompanionCard({ companion, dict, lang }: CompanionCardProps) {
   const isComingSoon = isComingSoonCompanion(companion);
 
   return (
@@ -120,7 +123,7 @@ export function CompanionCard({ companion, dict }: CompanionCardProps) {
       {isComingSoon ? (
         <TeaserCompanionDetails dict={dict} />
       ) : (
-        <RegularCompanionDetails companion={companion} dict={dict} />
+        <RegularCompanionDetails companion={companion} dict={dict} lang={lang} />
       )}
     </article>
   );

@@ -3,6 +3,7 @@
 import useEmblaCarousel from "embla-carousel-react";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import type { Companion } from "@/data/companions";
+import type { Locale } from "@/i18n-config";
 import { CompanionCard } from "@/components/CompanionCard";
 import type { FeaturedCompanionsDictionary } from "@/types/dictionary";
 
@@ -12,11 +13,13 @@ const SLIDE_CLASS =
 type FeaturedCompanionsMarqueeProps = {
   companions: Companion[];
   dict: FeaturedCompanionsDictionary;
+  lang: Locale;
 };
 
 function EmblaCompanionCarousel({
   companions,
   dict,
+  lang,
 }: FeaturedCompanionsMarqueeProps) {
   const [emblaRef] = useEmblaCarousel(
     { loop: true, align: "start", dragFree: true },
@@ -30,7 +33,7 @@ function EmblaCompanionCarousel({
       <div className="flex">
         {loopData.map((companion, index) => (
           <div key={`${companion.id}-${index}`} className={SLIDE_CLASS}>
-            <CompanionCard companion={companion} dict={dict} />
+            <CompanionCard companion={companion} dict={dict} lang={lang} />
           </div>
         ))}
       </div>
@@ -41,6 +44,7 @@ function EmblaCompanionCarousel({
 export function FeaturedCompanionsMarquee({
   companions,
   dict,
+  lang,
 }: FeaturedCompanionsMarqueeProps) {
   return (
     <>
@@ -49,7 +53,7 @@ export function FeaturedCompanionsMarquee({
         role="region"
         aria-label={dict.aria_label}
       >
-        <EmblaCompanionCarousel companions={companions} dict={dict} />
+        <EmblaCompanionCarousel companions={companions} dict={dict} lang={lang} />
       </div>
 
       <div
@@ -57,7 +61,7 @@ export function FeaturedCompanionsMarquee({
         role="region"
         aria-label={dict.aria_label}
       >
-        <EmblaCompanionCarousel companions={companions} dict={dict} />
+        <EmblaCompanionCarousel companions={companions} dict={dict} lang={lang} />
       </div>
     </>
   );

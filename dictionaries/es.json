@@ -161,6 +161,24 @@
     "available_today": "DISPONIBLE HOY",
     "view_profile": "VER PERFIL"
   },
+  "companion_profile": {
+    "back_to_companions": "VOLVER A ACOMPAÑANTES",
+    "profile_label": "PERFIL DE ACOMPAÑANTE",
+    "portrait_alt_suffix": "retrato",
+    "gallery_aria_label": "Galería de fotos de la acompañante",
+    "available_today": "DISPONIBLE HOY",
+    "introduction": "INTRODUCCIÓN",
+    "details_heading": "DETALLES DEL PERFIL",
+    "height": "ALTURA",
+    "languages": "IDIOMAS",
+    "interests": "INTERESES",
+    "personality": "PERSONALIDAD",
+    "services": "SERVICIOS",
+    "cta_heading": "¿LISTA PARA CONOCERLA?",
+    "cta_description": "Nuestro equipo de concierge está disponible para responder tus preguntas y asistirte con tu reserva de principio a fin.",
+    "book_companion": "RESERVAR ESTA ACOMPAÑANTE",
+    "contact_concierge": "CONTACTAR CONCIERGE"
+  },
   "personal_concierge": {
     "title": "TU CONCIERGE PERSONAL",
     "headline": "¿LISTO PARA ENCONTRAR TU ACOMPAÑANTE PERFECTA?",
