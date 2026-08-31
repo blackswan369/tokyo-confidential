@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const navItems = ["Companions", "Pricing", "How It Works", "Reviews", "FAQ"] as const;
 
@@ -174,6 +175,7 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center justify-end gap-5 xl:flex xl:gap-6">
+          <LanguageSwitcher />
           <a
             href="tel:0362659181"
             className={`${callNowClassName} px-5 py-2.5 text-sm`}
@@ -220,6 +222,9 @@ export function Header() {
             </a>
           ))}
         </nav>
+        <div className="mt-6 border-t border-white/10 pt-6">
+          <LanguageSwitcher onNavigate={closeMenu} />
+        </div>
         <a
           href="#companions"
           className="mt-6 inline-flex h-[60px] w-full items-center justify-center gap-2 rounded-[999px] bg-[linear-gradient(135deg,#FFE58A_0%,#F6D365_45%,#E8B936_100%)] px-8 font-body text-base font-medium text-[#0B0B0B]"

@@ -8,12 +8,29 @@ import { Reviews } from "@/components/Reviews";
 import { FAQ } from "@/components/FAQ";
 import { PersonalConcierge } from "@/components/PersonalConcierge";
 import { Footer } from "@/components/Footer";
+import { getDictionary, isValidLocale, type Locale } from "@/getDictionary";
+import { notFound } from "next/navigation";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: Readonly<{
+  params: Promise<{ lang: string }>;
+}>) {
+  const { lang } = await params;
+
+  if (!isValidLocale(lang)) {
+    notFound();
+  }
+
+  const dictionary = await getDictionary(lang as Locale);
+
   return (
     <>
       <div className="relative">
-        <Hero />
+        <Hero
+          heroTitleLead={dictionary.hero_title_lead}
+          heroTitleAccent={dictionary.hero_title_accent}
+        />
         <Header />
       </div>
       <WhyChooseUs />

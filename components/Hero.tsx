@@ -1,6 +1,11 @@
 import Image from "next/image";
 
-export function Hero() {
+type HeroProps = {
+  heroTitleLead: string;
+  heroTitleAccent: string;
+};
+
+export function Hero({ heroTitleLead, heroTitleAccent }: HeroProps) {
   return (
     <section className="relative h-[92vh] max-md:overflow-hidden md:h-[100vh]">
       <Image
@@ -27,9 +32,9 @@ export function Hero() {
         <div className="w-full max-w-[320px] text-left sm:max-w-[420px] md:max-w-[560px] md:translate-y-6">
           <h1 className="hero-headline max-w-[320px] font-heading text-[42px] font-bold leading-[110%] text-white sm:max-w-[380px] md:max-w-[520px] md:text-[56px]">
             <span className="drop-shadow-[0_2px_16px_rgba(0,0,0,0.35)]">
-              Experience Tokyo Like{" "}
+              {heroTitleLead}
             </span>
-            <span className="hero-gold-gradient">Never Before</span>
+            <span className="hero-gold-gradient">{heroTitleAccent}</span>
           </h1>
 
           <div className="my-4 h-[2px] w-16 bg-[#D4AF37]" />

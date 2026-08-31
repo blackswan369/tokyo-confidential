@@ -1,50 +1,7 @@
-import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
-import { AgeVerification } from "@/components/AgeVerification";
-import { SiteProtection } from "@/components/SiteProtection";
-import "./globals.css";
-
-const cormorantGaramond = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["700"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
-
-export const metadata: Metadata = {
-  title: "HENTAI PARADISE TOKYO",
-  description: "Experience Tokyo Like Never Before.",
-  openGraph: {
-    title: "HENTAI PARADISE TOKYO",
-  },
-  twitter: {
-    title: "HENTAI PARADISE TOKYO",
-  },
-  verification: {
-    google: "pvzAZ7Gs7iXlK6UPjpeXOiQU51La35j2Q5okW4_Zi5c",
-  },
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" className={cormorantGaramond.variable}>
-      <body
-        className={`${inter.variable} antialiased select-none`}
-      >
-        <SiteProtection />
-        <AgeVerification />
-        {children}
-      </body>
-    </html>
-  );
+  return children;
 }
