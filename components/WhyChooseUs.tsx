@@ -1,11 +1,6 @@
-type FeatureAccent = "green" | "gold";
+import type { WhyChooseUsDictionary } from "@/types/dictionary";
 
-type Feature = {
-  title: string;
-  description: string;
-  accent: FeatureAccent;
-  icon: React.ReactNode;
-};
+type FeatureAccent = "green" | "gold";
 
 function ShieldCheckIcon({ color }: { color: string }) {
   return (
@@ -148,61 +143,49 @@ function ScaleIcon({ color }: { color: string }) {
 const GOLD = "#D4AF37";
 const GREEN = "#22C55E";
 
-const features: Feature[] = [
-  {
-    title: "PROFESSIONALLY SCREENED",
-    description:
-      "EVERY COMPANION IS CAREFULLY SCREENED BEFORE JOINING OUR PLATFORM.",
-    accent: "green",
-    icon: <ShieldCheckIcon color={GREEN} />,
-  },
-  {
-    title: "IDENTITY VERIFIED",
-    description: "IDENTITY VERIFICATION IS COMPLETED FOR EVERY COMPANION.",
-    accent: "green",
-    icon: <BadgeCheckIcon color={GREEN} />,
-  },
-  {
-    title: "TRANSPARENT PRICING",
-    description: "NO HIDDEN CHARGES OR UNEXPECTED FEES.",
-    accent: "gold",
-    icon: <TagIcon color={GOLD} />,
-  },
-  {
-    title: "NO HIDDEN FEES",
-    description: "USERS ALWAYS KNOW EXACTLY WHAT THEY ARE PAYING FOR.",
-    accent: "gold",
-    icon: <ReceiptIcon color={GOLD} />,
-  },
-  {
-    title: "PROFESSIONALLY AND LEGALLY OPERATED",
-    description:
-      "OUR SERVICE OPERATES IN COMPLIANCE WITH APPLICABLE REGULATIONS.",
-    accent: "gold",
-    icon: <ScaleIcon color={GOLD} />,
-  },
+const FEATURE_ICONS = [
+  <ShieldCheckIcon key="shield" color={GREEN} />,
+  <BadgeCheckIcon key="badge" color={GREEN} />,
+  <TagIcon key="tag" color={GOLD} />,
+  <ReceiptIcon key="receipt" color={GOLD} />,
+  <ScaleIcon key="scale" color={GOLD} />,
 ];
 
-export function WhyChooseUs() {
+const FEATURE_ACCENTS: FeatureAccent[] = [
+  "green",
+  "green",
+  "gold",
+  "gold",
+  "gold",
+];
+
+type WhyChooseUsProps = {
+  dict: WhyChooseUsDictionary;
+};
+
+export function WhyChooseUs({ dict }: WhyChooseUsProps) {
   return (
     <section className="bg-[#0B0B0B] px-8 py-20 md:px-10 md:py-24 lg:px-12">
       <div className="mx-auto max-w-[1440px]">
         <h2 className="text-center font-heading text-[32px] font-bold leading-[110%] text-white md:text-[40px]">
-          WHY CHOOSE US
+          {dict.title}
         </h2>
 
         <div className="md:mx-auto md:w-[85%]">
           <div className="mt-12 grid grid-cols-1 gap-10 md:mt-16 md:grid-cols-5 md:gap-8">
-            {features.map((feature) => (
-              <div key={feature.title} className="flex flex-col items-center text-center md:items-start md:text-left">
+            {dict.features.map((feature, index) => (
+              <div
+                key={feature.title}
+                className="flex flex-col items-center text-center md:items-start md:text-left"
+              >
                 <div
                   className={`mb-4 inline-flex shrink-0 ${
-                    feature.accent === "green"
+                    FEATURE_ACCENTS[index] === "green"
                       ? "[filter:drop-shadow(0_0_5px_rgba(34,197,94,0.60))_drop-shadow(0_0_12px_rgba(34,197,94,0.32))]"
                       : "[filter:drop-shadow(0_0_5px_rgba(212,175,55,0.60))_drop-shadow(0_0_12px_rgba(212,175,55,0.32))]"
                   }`}
                 >
-                  {feature.icon}
+                  {FEATURE_ICONS[index]}
                 </div>
                 <h3 className="font-body text-base font-medium leading-[140%] text-white">
                   {feature.title}

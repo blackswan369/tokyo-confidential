@@ -4,8 +4,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import type { HeaderDictionary } from "@/types/dictionary";
 
-const navItems = ["Companions", "Pricing", "How It Works", "Reviews", "FAQ"] as const;
+type HeaderProps = {
+  dict: HeaderDictionary;
+};
+
+type NavKey =
+  | "nav_companions"
+  | "nav_pricing"
+  | "nav_how_it_works"
+  | "nav_reviews"
+  | "nav_faq";
+
+const NAV_LINKS: ReadonlyArray<{ href: string; key: NavKey }> = [
+  { href: "#companions", key: "nav_companions" },
+  { href: "#pricing", key: "nav_pricing" },
+  { href: "#how-it-works", key: "nav_how_it_works" },
+  { href: "#reviews", key: "nav_reviews" },
+  { href: "#faq", key: "nav_faq" },
+];
 
 function SearchIcon({ size = 17 }: { size?: number }) {
   return (
@@ -71,7 +89,7 @@ function MenuIcon() {
   );
 }
 
-export function Header() {
+export function Header({ dict }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -109,11 +127,11 @@ export function Header() {
           <Link
             href="/"
             className="flex shrink-0 items-center"
-            aria-label="HENTAI PARADISE TOKYO home"
+            aria-label={dict.home_aria_label}
           >
             <Image
               src="/images/hentai-paradise-tokyo-logo.png"
-              alt="HENTAI PARADISE TOKYO"
+              alt={dict.logo_alt}
               width={1693}
               height={313}
               priority
@@ -126,10 +144,10 @@ export function Header() {
             <a
               href="tel:0362659181"
               className={`${callNowClassName} relative z-10 h-[34px] shrink-0 whitespace-nowrap px-3 text-xs leading-none`}
-              aria-label="Call Now"
+              aria-label={dict.call_now}
             >
               <CallNowPhoneIcon size={15} />
-              Call Now
+              {dict.call_now}
             </a>
 
             <button
@@ -137,7 +155,7 @@ export function Header() {
               className="relative z-10 inline-flex h-11 w-11 shrink-0 items-center justify-center text-[#D4AF37]"
               aria-expanded={menuOpen}
               aria-controls="mobile-nav-menu"
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-label={menuOpen ? dict.close_menu : dict.open_menu}
               onClick={() => setMenuOpen((open) => !open)}
             >
               <MenuIcon />
@@ -149,11 +167,11 @@ export function Header() {
           <Link
             href="/"
             className="inline-flex min-h-0 min-w-0 shrink items-center"
-            aria-label="HENTAI PARADISE TOKYO home"
+            aria-label={dict.home_aria_label}
           >
             <Image
               src="/images/hentai-paradise-tokyo-logo.png"
-              alt="HENTAI PARADISE TOKYO"
+              alt={dict.logo_alt}
               width={1693}
               height={313}
               priority
@@ -163,13 +181,13 @@ export function Header() {
         </div>
 
         <nav className="hidden w-full min-w-0 flex-nowrap items-center justify-center gap-4 pr-4 xl:flex xl:gap-10 xl:pr-6">
-          {navItems.map((item) => (
+          {NAV_LINKS.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+              key={item.href}
+              href={item.href}
               className="inline-flex flex-none font-body text-base font-medium text-white"
             >
-              <span className="whitespace-nowrap">{item}</span>
+              <span className="whitespace-nowrap">{dict[item.key]}</span>
             </a>
           ))}
         </nav>
@@ -179,17 +197,17 @@ export function Header() {
           <a
             href="tel:0362659181"
             className={`${callNowClassName} px-5 py-2.5 text-sm`}
-            aria-label="Call Now"
+            aria-label={dict.call_now}
           >
             <CallNowPhoneIcon />
-            Call Now
+            {dict.call_now}
           </a>
           <a
             href="#companions"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#FFE58A_0%,#F6D365_45%,#E8B936_100%)] px-6 py-2.5 font-body text-sm font-medium text-[#0B0B0B]"
           >
             <SearchIcon size={17} />
-            Find Your Match
+            {dict.find_your_match}
           </a>
         </div>
 
@@ -199,7 +217,7 @@ export function Header() {
         <button
           type="button"
           className="fixed inset-0 top-[58px] z-40 xl:hidden"
-          aria-label="Close menu"
+          aria-label={dict.close_menu}
           onClick={closeMenu}
         />
       )}
@@ -211,14 +229,14 @@ export function Header() {
         }`}
       >
         <nav className="flex flex-col gap-5">
-          {navItems.map((item) => (
+          {NAV_LINKS.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+              key={item.href}
+              href={item.href}
               className="inline-flex font-body text-base font-medium text-white"
               onClick={closeMenu}
             >
-              {item}
+              {dict[item.key]}
             </a>
           ))}
         </nav>
@@ -231,7 +249,7 @@ export function Header() {
           onClick={closeMenu}
         >
           <SearchIcon size={15} />
-          Find Your Match
+          {dict.find_your_match}
         </a>
       </div>
     </header>

@@ -1,4 +1,225 @@
 {
-  "hero_title_lead": "以前所未有的方式",
-  "hero_title_accent": "体验东京"
+  "hero": {
+    "title_lead": "以前所未有的方式",
+    "title_accent": "体验东京",
+    "subtitle": "与值得信赖的本地伴游一起，发现真实的东京",
+    "cta_find_match": "寻找您的匹配",
+    "cta_how_it_works": "服务流程"
+  },
+  "header": {
+    "nav_companions": "伴游",
+    "nav_pricing": "价格",
+    "nav_how_it_works": "服务流程",
+    "nav_reviews": "评价",
+    "nav_faq": "常见问题",
+    "call_now": "立即致电",
+    "find_your_match": "寻找您的匹配",
+    "open_menu": "打开菜单",
+    "close_menu": "关闭菜单",
+    "home_aria_label": "HENTAI PARADISE TOKYO 首页",
+    "logo_alt": "HENTAI PARADISE TOKYO"
+  },
+  "pricing": {
+    "title": "价格",
+    "tagline": "尊享奢华，超值体验",
+    "yen_note": "日元汇率处于历史低位，正是体验的最佳时机。（例如：¥35,000 约合 $230 美元 / €215 欧元）。",
+    "course_rates_title": "课程价格",
+    "swipe_hint": "← 滑动浏览各等级 →",
+    "tiers_note": "所有伴游均从 Gold 等级起步。Diamond 等级通过卓越的客户评价获得……",
+    "transportation_title": "交通费",
+    "transportation_subtitle": "送至您的所在地",
+    "transportation_note": "费用反映行程时间、交通状况及可达性——并非仅按距离计算。",
+    "additional_info_title": "附加信息",
+    "love_hotel_title": "情侣酒店体验",
+    "love_hotel_body": "日本情侣酒店提供极致隐私、宽敞客房与豪华浴池。它们独特地提供实惠的「Rest」（短时休息）价格，仅需数小时而非整晚住宿，是追求绝对舒适与隐私的强烈推荐之选。",
+    "payment_method_title": "支付方式",
+    "payment_cash": "仅限现金（日元）。",
+    "payment_card_note": "*信用卡支付即将开通。",
+    "tier_gold_subtitle": "标准",
+    "tier_diamond_subtitle": "高级",
+    "tier_vip_subtitle": "尊享",
+    "duration_60": "60分钟",
+    "duration_90": "90分钟",
+    "duration_120": "120分钟",
+    "duration_ext": "延长（30分钟）",
+    "ask": "询价",
+    "transport_zones": [
+      { "fee": "¥2,000", "areas": "新宿" },
+      { "fee": "¥3,000", "areas": "涩谷、文京、中野、丰岛、千代田" },
+      { "fee": "¥4,000", "areas": "目黑、港、中央、台东（上野、浅草）、品川" },
+      { "fee": "¥5,000", "areas": "北、杉并、荒川、墨田" },
+      { "fee": "¥6,000", "areas": "大田（羽田机场）、世田谷、江东（台场）、练马、板桥、足立、葛饰、江户川" },
+      { "fee": "¥10,000", "areas": "横滨、川崎、立川、町田、幕张、舞滨（东京迪士尼）" },
+      { "fee": "询价", "areas": "成田、横须贺、大宫" }
+    ]
+  },
+  "how_it_works": {
+    "title": "服务流程",
+    "steps": [
+      {
+        "number": "01",
+        "title": "联系我们",
+        "description": "通过 WhatsApp 或 Telegram 联系我们的英语礼宾团队。"
+      },
+      {
+        "number": "02",
+        "title": "选择伴游",
+        "description": "选择您心仪的伴游。我们非常欢迎提前预约。"
+      },
+      {
+        "number": "03",
+        "title": "确认预约",
+        "description": "确认所有细节。伴游抵达前，您须已办理酒店入住。"
+      },
+      {
+        "number": "04",
+        "title": "付款并享受",
+        "description": "伴游抵达后，请在服务开始前以日元现金直接支付给她。"
+      }
+    ]
+  },
+  "faq": {
+    "title": "常见问题",
+    "items": [
+      {
+        "question": "我需要会日语吗？",
+        "answer": "不需要。整个预约过程均提供英语支持。"
+      },
+      {
+        "question": "如何预约？",
+        "answer": "联系我们、选择伴游、确认预约，然后享受您的体验。"
+      },
+      {
+        "question": "如何付款？",
+        "answer": "可在见面当天以现金支付。预约前亦支持在线信用卡支付。"
+      },
+      {
+        "question": "可以指定某位伴游吗？",
+        "answer": "可以。您可指定某位伴游，视档期而定。"
+      },
+      {
+        "question": "所有伴游都是日本人吗？",
+        "answer": "是的。除非另有说明，我们的伴游均为日本人。"
+      },
+      {
+        "question": "服务是否合法经营？",
+        "answer": "是的。我们专业运营，并遵守相关法规。"
+      },
+      {
+        "question": "取消政策是什么？",
+        "answer": "取消条款将在确认预约前告知。"
+      },
+      {
+        "question": "服务在哪里进行？",
+        "answer": "我们仅提供外呼服务。伴游将前往您在东京服务范围内的私人住所，如酒店客房或公寓（Airbnb）。我们没有实体店面或按摩室供您到访。"
+      },
+      {
+        "question": "有哪些禁止行为？",
+        "answer": "是的。我们严格遵守日本法律。严禁发生完整性行为。我们优先保障伴游的安全。任何违规或不当行为将导致服务立即终止且不予退款。"
+      },
+      {
+        "question": "可以使用任何酒店吗？",
+        "answer": "大多数主要酒店和 Airbnb 均可接受。请确保您的住宿允许访客入内。伴游抵达前您须已入住，但您完全可以在入住前提前预约。"
+      },
+      {
+        "question": "何时支付服务费用？",
+        "answer": "伴游抵达您的房间后，请在服务开始前以现金（日元）直接支付给她。"
+      }
+    ]
+  },
+  "why_choose_us": {
+    "title": "为何选择我们",
+    "features": [
+      {
+        "title": "专业筛选",
+        "description": "每位伴游加入平台前均经过严格筛选。"
+      },
+      {
+        "title": "身份核实",
+        "description": "每位伴游均完成身份验证。"
+      },
+      {
+        "title": "价格透明",
+        "description": "无隐藏费用，无意外收费。"
+      },
+      {
+        "title": "无隐藏费用",
+        "description": "用户始终清楚知道自己所支付的内容。"
+      },
+      {
+        "title": "专业合法运营",
+        "description": "我们的服务遵守相关法规，专业运营。"
+      }
+    ]
+  },
+  "featured_companions": {
+    "title": "精选伴游",
+    "aria_label": "精选伴游展示",
+    "coming_soon": "即将上线",
+    "coming_soon_alt": "即将上线资料",
+    "portrait_alt_suffix": "肖像",
+    "available_today": "今日可约",
+    "view_profile": "查看资料"
+  },
+  "personal_concierge": {
+    "title": "您的专属礼宾",
+    "headline": "准备好寻找您的完美伴游了吗？",
+    "description": "我们的礼宾团队随时为您解答疑问、推荐伴游，并全程协助您的预约。",
+    "whatsapp": "WHATSAPP",
+    "line": "LINE",
+    "phone": "电话",
+    "telegram": "TELEGRAM"
+  },
+  "reviews": {
+    "title": "客户评价",
+    "aria_label": "客户评价",
+    "stars_aria_label": "5 星满分",
+    "prev_review": "上一条评价",
+    "next_review": "下一条评价",
+    "items": [
+      {
+        "id": "daniel",
+        "name": "DANIEL",
+        "country": "美国",
+        "text": "起初我不太确定整个流程如何运作，所以决定打电话咨询。礼宾的英语非常流利，电话里的帮助也很真诚——不只是简单应付，而是真正理解我的问题并清楚解释一切。价格透明，没有意外，伴游也非常可爱。整个晚上轻松自然，绝对是我东京之行的亮点之一。"
+      },
+      {
+        "id": "james",
+        "name": "JAMES",
+        "country": "英国",
+        "text": "我之前看过几家类似服务，但用英语沟通出乎意料地困难。很多时候感觉像在靠翻译软件，我不确定彼此是否真的理解。这里完全不同。团队回复迅速，准确理解我的需求，并帮我选择了符合我期望的人选。她是非常好的陪伴，带我看到了自己可能找不到的东京一面。"
+      },
+      {
+        "id": "carlos",
+        "name": "CARLOS",
+        "country": "西班牙",
+        "text": "这是我第一次来日本，我不会日语，所以非常感激一切安排得如此顺利。他们清楚说明了流程，回答问题时也让我没有压力。见面的女生迷人又风趣。最后我们聊天、欢笑，一起逛了新宿好几个地方。绝对会再体验。"
+      },
+      {
+        "id": "miguel",
+        "name": "MIGUEL",
+        "country": "墨西哥",
+        "text": "我最喜欢的是从一开始就非常专业。价格清楚，沟通迅速，从未感到被催促预约。在礼宾帮助下选择了伴游，是非常好的推荐。她准时、亲切，对话从第一刻就很自然。非常好的服务。"
+      },
+      {
+        "id": "wei",
+        "name": "WEI",
+        "country": "台湾",
+        "text": "第一次使用這類服務，本來有點擔心，但從詢問開始就讓人很安心。回覆很快，費用和流程也都說明得很清楚，不會有到了現場才突然多出其他費用的情況。見面的女生很親切，也很會照顧第一次來東京的旅客。整個晚上很自然、很輕鬆，完全沒有尷尬的感覺。下次來東京還會考慮再預約。"
+      }
+    ]
+  },
+  "footer": {
+    "company_heading": "公司",
+    "about_heading": "关于",
+    "contact_heading": "联系",
+    "legal_heading": "法律",
+    "brand_name": "HENTAI PARADISE TOKYO",
+    "about_link": "关于",
+    "faq_link": "常见问题",
+    "companions_link": "伴游",
+    "contact_link": "联系",
+    "legal_text": "法律",
+    "copyright": "© HENTAI PARADISE TOKYO. 保留所有权利。"
+  }
 }

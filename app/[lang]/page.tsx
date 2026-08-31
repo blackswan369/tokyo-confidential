@@ -27,20 +27,17 @@ export default async function Home({
   return (
     <>
       <div className="relative">
-        <Hero
-          heroTitleLead={dictionary.hero_title_lead}
-          heroTitleAccent={dictionary.hero_title_accent}
-        />
-        <Header />
+        <Hero dict={dictionary.hero} />
+        <Header dict={dictionary.header} />
       </div>
-      <WhyChooseUs />
-      <Pricing />
-      <FeaturedCompanions />
-      <HowItWorks />
-      <PersonalConcierge />
-      <Reviews />
-      <FAQ />
-      <Footer />
+      <WhyChooseUs dict={dictionary.why_choose_us} />
+      <Pricing dict={dictionary.pricing} />
+      <FeaturedCompanions dict={dictionary.featured_companions} />
+      <HowItWorks dict={dictionary.how_it_works} />
+      <PersonalConcierge dict={dictionary.personal_concierge} />
+      <Reviews dict={dictionary.reviews} />
+      <FAQ dict={dictionary.faq} />
+      <Footer dict={dictionary.footer} />
     </>
   );
 }

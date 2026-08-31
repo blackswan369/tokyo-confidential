@@ -1,3 +1,5 @@
+import type { PricingDictionary } from "@/types/dictionary";
+
 type CourseRate = {
   duration: string;
   price: string;
@@ -16,71 +18,60 @@ type TransportZone = {
   areas: string;
 };
 
+type PricingProps = {
+  dict: PricingDictionary;
+};
+
 const SCROLLBAR_HIDDEN =
   "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
 
 const GOLD_GRADIENT =
   "bg-[linear-gradient(135deg,#FFE58A_0%,#F6D365_45%,#E8B936_100%)]";
 
-const courseTiers: CourseTier[] = [
-  {
-    label: "GOLD",
-    subtitle: "Standard",
-    underlineClass: GOLD_GRADIENT,
-    priceClass: "text-[#E8B936]",
-    rates: [
-      { duration: "60MIN", price: "¥35,000" },
-      { duration: "90MIN", price: "¥45,000" },
-      { duration: "120MIN", price: "¥55,000" },
-      { duration: "EXT (30m)", price: "¥20,000" },
-    ],
-  },
-  {
-    label: "DIAMOND",
-    subtitle: "Premium",
-    underlineClass: "bg-cyan-400",
-    priceClass: "text-cyan-400",
-    rates: [
-      { duration: "60MIN", price: "¥40,000" },
-      { duration: "90MIN", price: "¥50,000" },
-      { duration: "120MIN", price: "¥60,000" },
-      { duration: "EXT (30m)", price: "¥25,000" },
-    ],
-  },
-  {
-    label: "VIP",
-    subtitle: "Exclusive",
-    underlineClass: "bg-orange-400",
-    priceClass: "text-orange-400",
-    rates: [
-      { duration: "60MIN", price: "ASK" },
-      { duration: "90MIN", price: "ASK" },
-      { duration: "120MIN", price: "ASK" },
-      { duration: "EXT (30m)", price: "ASK" },
-    ],
-  },
-];
+const GOLD_PRICES = ["¥35,000", "¥45,000", "¥55,000", "¥20,000"] as const;
+const DIAMOND_PRICES = ["¥40,000", "¥50,000", "¥60,000", "¥25,000"] as const;
 
-const transportZones: TransportZone[] = [
-  { fee: "¥2,000", areas: "Shinjuku" },
-  {
-    fee: "¥3,000",
-    areas: "Shibuya, Bunkyo, Nakano, Toshima, Chiyoda",
-  },
-  { fee: "¥4,000", areas: "Meguro, Minato, Chuo, Taito (Ueno, Asakusa), Shinagawa" },
-  { fee: "¥5,000", areas: "Kita, Suginami, Arakawa, Sumida" },
-  {
-    fee: "¥6,000",
-    areas:
-      "Ota (Haneda Airport), Setagaya, Koto (Odaiba), Nerima, Itabashi, Adachi, Katsushika, Edogawa",
-  },
-  {
-    fee: "¥10,000",
-    areas:
-      "Yokohama, Kawasaki, Tachikawa, Machida, Makuhari, Maihama (Tokyo Disneyland)",
-  },
-  { fee: "ASK", areas: "Narita, Yokosuka, Omiya" },
-];
+function buildCourseTiers(dict: PricingDictionary): CourseTier[] {
+  const durations = [
+    dict.duration_60,
+    dict.duration_90,
+    dict.duration_120,
+    dict.duration_ext,
+  ];
+
+  return [
+    {
+      label: "GOLD",
+      subtitle: dict.tier_gold_subtitle,
+      underlineClass: GOLD_GRADIENT,
+      priceClass: "text-[#E8B936]",
+      rates: durations.map((duration, index) => ({
+        duration,
+        price: GOLD_PRICES[index],
+      })),
+    },
+    {
+      label: "DIAMOND",
+      subtitle: dict.tier_diamond_subtitle,
+      underlineClass: "bg-cyan-400",
+      priceClass: "text-cyan-400",
+      rates: durations.map((duration, index) => ({
+        duration,
+        price: DIAMOND_PRICES[index],
+      })),
+    },
+    {
+      label: "VIP",
+      subtitle: dict.tier_vip_subtitle,
+      underlineClass: "bg-orange-400",
+      priceClass: "text-orange-400",
+      rates: durations.map((duration) => ({
+        duration,
+        price: dict.ask,
+      })),
+    },
+  ];
+}
 
 function CourseRateCard({
   tier,
@@ -139,7 +130,9 @@ function TransportRow({ zone }: { zone: TransportZone }) {
   );
 }
 
-export function Pricing() {
+export function Pricing({ dict }: PricingProps) {
+  const courseTiers = buildCourseTiers(dict);
+
   return (
     <section
       id="pricing"
@@ -147,24 +140,22 @@ export function Pricing() {
     >
       <div className="mx-auto max-w-[1440px]">
         <h2 className="text-center font-heading text-[32px] font-bold leading-[110%] text-white md:text-[40px]">
-          PRICING
+          {dict.title}
         </h2>
 
         <div className="mx-auto mb-8 mt-6 max-w-[720px] text-center md:mt-8">
           <p className="font-body text-xs font-medium uppercase tracking-widest text-[#E8B936]">
-            EXPERIENCE PREMIUM AT EXCEPTIONAL VALUE
+            {dict.tagline}
           </p>
           <p className="mt-3 font-body text-xs leading-relaxed text-gray-400 md:text-sm">
-            Take advantage of the historic weak Yen. (e.g., ¥35,000 is
-            approximately $230 USD / €215 EUR).
+            {dict.yen_note}
           </p>
         </div>
 
         <div className="md:mx-auto md:w-[85%]">
-          {/* Section A: Course Rates */}
           <div className="mt-8 md:mt-16">
             <h3 className="text-center font-body text-sm font-medium uppercase tracking-widest text-[#D6D6D6]">
-              COURSE RATES
+              {dict.course_rates_title}
             </h3>
             <div
               className={`mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:mt-8 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 ${SCROLLBAR_HIDDEN}`}
@@ -178,60 +169,52 @@ export function Pricing() {
               ))}
             </div>
             <p className="mt-3 text-center font-body text-[10px] uppercase tracking-widest text-gray-500 md:hidden">
-              ← SWIPE TO EXPLORE TIERS →
+              {dict.swipe_hint}
             </p>
             <p className="mx-auto mt-5 max-w-[720px] text-center font-body text-sm leading-[160%] text-[#A0A0A0] md:mt-8 md:text-base">
-              All companions start at Gold. Diamond status is earned through
-              outstanding guest reviews...
+              {dict.tiers_note}
             </p>
           </div>
 
-          {/* Section B: Transportation Fee */}
           <div className="mt-10 md:mt-20">
             <h3 className="text-center font-body text-sm font-medium uppercase tracking-widest text-[#D6D6D6]">
-              TRANSPORTATION FEE
+              {dict.transportation_title}
             </h3>
             <p className="mt-2 text-center font-body text-xs uppercase tracking-wide text-[#666666] md:mt-3">
-              Delivery to your location
+              {dict.transportation_subtitle}
             </p>
             <div className="mt-5 rounded-sm border border-white/10 bg-[#0A0A0A] p-4 md:mt-8 md:p-6">
-              {transportZones.map((zone) => (
+              {dict.transport_zones.map((zone) => (
                 <TransportRow key={zone.fee + zone.areas} zone={zone} />
               ))}
             </div>
             <p className="mx-auto mt-5 max-w-[720px] text-center font-body text-sm leading-[160%] text-[#A0A0A0] md:mt-8 md:text-base">
-              Fees reflect travel time, traffic conditions, and accessibility—not
-              distance alone.
+              {dict.transportation_note}
             </p>
           </div>
 
-          {/* Section C: Additional Info */}
           <div className="mt-10 md:mt-20">
             <h3 className="text-center font-body text-sm font-medium uppercase tracking-widest text-[#D6D6D6]">
-              ADDITIONAL INFO
+              {dict.additional_info_title}
             </h3>
             <div className="mt-5 grid grid-cols-1 gap-4 md:mt-8 md:grid-cols-2 md:gap-8">
               <div className="rounded-sm border border-white/10 bg-[#0A0A0A] p-5 md:p-8">
                 <p className="font-body text-xs font-medium uppercase tracking-widest text-[#D6D6D6]">
-                  THE LOVE HOTEL EXPERIENCE
+                  {dict.love_hotel_title}
                 </p>
                 <p className="mt-3 font-body text-sm leading-[160%] text-[#A0A0A0] md:text-base">
-                  Japanese love hotels offer ultimate privacy, spacious rooms,
-                  and luxurious baths. They uniquely offer affordable &quot;Rest&quot;
-                  (Short Stay) rates for just a few hours rather than a full
-                  overnight stay, making them a highly recommended option for
-                  your absolute comfort and discretion.
+                  {dict.love_hotel_body}
                 </p>
               </div>
               <div className="rounded-sm border border-white/10 bg-[#0A0A0A] p-5 md:p-8">
                 <p className="font-body text-xs font-medium uppercase tracking-widest text-[#D6D6D6]">
-                  Payment Method
+                  {dict.payment_method_title}
                 </p>
                 <p className="mt-2 font-body text-sm leading-[160%] text-white md:mt-3 md:text-base">
-                  CASH ONLY (Japanese Yen).
+                  {dict.payment_cash}
                 </p>
                 <p className="mt-2 font-body text-sm leading-[160%] text-[#A0A0A0] md:text-base">
-                  *Credit card payments will be accepted soon.
+                  {dict.payment_card_note}
                 </p>
               </div>
             </div>

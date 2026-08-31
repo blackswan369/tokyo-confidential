@@ -1,11 +1,11 @@
 import Image from "next/image";
+import type { HeroDictionary } from "@/types/dictionary";
 
 type HeroProps = {
-  heroTitleLead: string;
-  heroTitleAccent: string;
+  dict: HeroDictionary;
 };
 
-export function Hero({ heroTitleLead, heroTitleAccent }: HeroProps) {
+export function Hero({ dict }: HeroProps) {
   return (
     <section className="relative h-[92vh] max-md:overflow-hidden md:h-[100vh]">
       <Image
@@ -32,15 +32,15 @@ export function Hero({ heroTitleLead, heroTitleAccent }: HeroProps) {
         <div className="w-full max-w-[320px] text-left sm:max-w-[420px] md:max-w-[560px] md:translate-y-6">
           <h1 className="hero-headline max-w-[320px] font-heading text-[42px] font-bold leading-[110%] text-white sm:max-w-[380px] md:max-w-[520px] md:text-[56px]">
             <span className="drop-shadow-[0_2px_16px_rgba(0,0,0,0.35)]">
-              {heroTitleLead}
+              {dict.title_lead}
             </span>
-            <span className="hero-gold-gradient">{heroTitleAccent}</span>
+            <span className="hero-gold-gradient">{dict.title_accent}</span>
           </h1>
 
           <div className="my-4 h-[2px] w-16 bg-[#D4AF37]" />
 
           <p className="max-w-[280px] text-left font-body text-[18px] leading-[160%] text-[#D6D6D6] drop-shadow-[0_1px_8px_rgba(0,0,0,0.3)] sm:max-w-[360px] md:max-w-[480px] md:text-[20px]">
-            Discover the real Tokyo with trusted local companions
+            {dict.subtitle}
           </p>
 
           <div className="mt-5 flex w-full flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5 md:mt-12">
@@ -48,7 +48,7 @@ export function Hero({ heroTitleLead, heroTitleAccent }: HeroProps) {
               href="#companions"
               className="inline-flex h-[52px] w-[240px] shrink-0 items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#FFE58A_0%,#F6D365_45%,#E8B936_100%)] px-5 font-body text-base font-medium text-[#0B0B0B] box-border md:h-[60px] md:w-auto md:min-w-[180px] md:px-8"
             >
-              Find Your Match
+              {dict.cta_find_match}
               <span aria-hidden="true">→</span>
             </a>
 
@@ -56,7 +56,7 @@ export function Hero({ heroTitleLead, heroTitleAccent }: HeroProps) {
               href="#how-it-works"
               className="inline-flex h-[52px] w-[240px] shrink-0 items-center justify-center gap-2 rounded-full border border-[#D4AF37] bg-transparent px-5 font-body text-base font-medium text-[#D4AF37] box-border md:h-[60px] md:w-auto md:min-w-[180px] md:px-8"
             >
-              How It Works
+              {dict.cta_how_it_works}
               <span aria-hidden="true">→</span>
             </a>
           </div>

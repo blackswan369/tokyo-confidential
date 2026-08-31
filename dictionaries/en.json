@@ -1,4 +1,228 @@
 {
-  "hero_title_lead": "Experience Tokyo Like ",
-  "hero_title_accent": "Never Before"
+  "hero": {
+    "title_lead": "Experience Tokyo Like ",
+    "title_accent": "Never Before",
+    "subtitle": "Discover the real Tokyo with trusted local companions",
+    "cta_find_match": "Find Your Match",
+    "cta_how_it_works": "How It Works"
+  },
+  "header": {
+    "nav_companions": "Companions",
+    "nav_pricing": "Pricing",
+    "nav_how_it_works": "How It Works",
+    "nav_reviews": "Reviews",
+    "nav_faq": "FAQ",
+    "call_now": "Call Now",
+    "find_your_match": "Find Your Match",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "home_aria_label": "HENTAI PARADISE TOKYO home",
+    "logo_alt": "HENTAI PARADISE TOKYO"
+  },
+  "pricing": {
+    "title": "PRICING",
+    "tagline": "EXPERIENCE PREMIUM AT EXCEPTIONAL VALUE",
+    "yen_note": "Take advantage of the historic weak Yen. (e.g., ¥35,000 is approximately $230 USD / €215 EUR).",
+    "course_rates_title": "COURSE RATES",
+    "swipe_hint": "← SWIPE TO EXPLORE TIERS →",
+    "tiers_note": "All companions start at Gold. Diamond status is earned through outstanding guest reviews...",
+    "transportation_title": "TRANSPORTATION FEE",
+    "transportation_subtitle": "Delivery to your location",
+    "transportation_note": "Fees reflect travel time, traffic conditions, and accessibility—not distance alone.",
+    "additional_info_title": "ADDITIONAL INFO",
+    "love_hotel_title": "THE LOVE HOTEL EXPERIENCE",
+    "love_hotel_body": "Japanese love hotels offer ultimate privacy, spacious rooms, and luxurious baths. They uniquely offer affordable \"Rest\" (Short Stay) rates for just a few hours rather than a full overnight stay, making them a highly recommended option for your absolute comfort and discretion.",
+    "payment_method_title": "Payment Method",
+    "payment_cash": "CASH ONLY (Japanese Yen).",
+    "payment_card_note": "*Credit card payments will be accepted soon.",
+    "tier_gold_subtitle": "Standard",
+    "tier_diamond_subtitle": "Premium",
+    "tier_vip_subtitle": "Exclusive",
+    "duration_60": "60MIN",
+    "duration_90": "90MIN",
+    "duration_120": "120MIN",
+    "duration_ext": "EXT (30m)",
+    "ask": "ASK",
+    "transport_zones": [
+      { "fee": "¥2,000", "areas": "Shinjuku" },
+      { "fee": "¥3,000", "areas": "Shibuya, Bunkyo, Nakano, Toshima, Chiyoda" },
+      { "fee": "¥4,000", "areas": "Meguro, Minato, Chuo, Taito (Ueno, Asakusa), Shinagawa" },
+      { "fee": "¥5,000", "areas": "Kita, Suginami, Arakawa, Sumida" },
+      { "fee": "¥6,000", "areas": "Ota (Haneda Airport), Setagaya, Koto (Odaiba), Nerima, Itabashi, Adachi, Katsushika, Edogawa" },
+      { "fee": "¥10,000", "areas": "Yokohama, Kawasaki, Tachikawa, Machida, Makuhari, Maihama (Tokyo Disneyland)" },
+      { "fee": "ASK", "areas": "Narita, Yokosuka, Omiya" }
+    ]
+  },
+  "how_it_works": {
+    "title": "HOW IT WORKS",
+    "steps": [
+      {
+        "number": "01",
+        "title": "CONTACT US",
+        "description": "REACH OUT VIA WHATSAPP OR TELEGRAM TO OUR ENGLISH-SPEAKING CONCIERGE."
+      },
+      {
+        "number": "02",
+        "title": "CHOOSE COMPANION",
+        "description": "SELECT YOUR PREFERRED COMPANION. ADVANCE RESERVATIONS ARE HIGHLY WELCOMED."
+      },
+      {
+        "number": "03",
+        "title": "CONFIRM BOOKING",
+        "description": "FINALIZE THE DETAILS. YOU MUST BE CHECKED INTO YOUR HOTEL ROOM BEFORE HER ARRIVAL."
+      },
+      {
+        "number": "04",
+        "title": "PAY & ENJOY",
+        "description": "PAY IN JPY CASH DIRECTLY TO HER UPON ARRIVAL, STRICTLY BEFORE THE SERVICE BEGINS."
+      }
+    ]
+  },
+  "faq": {
+    "title": "FREQUENTLY ASKED QUESTIONS",
+    "items": [
+      {
+        "question": "DO I NEED TO SPEAK JAPANESE?",
+        "answer": "NO. ENGLISH SUPPORT IS AVAILABLE THROUGHOUT THE BOOKING PROCESS."
+      },
+      {
+        "question": "HOW DOES BOOKING WORK?",
+        "answer": "CONTACT US, CHOOSE YOUR COMPANION, CONFIRM YOUR BOOKING, AND ENJOY YOUR EXPERIENCE."
+      },
+      {
+        "question": "HOW DO I PAY?",
+        "answer": "CASH CAN BE PAID ON THE DAY OF THE MEETING. CREDIT CARD PAYMENTS ARE AVAILABLE ONLINE BEFORE YOUR BOOKING."
+      },
+      {
+        "question": "CAN I CHOOSE A SPECIFIC COMPANION?",
+        "answer": "YES. YOU MAY REQUEST A SPECIFIC COMPANION, SUBJECT TO AVAILABILITY."
+      },
+      {
+        "question": "ARE ALL COMPANIONS JAPANESE?",
+        "answer": "YES. OUR COMPANIONS ARE JAPANESE UNLESS OTHERWISE STATED."
+      },
+      {
+        "question": "IS THE SERVICE LEGALLY OPERATED?",
+        "answer": "YES. WE OPERATE PROFESSIONALLY AND IN ACCORDANCE WITH APPLICABLE REGULATIONS."
+      },
+      {
+        "question": "WHAT IS YOUR CANCELLATION POLICY?",
+        "answer": "CANCELLATION TERMS ARE PROVIDED BEFORE BOOKING CONFIRMATION."
+      },
+      {
+        "question": "WHERE DOES THE SERVICE TAKE PLACE?",
+        "answer": "WE ARE AN OUTCALL-ONLY SERVICE. OUR COMPANIONS WILL VISIT YOUR PRIVATE ACCOMMODATION, SUCH AS A HOTEL ROOM OR APARTMENT (AIRBNB) WITHIN OUR TOKYO SERVICE AREA. WE DO NOT HAVE A PHYSICAL PARLOR OR MASSAGE ROOM FOR YOU TO VISIT."
+      },
+      {
+        "question": "ARE THERE ANY PROHIBITED ACTS?",
+        "answer": "YES. WE OPERATE STRICTLY UNDER JAPANESE LAW. FULL SEXUAL INTERCOURSE IS STRICTLY PROHIBITED. WE PRIORITIZE THE SAFETY OF OUR COMPANIONS. ANY VIOLATION OR INAPPROPRIATE BEHAVIOR WILL RESULT IN IMMEDIATE TERMINATION OF THE SERVICE WITHOUT A REFUND."
+      },
+      {
+        "question": "CAN I USE ANY HOTEL?",
+        "answer": "MOST MAJOR HOTELS AND AIRBNBS ARE ACCEPTABLE. PLEASE ENSURE YOUR ACCOMMODATION ALLOWS GUESTS. YOU MUST BE CHECKED INTO YOUR ROOM BEFORE THE COMPANION ARRIVES, BUT YOU CAN ABSOLUTELY MAKE ADVANCE RESERVATIONS PRIOR TO YOUR CHECK-IN."
+      },
+      {
+        "question": "WHEN DO I PAY FOR THE SERVICE?",
+        "answer": "PAYMENT IS MADE DIRECTLY TO YOUR COMPANION IN CASH (JPY) UPON HER ARRIVAL AT YOUR ROOM, STRICTLY BEFORE THE SERVICE BEGINS."
+      }
+    ]
+  },
+  "why_choose_us": {
+    "title": "WHY CHOOSE US",
+    "features": [
+      {
+        "title": "PROFESSIONALLY SCREENED",
+        "description": "EVERY COMPANION IS CAREFULLY SCREENED BEFORE JOINING OUR PLATFORM."
+      },
+      {
+        "title": "IDENTITY VERIFIED",
+        "description": "IDENTITY VERIFICATION IS COMPLETED FOR EVERY COMPANION."
+      },
+      {
+        "title": "TRANSPARENT PRICING",
+        "description": "NO HIDDEN CHARGES OR UNEXPECTED FEES."
+      },
+      {
+        "title": "NO HIDDEN FEES",
+        "description": "USERS ALWAYS KNOW EXACTLY WHAT THEY ARE PAYING FOR."
+      },
+      {
+        "title": "PROFESSIONALLY AND LEGALLY OPERATED",
+        "description": "OUR SERVICE OPERATES IN COMPLIANCE WITH APPLICABLE REGULATIONS."
+      }
+    ]
+  },
+  "featured_companions": {
+    "title": "FEATURED COMPANIONS",
+    "aria_label": "Featured companions showcase",
+    "coming_soon": "COMING SOON",
+    "coming_soon_alt": "Coming soon profile",
+    "portrait_alt_suffix": "portrait",
+    "available_today": "AVAILABLE TODAY",
+    "view_profile": "VIEW PROFILE"
+  },
+  "personal_concierge": {
+    "title": "YOUR PERSONAL CONCIERGE",
+    "headline": "READY TO FIND YOUR PERFECT COMPANION?",
+    "description": "OUR CONCIERGE TEAM IS AVAILABLE TO ANSWER YOUR QUESTIONS, RECOMMEND COMPANIONS, AND ASSIST WITH YOUR BOOKING FROM START TO FINISH.",
+    "whatsapp": "WHATSAPP",
+    "line": "LINE",
+    "phone": "PHONE",
+    "telegram": "TELEGRAM"
+  },
+  "reviews": {
+    "title": "REVIEWS",
+    "aria_label": "Customer reviews",
+    "stars_aria_label": "5 out of 5 stars",
+    "prev_review": "Previous review",
+    "next_review": "Next review",
+    "items": [
+      {
+        "id": "daniel",
+        "name": "DANIEL",
+        "country": "UNITED STATES",
+        "text": "I was a little unsure how the whole thing worked at first, so I decided to call. The concierge spoke excellent English and was genuinely helpful on the phone — not just basic phrases, but actually understood what I was asking and explained everything clearly. The pricing was upfront, there were no weird surprises, and my companion was lovely. The whole evening felt relaxed and easy. Definitely one of the highlights of my time in Tokyo."
+      },
+      {
+        "id": "james",
+        "name": "JAMES",
+        "country": "UNITED KINGDOM",
+        "text": "I'd looked at a few similar services before this, but communicating in English was surprisingly difficult. A lot of the time it felt like everything was going through translation apps, so I wasn't always sure we actually understood each other. This was completely different. The team replied quickly, understood exactly what I was looking for, and helped me choose someone who matched the kind of evening I had in mind. She was great company and showed me a side of Tokyo I probably wouldn't have found on my own."
+      },
+      {
+        "id": "carlos",
+        "name": "CARLOS",
+        "country": "SPAIN",
+        "lang": "es",
+        "text": "Era mi primera vez en Japón y no hablo japonés, así que agradecí muchísimo lo fácil que fue organizar todo. Me explicaron el proceso con claridad y respondieron a mis preguntas sin hacerme sentir que estaba molestando. La chica que conocí fue encantadora y muy divertida. Al final terminamos hablando, riéndonos y recorriendo varios sitios por Shinjuku. Una experiencia que repetiría sin duda."
+      },
+      {
+        "id": "miguel",
+        "name": "MIGUEL",
+        "country": "MEXICO",
+        "lang": "es",
+        "text": "Lo que más me gustó fue que todo se sintió muy profesional desde el principio. El precio estaba claro, la comunicación fue rápida y nunca sentí presión para reservar. Elegí a mi acompañante con ayuda del concierge y fue una muy buena recomendación. Fue puntual, simpática y la conversación fluyó desde el primer momento. Muy buen servicio."
+      },
+      {
+        "id": "wei",
+        "name": "WEI",
+        "country": "TAIWAN",
+        "lang": "zh-Hant",
+        "text": "第一次使用這類服務，本來有點擔心，但從詢問開始就讓人很安心。回覆很快，費用和流程也都說明得很清楚，不會有到了現場才突然多出其他費用的情況。見面的女生很親切，也很會照顧第一次來東京的旅客。整個晚上很自然、很輕鬆，完全沒有尷尬的感覺。下次來東京還會考慮再預約。"
+      }
+    ]
+  },
+  "footer": {
+    "company_heading": "COMPANY",
+    "about_heading": "ABOUT",
+    "contact_heading": "CONTACT",
+    "legal_heading": "LEGAL",
+    "brand_name": "HENTAI PARADISE TOKYO",
+    "about_link": "ABOUT",
+    "faq_link": "FAQ",
+    "companions_link": "COMPANIONS",
+    "contact_link": "CONTACT",
+    "legal_text": "LEGAL",
+    "copyright": "© HENTAI PARADISE TOKYO. ALL RIGHTS RESERVED."
+  }
 }

@@ -1,10 +1,9 @@
+import type { HowItWorksDictionary } from "@/types/dictionary";
+
 const AMBER_GOLD = "#FF9D00";
 
-type Step = {
-  number: string;
-  title: string;
-  description: string;
-  icon: React.ReactNode;
+type HowItWorksProps = {
+  dict: HowItWorksDictionary;
 };
 
 function ContactIcon() {
@@ -110,43 +109,22 @@ function ExperienceIcon() {
   );
 }
 
-const steps: Step[] = [
-  {
-    number: "01",
-    title: "CONTACT US",
-    description:
-      "REACH OUT VIA WHATSAPP OR TELEGRAM TO OUR ENGLISH-SPEAKING CONCIERGE.",
-    icon: <ContactIcon />,
-  },
-  {
-    number: "02",
-    title: "CHOOSE COMPANION",
-    description:
-      "SELECT YOUR PREFERRED COMPANION. ADVANCE RESERVATIONS ARE HIGHLY WELCOMED.",
-    icon: <CompanionIcon />,
-  },
-  {
-    number: "03",
-    title: "CONFIRM BOOKING",
-    description:
-      "FINALIZE THE DETAILS. YOU MUST BE CHECKED INTO YOUR HOTEL ROOM BEFORE HER ARRIVAL.",
-    icon: <BookingIcon />,
-  },
-  {
-    number: "04",
-    title: "PAY & ENJOY",
-    description:
-      "PAY IN JPY CASH DIRECTLY TO HER UPON ARRIVAL, STRICTLY BEFORE THE SERVICE BEGINS.",
-    icon: <ExperienceIcon />,
-  },
+const STEP_ICONS = [
+  <ContactIcon key="contact" />,
+  <CompanionIcon key="companion" />,
+  <BookingIcon key="booking" />,
+  <ExperienceIcon key="experience" />,
 ];
 
-export function HowItWorks() {
+export function HowItWorks({ dict }: HowItWorksProps) {
   return (
-    <section id="how-it-works" className="scroll-mt-24 bg-[#0B0B0B] px-8 pt-12 pb-20 md:px-10 md:pt-14 md:pb-24 lg:px-12">
+    <section
+      id="how-it-works"
+      className="scroll-mt-24 bg-[#0B0B0B] px-8 pt-12 pb-20 md:px-10 md:pt-14 md:pb-24 lg:px-12"
+    >
       <div className="mx-auto max-w-[1440px]">
         <h2 className="text-center font-heading text-[32px] font-bold leading-[110%] text-white md:text-[40px]">
-          HOW IT WORKS
+          {dict.title}
         </h2>
 
         <div className="md:mx-auto md:w-[85%]">
@@ -161,13 +139,13 @@ export function HowItWorks() {
             />
 
             <ol className="relative flex flex-col items-center gap-12 md:flex-row md:items-start md:justify-between md:gap-8">
-              {steps.map((step) => (
+              {dict.steps.map((step, index) => (
                 <li
                   key={step.number}
                   className="relative z-10 flex w-full max-w-[320px] flex-col items-center text-center md:max-w-none md:flex-1"
                 >
                   <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#FF9D00] bg-[#0B0B0B] shadow-[0_0_6px_rgba(255,157,0,0.78),0_0_15px_rgba(255,157,0,0.42),0_0_24px_rgba(255,157,0,0.16)]">
-                    {step.icon}
+                    {STEP_ICONS[index]}
                   </div>
                   <div className="relative z-10 w-full bg-[#0B0B0B] md:bg-transparent">
                     <span className="mt-4 block font-body text-sm font-medium leading-[140%] text-[#D4AF37]">

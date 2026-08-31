@@ -1,67 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import type { FaqDictionary } from "@/types/dictionary";
 
 const GOLD = "#D4AF37";
 
-type FaqItem = {
-  question: string;
-  answer: string;
+type FAQProps = {
+  dict: FaqDictionary;
 };
-
-const faqs: FaqItem[] = [
-  {
-    question: "DO I NEED TO SPEAK JAPANESE?",
-    answer: "NO. ENGLISH SUPPORT IS AVAILABLE THROUGHOUT THE BOOKING PROCESS.",
-  },
-  {
-    question: "HOW DOES BOOKING WORK?",
-    answer:
-      "CONTACT US, CHOOSE YOUR COMPANION, CONFIRM YOUR BOOKING, AND ENJOY YOUR EXPERIENCE.",
-  },
-  {
-    question: "HOW DO I PAY?",
-    answer:
-      "CASH CAN BE PAID ON THE DAY OF THE MEETING. CREDIT CARD PAYMENTS ARE AVAILABLE ONLINE BEFORE YOUR BOOKING.",
-  },
-  {
-    question: "CAN I CHOOSE A SPECIFIC COMPANION?",
-    answer: "YES. YOU MAY REQUEST A SPECIFIC COMPANION, SUBJECT TO AVAILABILITY.",
-  },
-  {
-    question: "ARE ALL COMPANIONS JAPANESE?",
-    answer: "YES. OUR COMPANIONS ARE JAPANESE UNLESS OTHERWISE STATED.",
-  },
-  {
-    question: "IS THE SERVICE LEGALLY OPERATED?",
-    answer:
-      "YES. WE OPERATE PROFESSIONALLY AND IN ACCORDANCE WITH APPLICABLE REGULATIONS.",
-  },
-  {
-    question: "WHAT IS YOUR CANCELLATION POLICY?",
-    answer: "CANCELLATION TERMS ARE PROVIDED BEFORE BOOKING CONFIRMATION.",
-  },
-  {
-    question: "WHERE DOES THE SERVICE TAKE PLACE?",
-    answer:
-      "WE ARE AN OUTCALL-ONLY SERVICE. OUR COMPANIONS WILL VISIT YOUR PRIVATE ACCOMMODATION, SUCH AS A HOTEL ROOM OR APARTMENT (AIRBNB) WITHIN OUR TOKYO SERVICE AREA. WE DO NOT HAVE A PHYSICAL PARLOR OR MASSAGE ROOM FOR YOU TO VISIT.",
-  },
-  {
-    question: "ARE THERE ANY PROHIBITED ACTS?",
-    answer:
-      "YES. WE OPERATE STRICTLY UNDER JAPANESE LAW. FULL SEXUAL INTERCOURSE IS STRICTLY PROHIBITED. WE PRIORITIZE THE SAFETY OF OUR COMPANIONS. ANY VIOLATION OR INAPPROPRIATE BEHAVIOR WILL RESULT IN IMMEDIATE TERMINATION OF THE SERVICE WITHOUT A REFUND.",
-  },
-  {
-    question: "CAN I USE ANY HOTEL?",
-    answer:
-      "MOST MAJOR HOTELS AND AIRBNBS ARE ACCEPTABLE. PLEASE ENSURE YOUR ACCOMMODATION ALLOWS GUESTS. YOU MUST BE CHECKED INTO YOUR ROOM BEFORE THE COMPANION ARRIVES, BUT YOU CAN ABSOLUTELY MAKE ADVANCE RESERVATIONS PRIOR TO YOUR CHECK-IN.",
-  },
-  {
-    question: "WHEN DO I PAY FOR THE SERVICE?",
-    answer:
-      "PAYMENT IS MADE DIRECTLY TO YOUR COMPANION IN CASH (JPY) UPON HER ARRIVAL AT YOUR ROOM, STRICTLY BEFORE THE SERVICE BEGINS.",
-  },
-];
 
 function ChevronIcon({ className }: { className?: string }) {
   return (
@@ -142,22 +88,22 @@ function FaqAccordionItem({
   );
 }
 
-export function FAQ() {
+export function FAQ({ dict }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
     setOpenIndex((current) => (current === index ? null : index));
   };
 
-  const midpoint = Math.ceil(faqs.length / 2);
-  const leftFaqs = faqs.slice(0, midpoint);
-  const rightFaqs = faqs.slice(midpoint);
+  const midpoint = Math.ceil(dict.items.length / 2);
+  const leftFaqs = dict.items.slice(0, midpoint);
+  const rightFaqs = dict.items.slice(midpoint);
 
   return (
     <section id="faq" className="bg-[#0B0B0B] px-8 py-20 md:px-10 md:py-24 lg:px-12">
       <div className="mx-auto max-w-[1440px]">
         <h2 className="text-center font-heading text-[32px] font-bold leading-[110%] text-white md:text-[40px]">
-          FREQUENTLY ASKED QUESTIONS
+          {dict.title}
         </h2>
 
         <div className="md:mx-auto md:w-[85%]">

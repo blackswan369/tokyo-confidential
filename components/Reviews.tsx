@@ -1,25 +1,25 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { reviews, type Review } from "@/data/reviews";
+import type { ReviewItem, ReviewsDictionary } from "@/types/dictionary";
 
 const GOLD = "#D4AF37";
 
-const COUNTRY_FLAGS: Record<string, string> = {
-  "UNITED STATES": "🇺🇸",
-  "UNITED KINGDOM": "🇬🇧",
-  SPAIN: "🇪🇸",
-  MEXICO: "🇲🇽",
-  TAIWAN: "🇹🇼",
+const REVIEW_FLAGS: Record<string, string> = {
+  daniel: "🇺🇸",
+  james: "🇬🇧",
+  carlos: "🇪🇸",
+  miguel: "🇲🇽",
+  wei: "🇹🇼",
 };
 
-function GoldStars() {
+type ReviewsProps = {
+  dict: ReviewsDictionary;
+};
+
+function GoldStars({ ariaLabel }: { ariaLabel: string }) {
   return (
-    <div
-      className="flex gap-1"
-      role="img"
-      aria-label="5 out of 5 stars"
-    >
+    <div className="flex gap-1" role="img" aria-label={ariaLabel}>
       {Array.from({ length: 5 }).map((_, index) => (
         <svg
           key={index}
@@ -40,7 +40,13 @@ function GoldStars() {
   );
 }
 
-function ReviewCard({ review }: { review: Review }) {
+function ReviewCard({
+  review,
+  starsAriaLabel,
+}: {
+  review: ReviewItem;
+  starsAriaLabel: string;
+}) {
   return (
     <article className="flex h-full w-full flex-col rounded-2xl bg-[#0B0B0B] p-6 shadow-[0_8px_32px_rgba(0,0,0,0.35)] md:p-7">
       <h3 className="font-body text-lg font-medium leading-[140%] text-white">
@@ -48,12 +54,12 @@ function ReviewCard({ review }: { review: Review }) {
       </h3>
       <p className="mt-1 flex items-center gap-1.5 font-body text-sm leading-[140%] text-[#D6D6D6] md:text-base">
         <span className="text-[1em] leading-none" aria-hidden="true">
-          {COUNTRY_FLAGS[review.country]}
+          {REVIEW_FLAGS[review.id]}
         </span>
         {review.country}
       </p>
       <div className="mt-4">
-        <GoldStars />
+        <GoldStars ariaLabel={starsAriaLabel} />
       </div>
       <blockquote
         lang={review.lang}
@@ -87,7 +93,7 @@ function CarouselArrow({ direction }: { direction: "prev" | "next" }) {
   );
 }
 
-export function Reviews() {
+export function Reviews({ dict }: ReviewsProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
@@ -160,7 +166,9 @@ export function Reviews() {
     });
 
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
-    const maxIndex = isDesktop ? reviews.length - 3 : reviews.length - 1;
+    const maxIndex = isDesktop
+      ? dict.items.length - 3
+      : dict.items.length - 1;
     const targetIndex =
       direction === "prev"
         ? Math.max(0, currentIndex - 1)
@@ -177,7 +185,7 @@ export function Reviews() {
     <section id="reviews" className="bg-[#0B0B0B] px-8 py-20 md:px-10 md:py-24 lg:px-12">
       <div className="mx-auto max-w-[1440px]">
         <h2 className="text-center font-heading text-[32px] font-bold leading-[110%] text-white md:text-[40px]">
-          REVIEWS
+          {dict.title}
         </h2>
 
         <div className="md:mx-auto md:w-full">
@@ -187,14 +195,17 @@ export function Reviews() {
               className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory [overscroll-behavior-x:contain] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               role="region"
               aria-roledescription="carousel"
-              aria-label="Customer reviews"
+              aria-label={dict.aria_label}
             >
-              {reviews.map((review) => (
+              {dict.items.map((review) => (
                 <div
                   key={review.id}
                   className="w-full shrink-0 snap-start md:w-[calc((100%-4rem)/3)]"
                 >
-                  <ReviewCard review={review} />
+                  <ReviewCard
+                    review={review}
+                    starsAriaLabel={dict.stars_aria_label}
+                  />
                 </div>
               ))}
             </div>
@@ -204,7 +215,7 @@ export function Reviews() {
                 type="button"
                 onClick={() => scrollToSlide("prev")}
                 disabled={!canScrollPrev}
-                aria-label="Previous review"
+                aria-label={dict.prev_review}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#D4AF37] text-[#D4AF37] transition-opacity disabled:cursor-not-allowed disabled:opacity-30"
               >
                 <CarouselArrow direction="prev" />
@@ -213,7 +224,7 @@ export function Reviews() {
                 type="button"
                 onClick={() => scrollToSlide("next")}
                 disabled={!canScrollNext}
-                aria-label="Next review"
+                aria-label={dict.next_review}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#D4AF37] text-[#D4AF37] transition-opacity disabled:cursor-not-allowed disabled:opacity-30"
               >
                 <CarouselArrow direction="next" />

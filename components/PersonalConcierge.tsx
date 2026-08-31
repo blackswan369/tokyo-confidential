@@ -1,13 +1,18 @@
+import type { PersonalConciergeDictionary } from "@/types/dictionary";
+
 const WHATSAPP_GREEN = "#25D366";
 const LINE_GREEN = "#06C755";
-const TELEGRAM_BLUE = "#26A5E4";
 const PHONE_NEON_BLUE = "#00BFFF";
 
 type ContactMethod = {
-  label: "WHATSAPP" | "LINE" | "PHONE" | "TELEGRAM";
+  label: string;
   icon: React.ReactNode;
   href?: string;
   external?: boolean;
+};
+
+type PersonalConciergeProps = {
+  dict: PersonalConciergeDictionary;
 };
 
 function WhatsAppIcon() {
@@ -134,30 +139,34 @@ function TelegramIcon() {
   );
 }
 
-const contactMethods: ContactMethod[] = [
-  {
-    label: "WHATSAPP",
-    icon: <WhatsAppIcon />,
-    href: "#",
-  },
-  {
-    label: "LINE",
-    icon: <LineIcon />,
-    href: "https://line.me/ti/p/DUj4HSqfK2",
-    external: true,
-  },
-  {
-    label: "PHONE",
-    icon: <PhoneIcon />,
-    href: "tel:0362659181",
-  },
-  {
-    label: "TELEGRAM",
-    icon: <TelegramIcon />,
-    href: "https://t.me/HP_TokyoConcierge",
-    external: true,
-  },
-];
+function buildContactMethods(
+  dict: PersonalConciergeDictionary,
+): ContactMethod[] {
+  return [
+    {
+      label: dict.whatsapp,
+      icon: <WhatsAppIcon />,
+      href: "#",
+    },
+    {
+      label: dict.line,
+      icon: <LineIcon />,
+      href: "https://line.me/ti/p/DUj4HSqfK2",
+      external: true,
+    },
+    {
+      label: dict.phone,
+      icon: <PhoneIcon />,
+      href: "tel:0362659181",
+    },
+    {
+      label: dict.telegram,
+      icon: <TelegramIcon />,
+      href: "https://t.me/HP_TokyoConcierge",
+      external: true,
+    },
+  ];
+}
 
 const contactMethodClassName =
   "flex h-[68px] w-full items-center rounded-2xl border border-[#D4AF37]/40 bg-[#141414] pl-5 pr-5 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B0B]";
@@ -196,7 +205,9 @@ function ContactMethodButton({ method }: { method: ContactMethod }) {
   );
 }
 
-export function PersonalConcierge() {
+export function PersonalConcierge({ dict }: PersonalConciergeProps) {
+  const contactMethods = buildContactMethods(dict);
+
   return (
     <section
       id="find-your-match"
@@ -204,14 +215,13 @@ export function PersonalConcierge() {
     >
       <div className="mx-auto max-w-[1440px]">
         <h2 className="text-center font-heading text-[32px] font-bold leading-[110%] text-white md:text-[40px]">
-          YOUR PERSONAL CONCIERGE
+          {dict.title}
         </h2>
         <p className="mt-6 text-center font-heading text-[24px] font-bold leading-[110%] text-white md:mt-8 md:text-[28px]">
-          READY TO FIND YOUR PERFECT COMPANION?
+          {dict.headline}
         </p>
         <p className="mx-auto mt-4 max-w-[640px] text-center font-body text-sm leading-[160%] text-[#D6D6D6] md:mt-5 md:text-base">
-          OUR CONCIERGE TEAM IS AVAILABLE TO ANSWER YOUR QUESTIONS, RECOMMEND
-          COMPANIONS, AND ASSIST WITH YOUR BOOKING FROM START TO FINISH.
+          {dict.description}
         </p>
 
         <div className="md:mx-auto md:w-[85%]">
