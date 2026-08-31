@@ -1,4 +1,227 @@
 {
-  "hero_title_lead": "Vive Tokio ",
-  "hero_title_accent": "como nunca antes"
+  "hero": {
+    "title_lead": "Vive Tokio ",
+    "title_accent": "como nunca antes",
+    "subtitle": "Descubre el Tokio auténtico con acompañantes locales de confianza",
+    "cta_find_match": "Encuentra tu match",
+    "cta_how_it_works": "Cómo funciona"
+  },
+  "header": {
+    "nav_companions": "Acompañantes",
+    "nav_pricing": "Precios",
+    "nav_how_it_works": "Cómo funciona",
+    "nav_reviews": "Reseñas",
+    "nav_faq": "FAQ",
+    "call_now": "Llamar ahora",
+    "find_your_match": "Encuentra tu match",
+    "open_menu": "Abrir menú",
+    "close_menu": "Cerrar menú",
+    "home_aria_label": "Inicio de HENTAI PARADISE TOKYO",
+    "logo_alt": "HENTAI PARADISE TOKYO"
+  },
+  "pricing": {
+    "title": "PRECIOS",
+    "tagline": "VIVE LO PREMIUM A UN VALOR EXCEPCIONAL",
+    "yen_note": "Aprovecha el yen débil histórico. (p. ej., ¥35,000 equivale aproximadamente a 230 USD / 215 EUR).",
+    "course_rates_title": "TARIFAS DE CURSO",
+    "swipe_hint": "← DESLIZA PARA EXPLORAR NIVELES →",
+    "tiers_note": "Todas las acompañantes comienzan en Gold. El estatus Diamond se gana con reseñas excepcionales de los huéspedes...",
+    "transportation_title": "TARIFA DE TRANSPORTE",
+    "transportation_subtitle": "Entrega a tu ubicación",
+    "transportation_note": "Las tarifas reflejan el tiempo de viaje, las condiciones del tráfico y la accesibilidad, no solo la distancia.",
+    "additional_info_title": "INFORMACIÓN ADICIONAL",
+    "love_hotel_title": "LA EXPERIENCIA DEL LOVE HOTEL",
+    "love_hotel_body": "Los love hotels japoneses ofrecen privacidad absoluta, habitaciones amplias y baños lujosos. Ofrecen de forma única tarifas asequibles de \"Rest\" (estancia corta) por solo unas horas en lugar de una noche completa, lo que los convierte en una opción muy recomendada para tu máxima comodidad y discreción.",
+    "payment_method_title": "Método de pago",
+    "payment_cash": "SOLO EFECTIVO (Yenes japoneses).",
+    "payment_card_note": "*Los pagos con tarjeta de crédito estarán disponibles pronto.",
+    "tier_gold_subtitle": "Estándar",
+    "tier_diamond_subtitle": "Premium",
+    "tier_vip_subtitle": "Exclusivo",
+    "duration_60": "60 MIN",
+    "duration_90": "90 MIN",
+    "duration_120": "120 MIN",
+    "duration_ext": "EXT (30m)",
+    "ask": "CONSULTAR",
+    "transport_zones": [
+      { "fee": "¥2,000", "areas": "Shinjuku" },
+      { "fee": "¥3,000", "areas": "Shibuya, Bunkyo, Nakano, Toshima, Chiyoda" },
+      { "fee": "¥4,000", "areas": "Meguro, Minato, Chuo, Taito (Ueno, Asakusa), Shinagawa" },
+      { "fee": "¥5,000", "areas": "Kita, Suginami, Arakawa, Sumida" },
+      { "fee": "¥6,000", "areas": "Ota (Aeropuerto Haneda), Setagaya, Koto (Odaiba), Nerima, Itabashi, Adachi, Katsushika, Edogawa" },
+      { "fee": "¥10,000", "areas": "Yokohama, Kawasaki, Tachikawa, Machida, Makuhari, Maihama (Tokyo Disneyland)" },
+      { "fee": "CONSULTAR", "areas": "Narita, Yokosuka, Omiya" }
+    ]
+  },
+  "how_it_works": {
+    "title": "CÓMO FUNCIONA",
+    "steps": [
+      {
+        "number": "01",
+        "title": "CONTÁCTANOS",
+        "description": "COMUNÍCATE POR WHATSAPP O TELEGRAM CON NUESTRO CONCIERGE DE HABLA INGLESA."
+      },
+      {
+        "number": "02",
+        "title": "ELIGE ACOMPAÑANTE",
+        "description": "SELECCIONA TU ACOMPAÑANTE PREFERIDA. LAS RESERVAS ANTICIPADAS SON MUY BIENVENIDAS."
+      },
+      {
+        "number": "03",
+        "title": "CONFIRMA RESERVA",
+        "description": "FINALIZA LOS DETALLES. DEBES ESTAR REGISTRADO EN TU HABITACIÓN DE HOTEL ANTES DE SU LLEGADA."
+      },
+      {
+        "number": "04",
+        "title": "PAGA Y DISFRUTA",
+        "description": "PAGA EN EFECTIVO JPY DIRECTAMENTE A ELLA AL LLEGAR, ESTRICTAMENTE ANTES DE QUE COMIENCE EL SERVICIO."
+      }
+    ]
+  },
+  "faq": {
+    "title": "PREGUNTAS FRECUENTES",
+    "items": [
+      {
+        "question": "¿NECESITO HABLAR JAPONÉS?",
+        "answer": "NO. HAY SOPORTE EN INGLÉS DURANTE TODO EL PROCESO DE RESERVA."
+      },
+      {
+        "question": "¿CÓMO FUNCIONA LA RESERVA?",
+        "answer": "CONTÁCTANOS, ELIGE TU ACOMPAÑANTE, CONFIRMA TU RESERVA Y DISFRUTA TU EXPERIENCIA."
+      },
+      {
+        "question": "¿CÓMO PAGO?",
+        "answer": "SE PUEDE PAGAR EN EFECTIVO EL DÍA DEL ENCUENTRO. TAMBIÉN HAY PAGOS CON TARJETA DE CRÉDITO EN LÍNEA ANTES DE TU RESERVA."
+      },
+      {
+        "question": "¿PUEDO ELEGIR UNA ACOMPAÑANTE ESPECÍFICA?",
+        "answer": "SÍ. PUEDES SOLICITAR UNA ACOMPAÑANTE ESPECÍFICA, SUJETO A DISPONIBILIDAD."
+      },
+      {
+        "question": "¿TODAS LAS ACOMPAÑANTES SON JAPONESAS?",
+        "answer": "SÍ. NUESTRAS ACOMPAÑANTES SON JAPONESAS SALVO INDICACIÓN CONTRARIA."
+      },
+      {
+        "question": "¿EL SERVICIO OPERA LEGALMENTE?",
+        "answer": "SÍ. OPERAMOS DE FORMA PROFESIONAL Y CONFORME A LAS REGULACIONES APLICABLES."
+      },
+      {
+        "question": "¿CUÁL ES SU POLÍTICA DE CANCELACIÓN?",
+        "answer": "LOS TÉRMINOS DE CANCELACIÓN SE PROPORCIONAN ANTES DE CONFIRMAR LA RESERVA."
+      },
+      {
+        "question": "¿DÓNDE TIENE LUGAR EL SERVICIO?",
+        "answer": "SOMOS UN SERVICIO SOLO DE SALIDA. NUESTRAS ACOMPAÑANTES VISITARÁN TU ALOJAMIENTO PRIVADO, COMO UNA HABITACIÓN DE HOTEL O APARTAMENTO (AIRBNB) DENTRO DE NUESTRA ZONA DE SERVICIO EN TOKIO. NO TENEMOS UN LOCAL FÍSICO NI SALA DE MASAJES PARA QUE VISITES."
+      },
+      {
+        "question": "¿HAY ACTOS PROHIBIDOS?",
+        "answer": "SÍ. OPERAMOS ESTRICTAMENTE BAJO LA LEY JAPONESA. EL COITO COMPLETO ESTÁ ESTRICTAMENTE PROHIBIDO. PRIORIZAMOS LA SEGURIDAD DE NUESTRAS ACOMPAÑANTES. CUALQUIER VIOLACIÓN O COMPORTAMIENTO INAPROPIADO RESULTARÁ EN LA TERMINACIÓN INMEDIATA DEL SERVICIO SIN REEMBOLSO."
+      },
+      {
+        "question": "¿PUEDO USAR CUALQUIER HOTEL?",
+        "answer": "LA MAYORÍA DE LOS HOTELES PRINCIPALES Y AIRBNBS SON ACEPTABLES. ASEGÚRATE DE QUE TU ALOJAMIENTO PERMITA VISITAS. DEBES ESTAR REGISTRADO EN TU HABITACIÓN ANTES DE QUE LLEGUE LA ACOMPAÑANTE, PERO PUEDES HACER RESERVAS ANTICIPADAS ANTES DE TU CHECK-IN."
+      },
+      {
+        "question": "¿CUÁNDO PAGO EL SERVICIO?",
+        "answer": "EL PAGO SE REALIZA DIRECTAMENTE A TU ACOMPAÑANTE EN EFECTIVO (JPY) AL LLEGAR A TU HABITACIÓN, ESTRICTAMENTE ANTES DE QUE COMIENCE EL SERVICIO."
+      }
+    ]
+  },
+  "why_choose_us": {
+    "title": "POR QUÉ ELEGIRNOS",
+    "features": [
+      {
+        "title": "SELECCIÓN PROFESIONAL",
+        "description": "CADA ACOMPAÑANTE ES CUIDADOSAMENTE EVALUADA ANTES DE UNIRSE A NUESTRA PLATAFORMA."
+      },
+      {
+        "title": "IDENTIDAD VERIFICADA",
+        "description": "LA VERIFICACIÓN DE IDENTIDAD SE COMPLETA PARA CADA ACOMPAÑANTE."
+      },
+      {
+        "title": "PRECIOS TRANSPARENTES",
+        "description": "SIN CARGOS OCULTOS NI TARIFAS INESPERADAS."
+      },
+      {
+        "title": "SIN TARIFAS OCULTAS",
+        "description": "LOS USUARIOS SIEMPRE SABEN EXACTAMENTE POR QUÉ ESTÁN PAGANDO."
+      },
+      {
+        "title": "OPERACIÓN PROFESIONAL Y LEGAL",
+        "description": "NUESTRO SERVICIO OPERA EN CUMPLIMIENTO DE LAS REGULACIONES APLICABLES."
+      }
+    ]
+  },
+  "featured_companions": {
+    "title": "ACOMPAÑANTES DESTACADAS",
+    "aria_label": "Escaparate de acompañantes destacadas",
+    "coming_soon": "PRÓXIMAMENTE",
+    "coming_soon_alt": "Perfil próximamente",
+    "portrait_alt_suffix": "retrato",
+    "available_today": "DISPONIBLE HOY",
+    "view_profile": "VER PERFIL"
+  },
+  "personal_concierge": {
+    "title": "TU CONCIERGE PERSONAL",
+    "headline": "¿LISTO PARA ENCONTRAR TU ACOMPAÑANTE PERFECTA?",
+    "description": "NUESTRO EQUIPO DE CONCIERGE ESTÁ DISPONIBLE PARA RESPONDER TUS PREGUNTAS, RECOMENDAR ACOMPAÑANTES Y ASISTIRTE CON TU RESERVA DE PRINCIPIO A FIN.",
+    "whatsapp": "WHATSAPP",
+    "line": "LINE",
+    "phone": "TELÉFONO",
+    "telegram": "TELEGRAM"
+  },
+  "reviews": {
+    "title": "RESEÑAS",
+    "aria_label": "Reseñas de clientes",
+    "stars_aria_label": "5 de 5 estrellas",
+    "prev_review": "Reseña anterior",
+    "next_review": "Siguiente reseña",
+    "items": [
+      {
+        "id": "daniel",
+        "name": "DANIEL",
+        "country": "ESTADOS UNIDOS",
+        "text": "Al principio no estaba muy seguro de cómo funcionaba todo, así que decidí llamar. El concierge hablaba excelente inglés y fue genuinamente útil por teléfono — no solo frases básicas, sino que realmente entendió lo que preguntaba y lo explicó todo con claridad. El precio fue transparente, no hubo sorpresas raras, y mi acompañante fue encantadora. Toda la noche se sintió relajada y fácil. Definitivamente uno de los momentos destacados de mi tiempo en Tokio."
+      },
+      {
+        "id": "james",
+        "name": "JAMES",
+        "country": "REINO UNIDO",
+        "text": "Había mirado algunos servicios similares antes, pero comunicarse en inglés resultó sorprendentemente difícil. Muchas veces sentí que todo pasaba por apps de traducción, así que no siempre estaba seguro de que nos entendiéramos. Esto fue completamente diferente. El equipo respondió rápido, entendió exactamente lo que buscaba y me ayudó a elegir a alguien que encajaba con la noche que tenía en mente. Fue excelente compañía y me mostró un lado de Tokio que probablemente no habría encontrado solo."
+      },
+      {
+        "id": "carlos",
+        "name": "CARLOS",
+        "country": "ESPAÑA",
+        "lang": "es",
+        "text": "Era mi primera vez en Japón y no hablo japonés, así que agradecí muchísimo lo fácil que fue organizar todo. Me explicaron el proceso con claridad y respondieron a mis preguntas sin hacerme sentir que estaba molestando. La chica que conocí fue encantadora y muy divertida. Al final terminamos hablando, riéndonos y recorriendo varios sitios por Shinjuku. Una experiencia que repetiría sin duda."
+      },
+      {
+        "id": "miguel",
+        "name": "MIGUEL",
+        "country": "MÉXICO",
+        "lang": "es",
+        "text": "Lo que más me gustó fue que todo se sintió muy profesional desde el principio. El precio estaba claro, la comunicación fue rápida y nunca sentí presión para reservar. Elegí a mi acompañante con ayuda del concierge y fue una muy buena recomendación. Fue puntual, simpática y la conversación fluyó desde el primer momento. Muy buen servicio."
+      },
+      {
+        "id": "wei",
+        "name": "WEI",
+        "country": "TAIWÁN",
+        "text": "Era mi primera vez usando un servicio así y estaba un poco preocupado, pero desde la consulta me sentí tranquilo. Respondieron rápido, los costos y el proceso se explicaron con claridad, sin cargos sorpresa al llegar. La chica fue muy amable y supo cuidar bien a un visitante en Tokio por primera vez. Toda la noche fue natural y relajada, sin momentos incómodos. Consideraría reservar de nuevo en mi próxima visita a Tokio."
+      }
+    ]
+  },
+  "footer": {
+    "company_heading": "EMPRESA",
+    "about_heading": "ACERCA DE",
+    "contact_heading": "CONTACTO",
+    "legal_heading": "LEGAL",
+    "brand_name": "HENTAI PARADISE TOKYO",
+    "about_link": "ACERCA DE",
+    "faq_link": "PREGUNTAS FRECUENTES",
+    "companions_link": "ACOMPAÑANTES",
+    "contact_link": "CONTACTO",
+    "legal_text": "LEGAL",
+    "copyright": "© HENTAI PARADISE TOKYO. TODOS LOS DERECHOS RESERVADOS."
+  }
 }
