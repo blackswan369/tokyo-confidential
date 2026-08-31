@@ -7,6 +7,8 @@ import { getDictionary, isValidLocale, type Locale } from "@/getDictionary";
 import { getCompanionById, getCompanionIds } from "@/lib/companions";
 import { locales } from "@/i18n-config";
 
+export const revalidate = 0;
+
 type PageProps = {
   params: Promise<{ lang: string; id: string }>;
 };
@@ -60,6 +62,8 @@ export default async function CompanionProfilePage({ params }: PageProps) {
   if (!companion) {
     notFound();
   }
+
+  console.log("Gallery Data:", companion.gallery);
 
   return (
     <>

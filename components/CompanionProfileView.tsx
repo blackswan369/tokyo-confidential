@@ -56,8 +56,8 @@ export function CompanionProfileView({
   ].filter((row): row is DetailRow => row !== null);
 
   return (
-    <main className="bg-[#0B0B0B] px-8 pb-20 pt-28 md:px-10 md:pb-24 md:pt-36 lg:px-12">
-      <div className="mx-auto max-w-[1440px]">
+    <main className="bg-[#0B0B0B] pt-28 md:pt-36">
+      <div className="mx-auto max-w-7xl px-4 py-12 md:px-8">
         <Link
           href={`/${lang}#companions`}
           className="inline-flex items-center gap-2 font-body text-sm tracking-widest text-[#D6D6D6] transition-colors hover:text-[#D4AF37]"
@@ -66,16 +66,18 @@ export function CompanionProfileView({
           {dict.back_to_companions}
         </Link>
 
-        <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,520px)_1fr] lg:gap-16 xl:gap-20">
-          <CompanionGallery
-            mainImage={companion.image}
-            gallery={companion.gallery}
-            name={companion.name}
-            portraitAltSuffix={dict.portrait_alt_suffix}
-            galleryAriaLabel={dict.gallery_aria_label}
-          />
+        <div className="mt-8 grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
+          <div className="flex w-full flex-col items-center lg:col-span-5 lg:items-start">
+            <CompanionGallery
+              mainImage={companion.image}
+              gallery={companion.gallery}
+              name={companion.name}
+              portraitAltSuffix={dict.portrait_alt_suffix}
+              galleryAriaLabel={dict.gallery_aria_label}
+            />
+          </div>
 
-          <div className="flex flex-col">
+          <div className="flex w-full flex-col space-y-8 lg:col-span-7">
             <div>
               <p className="font-body text-xs uppercase tracking-[0.2em] text-[#D4AF37]">
                 {dict.profile_label}
@@ -98,7 +100,7 @@ export function CompanionProfileView({
             </div>
 
             {companion.introduction && (
-              <div className="mt-10 rounded-2xl border border-[#2A2A2A] bg-[#0A0A0A] p-6 md:p-8">
+              <div className="rounded-2xl border border-[#2A2A2A] bg-[#0A0A0A] p-6 md:p-8">
                 <h2 className="font-body text-xs font-medium uppercase tracking-[0.18em] text-[#D4AF37]">
                   {dict.introduction}
                 </h2>
@@ -109,7 +111,7 @@ export function CompanionProfileView({
             )}
 
             {detailRows.length > 0 && (
-              <div className="mt-8 rounded-2xl border border-[#2A2A2A] bg-[#0A0A0A] p-6 md:p-8">
+              <div className="rounded-2xl border border-[#2A2A2A] bg-[#0A0A0A] p-6 md:p-8">
                 <h2 className="font-body text-xs font-medium uppercase tracking-[0.18em] text-[#D4AF37]">
                   {dict.details_heading}
                 </h2>
@@ -128,7 +130,7 @@ export function CompanionProfileView({
               </div>
             )}
 
-            <div className="mt-10 rounded-2xl border border-[#2A2A2A] bg-gradient-to-br from-[#141414] to-[#0A0A0A] p-6 md:p-8">
+            <div className="rounded-2xl border border-[#2A2A2A] bg-gradient-to-br from-[#141414] to-[#0A0A0A] p-6 md:p-8">
               <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">
                 {dict.cta_heading}
               </h2>

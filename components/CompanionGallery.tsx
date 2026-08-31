@@ -4,11 +4,19 @@ import Image from "next/image";
 import { useState } from "react";
 
 type CompanionGalleryProps = {
-  mainImage: string;
-  gallery: string[];
+  mainImage: string | { url: string };
+  gallery: Array<string | { url: string }>;
   name: string;
   portraitAltSuffix: string;
   galleryAriaLabel: string;
+};
+
+const getUrl = (img: string | { url: string } | null | undefined): string | undefined => {
+  if (!img) {
+    return undefined;
+  }
+
+  return typeof img === "string" ? img : img?.url;
 };
 
 export function CompanionGallery({
@@ -18,53 +26,46 @@ export function CompanionGallery({
   portraitAltSuffix,
   galleryAriaLabel,
 }: CompanionGalleryProps) {
-  const allImages = [mainImage, ...gallery.filter((url) => url !== mainImage)];
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activeImage = allImages[activeIndex] ?? mainImage;
+  const allImages = Array.from(
+    new Set([getUrl(mainImage), ...gallery.map(getUrl)].filter(Boolean)),
+  ) as string[];
+
+  const [activeImage, setActiveImage] = useState(allImages[0]);
 
   return (
-    <div aria-label={galleryAriaLabel}>
-      <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-[0_12px_48px_rgba(0,0,0,0.45)] md:aspect-[4/5]">
+    <div
+      aria-label={galleryAriaLabel}
+      className="mx-auto flex w-full max-w-md flex-col"
+    >
+      <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl">
         <Image
-          key={activeImage}
           src={activeImage}
           alt={`${name} ${portraitAltSuffix}`}
           fill
           priority
-          sizes="(max-width: 768px) 100vw, 560px"
-          className="object-cover transition-opacity duration-300"
+          sizes="(max-width: 1024px) 100vw, 448px"
+          className="object-cover"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0B0B0B]/40 via-transparent to-transparent" />
       </div>
 
       {allImages.length > 1 && (
-        <div className="mt-4 grid grid-cols-4 gap-3 md:mt-6 md:gap-4">
-          {allImages.map((image, index) => {
-            const isActive = index === activeIndex;
-
-            return (
-              <button
-                key={`${image}-${index}`}
-                type="button"
-                onClick={() => setActiveIndex(index)}
-                aria-label={`${name} ${portraitAltSuffix} ${index + 1}`}
-                aria-current={isActive ? "true" : undefined}
-                className={`relative aspect-[3/4] overflow-hidden rounded-xl border transition-all duration-200 ${
-                  isActive
-                    ? "border-[#D4AF37] ring-2 ring-[#D4AF37]/30"
-                    : "border-[#2A2A2A] opacity-70 hover:opacity-100"
-                }`}
-              >
-                <Image
-                  src={image}
-                  alt=""
-                  fill
-                  sizes="120px"
-                  className="object-cover"
-                />
-              </button>
-            );
-          })}
+        <div className="mt-4 flex w-full flex-row gap-3 overflow-x-auto pb-2">
+          {allImages.map((url) => (
+            <button
+              key={url}
+              type="button"
+              onClick={() => setActiveImage(url)}
+              aria-label={`${name} ${portraitAltSuffix}`}
+              aria-current={url === activeImage ? "true" : undefined}
+              className={`relative h-24 w-20 shrink-0 cursor-pointer overflow-hidden rounded-md border-2 transition-all ${
+                url === activeImage
+                  ? "border-[#D4AF37]"
+                  : "border-transparent opacity-60 hover:opacity-100"
+              }`}
+            >
+              <Image src={url} alt="" fill sizes="80px" className="object-cover" />
+            </button>
+          ))}
         </div>
       )}
     </div>

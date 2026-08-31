@@ -38,11 +38,28 @@ function mapCompanion(companion: MicroCMSCompanion): Companion {
   };
 }
 
+function extractGalleryUrls(gallery: MicroCMSCompanion["gallery"]): string[] {
+  if (!gallery || !Array.isArray(gallery)) {
+    return [];
+  }
+
+  return gallery
+    .map((item) => {
+      if (typeof item === "string") {
+        return item;
+      }
+
+      if (item && typeof item === "object" && "url" in item && item.url) {
+        return item.url;
+      }
+
+      return null;
+    })
+    .filter((url): url is string => Boolean(url));
+}
+
 function mapCompanionProfile(companion: MicroCMSCompanion): CompanionProfile {
-  const mainImage = companion.image.url;
-  const galleryImages =
-    companion.gallery?.map((item) => item.url).filter((url) => url !== mainImage) ??
-    [];
+  const galleryImages = extractGalleryUrls(companion.gallery);
 
   return {
     ...mapCompanion(companion),
@@ -69,9 +86,18 @@ export async function getCompanionById(id: string): Promise<CompanionProfile | n
     const companion = await microcmsClient.get<MicroCMSCompanion>({
       endpoint: "companions",
       contentId: id,
+      queries: {
+        fields:
+          "id,name,age,location,is_available,image,gallery,introduction,height,languages,interests,personality,services",
+      },
     });
 
-    return mapCompanionProfile(companion);
+    console.log("Gallery Data (raw):", companion.gallery);
+
+    const profile = mapCompanionProfile(companion);
+    console.log("Gallery Data (mapped):", profile.gallery);
+
+    return profile;
   } catch {
     return null;
   }
