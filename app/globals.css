@@ -12,8 +12,29 @@
   --color-tc-gold: var(--tc-gold);
   --color-tc-white: var(--tc-white);
   --color-tc-secondary: var(--tc-secondary);
-  --font-family-heading: var(--font-cormorant), serif;
-  --font-family-body: var(--font-inter), sans-serif;
+  --font-heading: var(--font-cormorant), ui-serif, serif;
+  --font-body: var(--font-inter), ui-sans-serif, sans-serif;
+}
+
+.hero-headline {
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+}
+
+.hero-gold-gradient {
+  display: inline-block;
+  color: #d4af37; /* solid fallback when background-clip is unsupported */
+  background-image: linear-gradient(to right, #d4af37, #f3e5ab);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-gold-gradient {
+    color: transparent;
+  }
 }
 
 body {

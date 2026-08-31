@@ -8,6 +8,7 @@ const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["700"],
+  display: "swap",
 });
 
 const inter = Inter({
@@ -36,9 +37,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={cormorantGaramond.variable}>
       <body
-        className={`${cormorantGaramond.variable} ${inter.variable} antialiased select-none`}
+        className={`${inter.variable} antialiased select-none`}
       >
         <SiteProtection />
         <AgeVerification />
