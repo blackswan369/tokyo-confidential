@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import type { Locale } from "@/i18n-config";
+import { isValidLocale, type Locale } from "@/i18n-config";
 import type { HeaderDictionary } from "@/types/dictionary";
 
 type HeaderProps = {
@@ -76,6 +77,18 @@ function CallNowPhoneIcon({ size = 18 }: { size?: number }) {
 const callNowClassName =
   "inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-[#D4AF37] bg-transparent font-body font-medium text-[#D4AF37]";
 
+function getLocalizedPath(pathname: string, locale: Locale): string {
+  const segments = pathname.split("/").filter(Boolean);
+
+  if (segments.length > 0 && isValidLocale(segments[0])) {
+    segments[0] = locale;
+  } else {
+    segments.unshift(locale);
+  }
+
+  return `/${segments.join("/")}`;
+}
+
 function MenuIcon() {
   return (
     <svg
@@ -103,6 +116,10 @@ export function Header({
 }: HeaderProps) {
   const [scrolled, setScrolled] = useState(variant === "solid");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const langMenuRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const router = useRouter();
   const homeHref = lang ? `/${lang}` : "/";
 
   useEffect(() => {
@@ -126,6 +143,24 @@ export function Header({
       mobileQuery.removeEventListener("change", handleScroll);
     };
   }, [variant]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (
+        langMenuRef.current &&
+        !langMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsLangOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
   const navHref = (hash: string) => localizedHref(lang, hash);
@@ -168,6 +203,52 @@ export function Header({
               <CallNowPhoneIcon size={15} />
               {dict.call_now}
             </a>
+
+            {/* Globe / Language Icon Wrapper */}
+            <div ref={langMenuRef} className="relative shrink-0 flex items-center">
+              <button 
+                onClick={() => setIsLangOpen(!isLangOpen)}
+                className="p-1.5 flex items-center justify-center transition-opacity hover:opacity-80 active:opacity-60 mx-1 md:mx-2"
+                aria-label="Change Language"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D6B45A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </button>
+
+              {/* Glassmorphism Dropdown */}
+              <div 
+                className={`absolute top-full left-1/2 -translate-x-1/2 mt-1.5 flex items-center justify-center gap-4 px-6 py-2.5 rounded-full border-[0.5px] border-white/20 bg-black/40 backdrop-blur-md shadow-2xl transition-all duration-300 ease-out ${
+                  isLangOpen ? "opacity-100 visible translate-y-0 pointer-events-auto" : "opacity-0 invisible -translate-y-2 pointer-events-none"
+                } z-50`}
+              >
+                <Link 
+                  href={getLocalizedPath(pathname, "en")}
+                  onClick={() => setIsLangOpen(false)}
+                  className="text-[11px] font-medium tracking-[0.2em] uppercase text-gray-200 hover:text-white transition-colors whitespace-nowrap"
+                >
+                  EN
+                </Link>
+                <span className="text-white/20 text-[10px] font-light">|</span>
+                <Link 
+                  href={getLocalizedPath(pathname, "zh")}
+                  onClick={() => setIsLangOpen(false)}
+                  className="text-[11px] font-medium tracking-[0.2em] text-gray-200 hover:text-white transition-colors whitespace-nowrap"
+                >
+                  中文
+                </Link>
+                <span className="text-white/20 text-[10px] font-light">|</span>
+                <Link 
+                  href={getLocalizedPath(pathname, "es")}
+                  onClick={() => setIsLangOpen(false)}
+                  className="text-[11px] font-medium tracking-[0.2em] uppercase text-gray-200 hover:text-white transition-colors whitespace-nowrap"
+                >
+                  ES
+                </Link>
+              </div>
+            </div>
 
             <button
               type="button"
