@@ -205,10 +205,13 @@ export function Header({
             </a>
 
             {/* Globe / Language Icon Wrapper */}
-            <div ref={langMenuRef} className="relative shrink-0 flex items-center">
+            <div ref={langMenuRef} className="relative z-10 shrink-0 flex items-center">
               <button 
-                onClick={() => setIsLangOpen(!isLangOpen)}
-                className="p-1.5 flex items-center justify-center transition-opacity hover:opacity-80 active:opacity-60 mx-1 md:mx-2"
+                onClick={() => {
+                  setIsLangOpen(!isLangOpen);
+                  setMenuOpen(false);
+                }}
+                className="p-1.5 flex items-center justify-center transition-opacity hover:opacity-80 active:opacity-60"
                 aria-label="Change Language"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D6B45A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
@@ -252,7 +255,7 @@ export function Header({
 
             <button
               type="button"
-              className="relative z-10 inline-flex h-11 w-11 shrink-0 items-center justify-center text-[#D4AF37]"
+              className="relative z-10 inline-flex h-11 w-11 shrink-0 items-center justify-center text-[#D4AF37] -ml-2"
               aria-expanded={menuOpen}
               aria-controls="mobile-nav-menu"
               aria-label={menuOpen ? dict.close_menu : dict.open_menu}
