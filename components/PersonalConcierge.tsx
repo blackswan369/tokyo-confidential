@@ -146,7 +146,8 @@ function buildContactMethods(
     {
       label: dict.whatsapp,
       icon: <WhatsAppIcon />,
-      href: "#",
+      href: "https://wa.me/817055359235",
+      external: true,
     },
     {
       label: dict.line,
