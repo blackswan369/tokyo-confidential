@@ -11,6 +11,8 @@ import { Footer } from "@/components/Footer";
 import { getDictionary, isValidLocale, type Locale } from "@/getDictionary";
 import { notFound } from "next/navigation";
 
+export const revalidate = 0;
+
 export default async function Home({
   params,
 }: Readonly<{
