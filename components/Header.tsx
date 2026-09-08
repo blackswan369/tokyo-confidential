@@ -360,7 +360,6 @@ export function Header({
             <SearchIcon size={17} />
             {dict.find_your_match}
           </a>
-          <div className="hidden xl:block min-w-[120px] shrink-0"></div>
           <div ref={langMenuDesktopRef} className="inline-flex shrink-0">
             <div className="relative inline-flex">
               <button
