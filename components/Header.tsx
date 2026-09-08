@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { isValidLocale, type Locale } from "@/i18n-config";
@@ -89,6 +89,80 @@ function getLocalizedPath(pathname: string, locale: Locale): string {
   return `/${segments.join("/")}`;
 }
 
+const LANGUAGE_OPTIONS: ReadonlyArray<{ locale: Locale; label: string }> = [
+  { locale: "en", label: "English" },
+  { locale: "zh", label: "简体中文" },
+  { locale: "zh-TW", label: "繁體中文" },
+  { locale: "ko", label: "한국어" },
+  { locale: "es", label: "Español" },
+];
+
+function GlobeIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#D6B45A"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  );
+}
+
+function LanguageDropdownPanel({
+  isOpen,
+  onClose,
+  pathname,
+  variant = "mobile",
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  pathname: string;
+  variant?: "mobile" | "desktop";
+}) {
+  const isDesktop = variant === "desktop";
+
+  return (
+    <div
+      className={`absolute top-full z-50 flex flex-col rounded-md border border-white/10 shadow-2xl transition-all duration-300 ease-out ${
+        isDesktop ? "left-1/2 mt-3 -translate-x-1/2" : "right-0 mt-2"
+      } ${
+        isDesktop
+          ? "min-w-[180px] bg-[#0B0B0B]/95 p-3 backdrop-blur-md"
+          : "min-w-[120px] bg-[#0B0B0B] p-2"
+      } ${
+        isOpen
+          ? "visible pointer-events-auto opacity-100"
+          : "invisible pointer-events-none opacity-0"
+      }`}
+    >
+      {LANGUAGE_OPTIONS.map(({ locale, label }) => (
+        <Link
+          key={locale}
+          href={getLocalizedPath(pathname, locale)}
+          onClick={onClose}
+          className={`block w-full whitespace-nowrap text-left tracking-wide text-gray-400 ${
+            isDesktop
+              ? "rounded-sm px-6 py-2 text-base transition-all duration-300 hover:bg-white/5 hover:text-white"
+              : "px-4 py-2 text-sm transition-colors hover:text-white"
+          }`}
+        >
+          {label}
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 function MenuIcon() {
   return (
     <svg
@@ -117,9 +191,9 @@ export function Header({
   const [scrolled, setScrolled] = useState(variant === "solid");
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
-  const langMenuRef = useRef<HTMLDivElement>(null);
+  const langMenuMobileRef = useRef<HTMLDivElement>(null);
+  const langMenuDesktopRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-  const router = useRouter();
   const homeHref = lang ? `/${lang}` : "/";
 
   useEffect(() => {
@@ -146,10 +220,11 @@ export function Header({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-      if (
-        langMenuRef.current &&
-        !langMenuRef.current.contains(event.target as Node)
-      ) {
+      const target = event.target as Node;
+      const insideMobile = langMenuMobileRef.current?.contains(target);
+      const insideDesktop = langMenuDesktopRef.current?.contains(target);
+
+      if (!insideMobile && !insideDesktop) {
         setIsLangOpen(false);
       }
     };
@@ -195,7 +270,7 @@ export function Header({
 
           {/* 右側: アクショングループ (Call Now + Globe + ハンバーガー) */}
           <div
-            ref={langMenuRef}
+            ref={langMenuMobileRef}
             className="relative z-10 flex shrink-0 items-center gap-3"
           >
             <a
@@ -217,11 +292,7 @@ export function Header({
               aria-label="Change Language"
               aria-expanded={isLangOpen}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D6B45A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-              </svg>
+              <GlobeIcon />
             </button>
 
             <button
@@ -236,49 +307,11 @@ export function Header({
             </button>
 
             {/* Language Dropdown — anchored to action group right edge */}
-            <div
-              className={`absolute top-full right-0 z-50 mt-2 flex min-w-[120px] flex-col rounded-md border border-white/10 bg-[#0B0B0B] p-2 shadow-2xl ${
-                isLangOpen
-                  ? "visible pointer-events-auto opacity-100"
-                  : "invisible pointer-events-none opacity-0"
-              } transition-all duration-300 ease-out`}
-            >
-              <Link
-                href={getLocalizedPath(pathname, "en")}
-                onClick={() => setIsLangOpen(false)}
-                className="block w-full whitespace-nowrap px-4 py-2 text-left text-sm tracking-wide text-gray-400 transition-colors hover:text-white"
-              >
-                English
-              </Link>
-              <Link
-                href={getLocalizedPath(pathname, "zh")}
-                onClick={() => setIsLangOpen(false)}
-                className="block w-full whitespace-nowrap px-4 py-2 text-left text-sm tracking-wide text-gray-400 transition-colors hover:text-white"
-              >
-                简体中文
-              </Link>
-              <Link
-                href={getLocalizedPath(pathname, "zh-TW")}
-                onClick={() => setIsLangOpen(false)}
-                className="block w-full whitespace-nowrap px-4 py-2 text-left text-sm tracking-wide text-gray-400 transition-colors hover:text-white"
-              >
-                繁體中文
-              </Link>
-              <Link
-                href={getLocalizedPath(pathname, "ko")}
-                onClick={() => setIsLangOpen(false)}
-                className="block w-full whitespace-nowrap px-4 py-2 text-left text-sm tracking-wide text-gray-400 transition-colors hover:text-white"
-              >
-                한국어
-              </Link>
-              <Link
-                href={getLocalizedPath(pathname, "es")}
-                onClick={() => setIsLangOpen(false)}
-                className="block w-full whitespace-nowrap px-4 py-2 text-left text-sm tracking-wide text-gray-400 transition-colors hover:text-white"
-              >
-                Español
-              </Link>
-            </div>
+            <LanguageDropdownPanel
+              isOpen={isLangOpen}
+              onClose={() => setIsLangOpen(false)}
+              pathname={pathname}
+            />
           </div>
         </div>
 
@@ -311,8 +344,7 @@ export function Header({
           ))}
         </nav>
 
-        <div className="hidden items-center justify-end gap-5 xl:flex xl:gap-6">
-          <LanguageSwitcher />
+        <div className="hidden items-center justify-end gap-5 xl:flex">
           <a
             href="tel:0362659181"
             className={`${callNowClassName} px-5 py-2.5 text-sm`}
@@ -323,11 +355,31 @@ export function Header({
           </a>
           <a
             href={navHref("#companions")}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#FFE58A_0%,#F6D365_45%,#E8B936_100%)] px-6 py-2.5 font-body text-sm font-medium text-[#0B0B0B]"
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#FFE58A_0%,#F6D365_45%,#E8B936_100%)] px-6 py-2.5 font-body text-sm font-medium text-[#0B0B0B]"
           >
             <SearchIcon size={17} />
             {dict.find_your_match}
           </a>
+          <div className="hidden xl:block min-w-[120px] shrink-0"></div>
+          <div ref={langMenuDesktopRef} className="inline-flex shrink-0">
+            <div className="relative inline-flex">
+              <button
+                type="button"
+                onClick={() => setIsLangOpen(!isLangOpen)}
+                className="inline-flex items-center justify-center p-2 transition-opacity hover:opacity-80 active:opacity-60"
+                aria-label="Change Language"
+                aria-expanded={isLangOpen}
+              >
+                <GlobeIcon />
+              </button>
+              <LanguageDropdownPanel
+                isOpen={isLangOpen}
+                onClose={() => setIsLangOpen(false)}
+                pathname={pathname}
+                variant="desktop"
+              />
+            </div>
+          </div>
         </div>
 
       </div>
