@@ -138,7 +138,7 @@ function LanguageDropdownPanel({
       } ${
         isDesktop
           ? "min-w-[180px] bg-[#0B0B0B]/95 p-3 backdrop-blur-md"
-          : "min-w-[120px] bg-[#0B0B0B] p-2"
+          : "min-w-[120px] bg-[#0B0B0B]/80 p-2 backdrop-blur-md"
       } ${
         isOpen
           ? "visible pointer-events-auto opacity-100"
