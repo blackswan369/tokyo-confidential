@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
+import { Analytics } from "@vercel/analytics/react";
 import { AgeVerification } from "@/components/AgeVerification";
 import { SiteProtection } from "@/components/SiteProtection";
 import { isValidLocale, locales, type Locale } from "@/getDictionary";
@@ -58,6 +59,7 @@ export default async function LangLayout({
         <SiteProtection />
         <AgeVerification />
         {children}
+        <Analytics />
       </body>
     </html>
   );
