@@ -193,69 +193,40 @@ export function Header({
             />
           </Link>
 
-          {/* 右側: アクショングループ (Call Now + ハンバーガー) */}
-          <div className="flex shrink-0 items-center gap-3">
+          {/* 右側: アクショングループ (Call Now + Globe + ハンバーガー) */}
+          <div
+            ref={langMenuRef}
+            className="relative z-10 flex shrink-0 items-center gap-3"
+          >
             <a
               href="tel:0362659181"
-              className={`${callNowClassName} relative z-10 h-[34px] shrink-0 whitespace-nowrap px-3 text-xs leading-none`}
+              className={`${callNowClassName} relative h-[34px] shrink-0 whitespace-nowrap px-3 text-xs leading-none`}
               aria-label={dict.call_now}
             >
               <CallNowPhoneIcon size={15} />
               {dict.call_now}
             </a>
 
-            {/* Globe / Language Icon Wrapper */}
-            <div ref={langMenuRef} className="relative z-10 shrink-0 flex items-center">
-              <button 
-                onClick={() => {
-                  setIsLangOpen(!isLangOpen);
-                  setMenuOpen(false);
-                }}
-                className="p-1.5 flex items-center justify-center transition-opacity hover:opacity-80 active:opacity-60"
-                aria-label="Change Language"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D6B45A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
-              </button>
-
-              {/* Glassmorphism Dropdown */}
-              <div 
-                className={`absolute top-full left-1/2 -translate-x-1/2 mt-1.5 flex items-center justify-center gap-4 px-6 py-2.5 rounded-full border-[0.5px] border-white/20 bg-black/40 backdrop-blur-md shadow-2xl transition-all duration-300 ease-out ${
-                  isLangOpen ? "opacity-100 visible translate-y-0 pointer-events-auto" : "opacity-0 invisible -translate-y-2 pointer-events-none"
-                } z-50`}
-              >
-                <Link 
-                  href={getLocalizedPath(pathname, "en")}
-                  onClick={() => setIsLangOpen(false)}
-                  className="text-[11px] font-medium tracking-[0.2em] uppercase text-gray-200 hover:text-white transition-colors whitespace-nowrap"
-                >
-                  EN
-                </Link>
-                <span className="text-white/20 text-[10px] font-light">|</span>
-                <Link 
-                  href={getLocalizedPath(pathname, "zh")}
-                  onClick={() => setIsLangOpen(false)}
-                  className="text-[11px] font-medium tracking-[0.2em] text-gray-200 hover:text-white transition-colors whitespace-nowrap"
-                >
-                  中文
-                </Link>
-                <span className="text-white/20 text-[10px] font-light">|</span>
-                <Link 
-                  href={getLocalizedPath(pathname, "es")}
-                  onClick={() => setIsLangOpen(false)}
-                  className="text-[11px] font-medium tracking-[0.2em] uppercase text-gray-200 hover:text-white transition-colors whitespace-nowrap"
-                >
-                  ES
-                </Link>
-              </div>
-            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setIsLangOpen(!isLangOpen);
+                setMenuOpen(false);
+              }}
+              className="flex items-center justify-center p-1.5 transition-opacity hover:opacity-80 active:opacity-60"
+              aria-label="Change Language"
+              aria-expanded={isLangOpen}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D6B45A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </button>
 
             <button
               type="button"
-              className="relative z-10 inline-flex h-11 w-11 shrink-0 items-center justify-center text-[#D4AF37] -ml-2"
+              className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center text-[#D4AF37] -ml-2"
               aria-expanded={menuOpen}
               aria-controls="mobile-nav-menu"
               aria-label={menuOpen ? dict.close_menu : dict.open_menu}
@@ -263,6 +234,51 @@ export function Header({
             >
               <MenuIcon />
             </button>
+
+            {/* Language Dropdown — anchored to action group right edge */}
+            <div
+              className={`absolute top-full right-0 z-50 mt-2 flex min-w-[120px] flex-col rounded-md border border-white/10 bg-[#0B0B0B] p-2 shadow-2xl ${
+                isLangOpen
+                  ? "visible pointer-events-auto opacity-100"
+                  : "invisible pointer-events-none opacity-0"
+              } transition-all duration-300 ease-out`}
+            >
+              <Link
+                href={getLocalizedPath(pathname, "en")}
+                onClick={() => setIsLangOpen(false)}
+                className="block w-full whitespace-nowrap px-4 py-2 text-left text-sm tracking-wide text-gray-400 transition-colors hover:text-white"
+              >
+                English
+              </Link>
+              <Link
+                href={getLocalizedPath(pathname, "zh")}
+                onClick={() => setIsLangOpen(false)}
+                className="block w-full whitespace-nowrap px-4 py-2 text-left text-sm tracking-wide text-gray-400 transition-colors hover:text-white"
+              >
+                简体中文
+              </Link>
+              <Link
+                href={getLocalizedPath(pathname, "zh-TW")}
+                onClick={() => setIsLangOpen(false)}
+                className="block w-full whitespace-nowrap px-4 py-2 text-left text-sm tracking-wide text-gray-400 transition-colors hover:text-white"
+              >
+                繁體中文
+              </Link>
+              <Link
+                href={getLocalizedPath(pathname, "ko")}
+                onClick={() => setIsLangOpen(false)}
+                className="block w-full whitespace-nowrap px-4 py-2 text-left text-sm tracking-wide text-gray-400 transition-colors hover:text-white"
+              >
+                한국어
+              </Link>
+              <Link
+                href={getLocalizedPath(pathname, "es")}
+                onClick={() => setIsLangOpen(false)}
+                className="block w-full whitespace-nowrap px-4 py-2 text-left text-sm tracking-wide text-gray-400 transition-colors hover:text-white"
+              >
+                Español
+              </Link>
+            </div>
           </div>
         </div>
 

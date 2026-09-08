@@ -1,21 +1,15 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { defaultLocale, isValidLocale, locales } from "./i18n-config";
+import { defaultLocale, isValidLocale } from "./i18n-config";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
-  );
+  const firstSegment = pathname.split("/")[1];
+  const pathnameHasLocale =
+    firstSegment !== undefined && isValidLocale(firstSegment);
 
   if (pathnameHasLocale) {
-    const locale = pathname.split("/")[1];
-
-    if (!isValidLocale(locale)) {
-      return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url));
-    }
-
     return NextResponse.next();
   }
 

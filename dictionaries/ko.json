@@ -1,0 +1,246 @@
+{
+  "hero": {
+    "title_lead": "도쿄를 ",
+    "title_accent": "새로운 차원으로",
+    "subtitle": "신뢰할 수 있는 로컬 컴패니언과 함께, 진정한 도쿄의 품격을 경험하세요",
+    "cta_find_match": "나만의 인연 찾기",
+    "cta_how_it_works": "이용 안내"
+  },
+  "header": {
+    "nav_companions": "컴패니언",
+    "nav_pricing": "요금 안내",
+    "nav_how_it_works": "이용 안내",
+    "nav_reviews": "고객 후기",
+    "nav_faq": "자주 묻는 질문",
+    "call_now": "전화 문의",
+    "find_your_match": "나만의 인연 찾기",
+    "open_menu": "메뉴 열기",
+    "close_menu": "메뉴 닫기",
+    "home_aria_label": "HENTAI PARADISE TOKYO 홈",
+    "logo_alt": "HENTAI PARADISE TOKYO"
+  },
+  "pricing": {
+    "title": "요금 안내",
+    "tagline": "프리미엄의 품격, 특별한 가치로",
+    "yen_note": "역사적 엔화 약세를 활용하세요. (예: ¥35,000 ≈ $230 USD / €215 EUR).",
+    "course_rates_title": "코스 요금",
+    "swipe_hint": "← 스와이프하여 등급 살펴보기 →",
+    "tiers_note": "모든 컴패니언은 Gold 등급부터 시작합니다. Diamond 등급은 탁월한 고객 평가를 통해 부여됩니다...",
+    "transportation_title": "교통비",
+    "transportation_subtitle": "고객님께서 계신 곳으로 방문",
+    "transportation_note": "요금은 거리뿐 아니라 이동 시간, 교통 상황, 접근성을 종합하여 책정됩니다.",
+    "additional_info_title": "추가 안내",
+    "love_hotel_title": "러브호텔 경험",
+    "love_hotel_body": "일본의 러브호텔은 최고의 프라이버시, 넓은 객실, 고급스러운 욕실을 제공합니다. \"Rest\"(단기 이용) 요금으로 짧은 시간만 이용하실 수 있어, 편안함과 은밀함을 중시하시는 고객님께 특히 추천드립니다.",
+    "payment_method_title": "결제 방법",
+    "payment_cash": "현금만 가능 (일본 엔화).",
+    "payment_card_note": "*신용카드 결제는 곧 도입 예정입니다.",
+    "tier_gold_subtitle": "스탠다드",
+    "tier_diamond_subtitle": "프리미엄",
+    "tier_vip_subtitle": "익스클루시브",
+    "duration_60": "60분",
+    "duration_90": "90분",
+    "duration_120": "120분",
+    "duration_ext": "연장 (30분)",
+    "ask": "문의",
+    "transport_zones": [
+      { "fee": "¥2,000", "areas": "신주쿠" },
+      { "fee": "¥3,000", "areas": "시부야, 분쿄, 나카노, 도시마, 치요다" },
+      { "fee": "¥4,000", "areas": "메구로, 미나토, 츄오, 다이토 (우에노, 아사쿠사), 시나가와" },
+      { "fee": "¥5,000", "areas": "기타, 스기나미, 아라카와, 스미다" },
+      { "fee": "¥6,000", "areas": "오타 (하네다 공항), 세타가야, 고토 (오다이바), 네리마, 이타바시, 아다치, 가츠시카, 에도가와" },
+      { "fee": "¥10,000", "areas": "요코하마, 가와사키, 다치카와, 마치다, 마쿠하리, 마이하마 (도쿄 디즈니랜드)" },
+      { "fee": "문의", "areas": "나리타, 요코스카, 오미야" }
+    ]
+  },
+  "how_it_works": {
+    "title": "이용 안내",
+    "steps": [
+      {
+        "number": "01",
+        "title": "문의하기",
+        "description": "WHATSAPP 또는 TELEGRAM으로 영어 가능 컨시어지 팀에 연락해 주세요."
+      },
+      {
+        "number": "02",
+        "title": "컴패니언 선택",
+        "description": "원하시는 컴패니언을 선택해 주세요. 사전 예약을 적극 권장드립니다."
+      },
+      {
+        "number": "03",
+        "title": "예약 확정",
+        "description": "세부 사항을 확정합니다. 컴패니언 방문 전, 호텔 체크인이 완료되어야 합니다."
+      },
+      {
+        "number": "04",
+        "title": "결제 및 이용",
+        "description": "컴패니언 도착 후, 서비스 시작 전에 일본 엔화 현금으로 직접 결제해 주세요."
+      }
+    ]
+  },
+  "faq": {
+    "title": "자주 묻는 질문",
+    "items": [
+      {
+        "question": "일본어를 할 수 있어야 하나요?",
+        "answer": "아닙니다. 예약 과정 전반에 걸쳐 영어로 지원해 드립니다."
+      },
+      {
+        "question": "예약은 어떻게 진행되나요?",
+        "answer": "문의 → 컴패니언 선택 → 예약 확정 → 프리미엄 경험을 즐기시면 됩니다."
+      },
+      {
+        "question": "결제는 어떻게 하나요?",
+        "answer": "당일 현금 결제가 가능합니다. 예약 전 온라인 신용카드 결제도 이용하실 수 있습니다."
+      },
+      {
+        "question": "특정 컴패니언을 지정할 수 있나요?",
+        "answer": "네. 일정 확인 후 원하시는 컴패니언을 요청하실 수 있습니다."
+      },
+      {
+        "question": "모든 컴패니언이 일본인인가요?",
+        "answer": "네. 별도 안내가 없는 한, 모든 컴패니언은 일본인입니다."
+      },
+      {
+        "question": "합법적으로 운영되고 있나요?",
+        "answer": "네. 저희는 관련 법규를 준수하며 전문적으로 운영하고 있습니다."
+      },
+      {
+        "question": "취소 정책은 어떻게 되나요?",
+        "answer": "취소 조건은 예약 확정 전에 안내해 드립니다."
+      },
+      {
+        "question": "서비스는 어디서 이루어지나요?",
+        "answer": "아웃콜 전문 서비스입니다. 컴패니언이 도쿄 서비스 지역 내 고객님의 호텔 객실 또는 아파트(Airbnb) 등 프라이빗 숙소로 방문합니다. 방문하실 매장이나 마사지룸은 없습니다."
+      },
+      {
+        "question": "금지된 행위가 있나요?",
+        "answer": "네. 일본 법률을 엄격히 준수합니다. 성관계는 엄격히 금지됩니다. 컴패니언의 안전을 최우선으로 합니다. 위반 또는 부적절한 행위 발생 시, 환불 없이 서비스가 즉시 종료됩니다."
+      },
+      {
+        "question": "어떤 호텔이든 이용할 수 있나요?",
+        "answer": "대부분의 주요 호텔과 Airbnb는 이용 가능합니다. 숙소에서 방문객 출입이 허용되는지 확인해 주세요. 컴패니언 도착 전 체크인이 완료되어야 하며, 체크인 전 사전 예약은 얼마든지 가능합니다."
+      },
+      {
+        "question": "서비스 요금은 언제 결제하나요?",
+        "answer": "컴패니언이 객실에 도착하신 후, 서비스 시작 전에 현금(일본 엔화)으로 직접 결제해 주세요."
+      }
+    ]
+  },
+  "why_choose_us": {
+    "title": "선택해야 하는 이유",
+    "features": [
+      {
+        "title": "엄격한 심사",
+        "description": "모든 컴패니언은 플랫폼 합류 전 세심한 심사를 거칩니다."
+      },
+      {
+        "title": "신원 확인 완료",
+        "description": "모든 컴패니언의 신원 확인을 완료하였습니다."
+      },
+      {
+        "title": "투명한 요금",
+        "description": "숨겨진 비용이나 예기치 않은 추가 요금이 없습니다."
+      },
+      {
+        "title": "추가 비용 없음",
+        "description": "고객님께서 지불하시는 내역을 항상 명확히 안내해 드립니다."
+      },
+      {
+        "title": "전문적·합법적 운영",
+        "description": "관련 법규를 준수하며 전문적으로 서비스를 제공합니다."
+      }
+    ]
+  },
+  "featured_companions": {
+    "title": "추천 컴패니언",
+    "aria_label": "추천 컴패니언 쇼케이스",
+    "coming_soon": "COMING SOON",
+    "coming_soon_alt": "곧 공개 예정 프로필",
+    "portrait_alt_suffix": "프로필 사진",
+    "available_today": "오늘 예약 가능",
+    "view_profile": "프로필 보기"
+  },
+  "companion_profile": {
+    "back_to_companions": "컴패니언 목록으로",
+    "profile_label": "컴패니언 프로필",
+    "portrait_alt_suffix": "프로필 사진",
+    "gallery_aria_label": "컴패니언 사진 갤러리",
+    "available_today": "오늘 예약 가능",
+    "introduction": "소개",
+    "details_heading": "프로필 상세",
+    "height": "키",
+    "languages": "언어",
+    "interests": "관심사",
+    "personality": "성격",
+    "services": "서비스",
+    "cta_heading": "만남을 준비하시겠습니까?",
+    "cta_description": "컨시어지 팀이 문의부터 예약까지, 처음부터 끝까지 정중히 안내해 드립니다.",
+    "book_companion": "이 컴패니언 예약하기",
+    "contact_concierge": "컨시어지 문의"
+  },
+  "personal_concierge": {
+    "title": "전용 컨시어지",
+    "headline": "완벽한 컴패니언을 찾을 준비가 되셨습니까?",
+    "description": "컨시어지 팀이 문의 응대, 컴패니언 추천, 예약 절차까지 정성껏 도와드립니다.",
+    "whatsapp": "WHATSAPP",
+    "line": "LINE",
+    "phone": "전화",
+    "telegram": "TELEGRAM"
+  },
+  "reviews": {
+    "title": "고객 후기",
+    "aria_label": "고객 후기",
+    "stars_aria_label": "5점 만점",
+    "prev_review": "이전 후기",
+    "next_review": "다음 후기",
+    "items": [
+      {
+        "id": "daniel",
+        "name": "DANIEL",
+        "country": "미국",
+        "text": "처음에는 이용 방법이 잘 이해되지 않아 전화로 문의했습니다. 컨시어지의 영어 실력이 뛰어났고, 단순한 응대가 아니라 제 질문을 정확히 이해하고 명확히 설명해 주셨습니다. 요금도 투명했고, 컴패니언도 매우 매력적이었습니다. 저녁 내내 편안하고 자연스러웠으며, 도쿄 여행의 하이라이트 중 하나였습니다."
+      },
+      {
+        "id": "james",
+        "name": "JAMES",
+        "country": "영국",
+        "text": "비슷한 서비스를 여러 곳 알아봤지만, 영어로 소통하기가 생각보다 어려웠습니다. 번역 앱에 의존하는 경우가 많아 서로 제대로 이해했는지 확신하기 어려웠죠. 여기는 완전히 달랐습니다. 빠른 응대, 정확한 이해, 그리고 제가 원하는 분위기에 맞는 분을 추천해 주셨습니다. 그녀는 훌륭한 동반자였고, 혼자서는 찾기 어려웠을 도쿄의 면모를 보여주었습니다."
+      },
+      {
+        "id": "carlos",
+        "name": "CARLOS",
+        "country": "스페인",
+        "lang": "es",
+        "text": "일본이 처음이고 일본어를 못 해서, 모든 과정이 이렇게 수월할 줄 몰랐습니다. 절차를 명확히 설명해 주셨고, 질문에도 부담 없이 답해 주셨습니다. 만난 분은 매력적이고 유쾌했습니다. 결국 신주쿠 여러 곳을 함께 돌아다니며 이야기하고 웃었습니다. 꼭 다시 이용하고 싶습니다."
+      },
+      {
+        "id": "miguel",
+        "name": "MIGUEL",
+        "country": "멕시코",
+        "lang": "es",
+        "text": "가장 인상 깊었던 점은 처음부터 매우 전문적이었다는 것입니다. 요금이 명확했고, 소통도 신속했으며, 예약을 재촉당하는 느낌은 전혀 없었습니다. 컨시어지의 추천으로 선택한 컴패니언은 탁월한 선택이었습니다. 시간 약속을 잘 지키고, 친절했으며, 대화가 처음부터 자연스러웠습니다. 정말 훌륭한 서비스였습니다."
+      },
+      {
+        "id": "wei",
+        "name": "WEI",
+        "country": "대만",
+        "lang": "zh-Hant",
+        "text": "이런 서비스를 처음 이용해 조금 걱정했지만, 문의부터 안심이 되었습니다. 응답이 빠르고, 요금과 절차도 명확히 안내되어 현장에서 갑작스러운 추가 비용 걱정이 없었습니다. 만나신 분은 친절하고, 도쿄를 처음 방문하는 분을 세심히 배려해 주셨습니다. 저녁 내내 자연스럽고 편안했으며, 다음 도쿄 방문 시에도 다시 이용하고 싶습니다."
+      }
+    ]
+  },
+  "footer": {
+    "company_heading": "회사",
+    "about_heading": "소개",
+    "contact_heading": "문의",
+    "legal_heading": "법적 고지",
+    "brand_name": "HENTAI PARADISE TOKYO",
+    "about_link": "소개",
+    "faq_link": "자주 묻는 질문",
+    "companions_link": "컴패니언",
+    "contact_link": "문의",
+    "legal_text": "법적 고지",
+    "copyright": "© HENTAI PARADISE TOKYO. ALL RIGHTS RESERVED."
+  }
+}
