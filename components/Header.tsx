@@ -133,12 +133,8 @@ function LanguageDropdownPanel({
 
   return (
     <div
-      className={`absolute top-full z-50 flex flex-col rounded-md border border-white/10 shadow-2xl transition-all duration-300 ease-out ${
-        isDesktop ? "left-1/2 mt-3 -translate-x-1/2" : "right-0 mt-2"
-      } ${
-        isDesktop
-          ? "min-w-[180px] bg-[#0B0B0B]/95 p-3 backdrop-blur-md"
-          : "min-w-[120px] bg-[#0B0B0B]/80 p-2 backdrop-blur-md"
+      className={`absolute top-full z-50 flex flex-col rounded-md border border-white/10 shadow-2xl bg-white/10 backdrop-blur-md transition-all duration-300 ease-out ${
+        isDesktop ? "left-1/2 mt-3 -translate-x-1/2 min-w-[180px] p-3" : "right-0 mt-2 p-2"
       } ${
         isOpen
           ? "visible pointer-events-auto opacity-100"
