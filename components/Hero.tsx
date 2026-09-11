@@ -36,9 +36,9 @@ export function Hero({ dict }: HeroProps) {
             <span className="hero-gold-gradient">{dict.title_accent}</span>
           </h1>
 
-          <div className="my-4 h-[2px] w-16 bg-[#D4AF37]" />
+          <div className="my-6 h-[1px] w-16 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
 
-          <p className="max-w-[280px] text-left font-body text-[18px] leading-[160%] text-[#D6D6D6] drop-shadow-[0_1px_8px_rgba(0,0,0,0.3)] sm:max-w-[360px] md:max-w-[480px] md:text-[20px]">
+          <p className="ml-0 mt-8 max-w-[280px] pl-0 text-left font-body text-sm uppercase leading-relaxed tracking-[0.2em] text-white/80 drop-shadow-[0_1px_8px_rgba(0,0,0,0.3)] sm:max-w-[360px] md:max-w-[480px] md:text-base">
             {dict.subtitle}
           </p>
 
