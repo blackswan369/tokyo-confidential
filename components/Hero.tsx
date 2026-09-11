@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { HeroDictionary } from "@/types/dictionary";
 
 type HeroProps = {
@@ -8,21 +7,21 @@ type HeroProps = {
 export function Hero({ dict }: HeroProps) {
   return (
     <section className="relative h-[92vh] max-md:overflow-hidden md:h-[100vh]">
-      <Image
-        src="/images/hero-background-mobile.png"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover max-md:object-[50%_52%] [filter:contrast(1.15)_saturate(1.28)_brightness(1.04)] md:hidden"
-      />
-      <Image
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="/images/hero-background-mobile.png"
+        className="absolute inset-0 h-full w-full object-cover max-md:object-[50%_52%] [filter:contrast(1.15)_saturate(1.28)_brightness(1.04)] md:hidden pointer-events-none"
+      >
+        <source src="/videos/hero-video.mp4" type="video/mp4" />
+      </video>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src="/images/hero-background.png"
         alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="hidden object-cover object-[108%_center] [filter:contrast(1.15)_saturate(1.28)_brightness(1.04)] md:block"
+        className="absolute inset-0 hidden h-full w-full object-cover object-[108%_center] [filter:contrast(1.15)_saturate(1.28)_brightness(1.04)] md:block pointer-events-none"
       />
 
       <div className="absolute inset-0 bg-[rgba(0,0,0,0.35)] max-md:bg-[rgba(0,0,0,0.22)]" />
