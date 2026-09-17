@@ -34,8 +34,8 @@ export default async function Home({
         <Header dict={dictionary.header} lang={locale} />
       </div>
       <WhyChooseUs dict={dictionary.why_choose_us} />
-      <Pricing dict={dictionary.pricing} />
       <FeaturedCompanions dict={dictionary.featured_companions} lang={locale} />
+      <Pricing dict={dictionary.pricing} />
       <HowItWorks dict={dictionary.how_it_works} />
       <PersonalConcierge dict={dictionary.personal_concierge} />
       <Reviews dict={dictionary.reviews} />
