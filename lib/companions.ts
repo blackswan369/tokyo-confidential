@@ -76,6 +76,7 @@ function mapCompanionProfile(companion: MicroCMSCompanion): CompanionProfile {
 export async function getFeaturedCompanions(): Promise<Companion[]> {
   const data = await microcmsClient.get<MicroCMSCompanionList>({
     endpoint: "companions",
+    queries: { limit: 100 },
   });
 
   return data.contents.map(mapCompanion);
@@ -106,7 +107,7 @@ export async function getCompanionById(id: string): Promise<CompanionProfile | n
 export async function getCompanionIds(): Promise<string[]> {
   const data = await microcmsClient.get<MicroCMSCompanionList>({
     endpoint: "companions",
-    queries: { fields: "id" },
+    queries: { fields: "id", limit: 100 },
   });
 
   return data.contents.map((companion) => companion.id);
