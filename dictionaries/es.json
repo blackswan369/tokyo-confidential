@@ -186,7 +186,11 @@
     "cta_heading": "¿LISTA PARA CONOCERLA?",
     "cta_description": "Nuestro equipo de concierge está disponible para responder tus preguntas y asistirte con tu reserva de principio a fin.",
     "book_companion": "RESERVAR ESTA ACOMPAÑANTE",
-    "contact_concierge": "CONTACTAR CONCIERGE"
+    "contact_concierge": "CONTACTAR CONCIERGE",
+    "chooser_booking": "Reserva de {name}",
+    "chooser_helper": "Elige cómo te gustaría contactar a nuestro concierge.",
+    "chooser_call": "Llamar al concierge",
+    "chooser_close": "Cerrar"
   },
   "personal_concierge": {
     "title": "TU CONCIERGE PERSONAL",

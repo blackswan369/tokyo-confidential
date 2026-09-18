@@ -3,6 +3,7 @@ import type { CompanionProfile } from "@/data/companions";
 import type { Locale } from "@/i18n-config";
 import type { CompanionProfileDictionary } from "@/types/dictionary";
 import { CompanionGallery } from "@/components/CompanionGallery";
+import { ProfileContactChooser } from "@/components/ProfileContactChooser";
 
 type CompanionProfileViewProps = {
   companion: CompanionProfile;
@@ -14,25 +15,6 @@ type DetailRow = {
   label: string;
   value: string;
 };
-
-function CallNowIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      className="shrink-0"
-    >
-      <path
-        fill="currentColor"
-        d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"
-      />
-    </svg>
-  );
-}
 
 export function CompanionProfileView({
   companion,
@@ -137,13 +119,11 @@ export function CompanionProfileView({
                 {dict.cta_description}
               </p>
               <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-                <a
-                  href="tel:0362659181"
-                  className="inline-flex h-[52px] items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#FFE58A_0%,#F6D365_45%,#E8B936_100%)] px-8 font-body text-sm font-medium text-[#0B0B0B] transition-opacity hover:opacity-90"
-                >
-                  <CallNowIcon />
-                  {dict.book_companion}
-                </a>
+                <ProfileContactChooser
+                  companionName={companion.name}
+                  companionImage={companion.image}
+                  dict={dict}
+                />
                 <Link
                   href={`/${lang}#find-your-match`}
                   className="inline-flex h-[52px] items-center justify-center rounded-full border border-[#D4AF37] px-8 font-body text-sm font-medium text-[#D4AF37] transition-colors hover:bg-[#D4AF37]/10"

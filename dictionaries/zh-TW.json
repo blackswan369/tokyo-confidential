@@ -186,7 +186,11 @@
     "cta_heading": "準備好見面了嗎？",
     "cta_description": "我們的禮賓團隊隨時為貴賓解答疑問，並全程協助您的預約。",
     "book_companion": "預約此伴遊",
-    "contact_concierge": "聯繫禮賓"
+    "contact_concierge": "聯繫禮賓",
+    "chooser_booking": "預約 {name}",
+    "chooser_helper": "請選擇聯繫禮賓團隊的方式。",
+    "chooser_call": "電話聯繫禮賓",
+    "chooser_close": "關閉"
   },
   "personal_concierge": {
     "title": "您的專屬禮賓",

@@ -186,7 +186,11 @@
     "cta_heading": "만남을 준비하시겠습니까?",
     "cta_description": "컨시어지 팀이 문의부터 예약까지, 처음부터 끝까지 정중히 안내해 드립니다.",
     "book_companion": "이 컴패니언 예약하기",
-    "contact_concierge": "컨시어지 문의"
+    "contact_concierge": "컨시어지 문의",
+    "chooser_booking": "{name} 예약",
+    "chooser_helper": "컨시어지에 연락할 방법을 선택해 주세요.",
+    "chooser_call": "컨시어지 전화",
+    "chooser_close": "닫기"
   },
   "personal_concierge": {
     "title": "전용 컨시어지",

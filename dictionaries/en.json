@@ -186,7 +186,11 @@
     "cta_heading": "READY TO MEET?",
     "cta_description": "Our concierge team is available to answer your questions and assist with your booking from start to finish.",
     "book_companion": "BOOK THIS COMPANION",
-    "contact_concierge": "CONTACT CONCIERGE"
+    "contact_concierge": "CONTACT CONCIERGE",
+    "chooser_booking": "Booking {name}",
+    "chooser_helper": "Choose how you'd like to contact our concierge.",
+    "chooser_call": "Call Concierge",
+    "chooser_close": "Close"
   },
   "personal_concierge": {
     "title": "YOUR PERSONAL CONCIERGE",

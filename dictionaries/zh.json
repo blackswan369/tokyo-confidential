@@ -186,7 +186,11 @@
     "cta_heading": "准备好见面了吗？",
     "cta_description": "我们的礼宾团队随时为您解答疑问，并全程协助您的预约。",
     "book_companion": "预约此伴游",
-    "contact_concierge": "联系礼宾"
+    "contact_concierge": "联系礼宾",
+    "chooser_booking": "预约 {name}",
+    "chooser_helper": "请选择联系礼宾团队的方式。",
+    "chooser_call": "电话联系礼宾",
+    "chooser_close": "关闭"
   },
   "personal_concierge": {
     "title": "您的专属礼宾",
