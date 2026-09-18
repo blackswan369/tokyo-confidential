@@ -90,12 +90,8 @@ function RegularCompanionDetails({
 
         <p className="mt-2 font-body text-[10px] uppercase tracking-widest">
           {companion.available && (
-            <>
-              <span className="text-[#E8B936]">{dict.available_today}</span>
-              <span className="text-gray-500"> • </span>
-            </>
+            <span className="text-[#E8B936]">{dict.available_today}</span>
           )}
-          <span className="text-gray-400">{companion.area}</span>
         </p>
       </div>
 

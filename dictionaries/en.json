@@ -162,6 +162,7 @@
   },
   "featured_companions": {
     "title": "FEATURED COMPANIONS",
+    "coverage_note": "Available across Tokyo",
     "aria_label": "Featured companions showcase",
     "coming_soon": "COMING SOON",
     "coming_soon_alt": "Coming soon profile",

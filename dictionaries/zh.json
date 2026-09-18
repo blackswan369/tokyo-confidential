@@ -162,6 +162,7 @@
   },
   "featured_companions": {
     "title": "精选伴游",
+    "coverage_note": "东京全区域均可安排",
     "aria_label": "精选伴游展示",
     "coming_soon": "即将上线",
     "coming_soon_alt": "即将上线资料",

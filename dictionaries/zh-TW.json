@@ -162,6 +162,7 @@
   },
   "featured_companions": {
     "title": "精選伴遊",
+    "coverage_note": "東京全區域皆可安排",
     "aria_label": "精選伴遊展示",
     "coming_soon": "即將上線",
     "coming_soon_alt": "即將上線資料",

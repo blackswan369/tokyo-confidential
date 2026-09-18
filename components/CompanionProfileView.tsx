@@ -95,7 +95,6 @@ export function CompanionProfileView({
                     {dict.available_today}
                   </span>
                 )}
-                <span className="text-[#D6D6D6]">{companion.area}</span>
               </div>
             </div>
 

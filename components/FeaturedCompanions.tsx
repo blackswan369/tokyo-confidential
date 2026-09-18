@@ -40,6 +40,10 @@ export async function FeaturedCompanions({ dict, lang }: FeaturedCompanionsProps
           {dict.title}
         </h2>
 
+        <p className="mt-4 text-center font-body text-xs font-medium uppercase tracking-widest text-orange-400">
+          {dict.coverage_note}
+        </p>
+
         <div className="md:mx-auto md:w-[85%]">
           <div className="mt-8 grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
             {displayedCompanions.map((companion, index) => {

@@ -162,6 +162,7 @@
   },
   "featured_companions": {
     "title": "ACOMPAÑANTES DESTACADAS",
+    "coverage_note": "Disponible en todo Tokio",
     "aria_label": "Escaparate de acompañantes destacadas",
     "coming_soon": "PRÓXIMAMENTE",
     "coming_soon_alt": "Perfil próximamente",
