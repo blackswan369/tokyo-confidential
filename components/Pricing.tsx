@@ -28,8 +28,8 @@ const SCROLLBAR_HIDDEN =
 const GOLD_GRADIENT =
   "bg-[linear-gradient(135deg,#FFE58A_0%,#F6D365_45%,#E8B936_100%)]";
 
-const GOLD_PRICES = ["¥35,000", "¥45,000", "¥55,000", "¥20,000"] as const;
-const DIAMOND_PRICES = ["¥40,000", "¥50,000", "¥60,000", "¥25,000"] as const;
+const GOLD_PRICES = ["¥27,000", "¥37,000", "¥50,000", "¥15,000"] as const;
+const DIAMOND_PRICES = ["¥32,000", "¥42,000", "¥55,000", "¥20,000"] as const;
 
 function buildCourseTiers(dict: PricingDictionary): CourseTier[] {
   const durations = [
