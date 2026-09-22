@@ -9,7 +9,7 @@ type FeaturedCompanionsProps = {
   lang: Locale;
 };
 
-const HOMEPAGE_COMPANION_COUNT = 10;
+const HOMEPAGE_COMPANION_COUNT = 12;
 
 const PRIORITY_NAMES = [
   "NAMI",
