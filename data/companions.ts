@@ -5,6 +5,7 @@ export type Companion = {
   image: string;
   available: boolean;
   area: string;
+  homepage_order?: number;
 };
 
 export type CompanionProfile = Companion & {

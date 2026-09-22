@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CompanionCard } from "@/components/CompanionCard";
 import { getFeaturedCompanions } from "@/lib/companions";
+import type { Companion } from "@/data/companions";
 import type { Locale } from "@/i18n-config";
 import type { FeaturedCompanionsDictionary } from "@/types/dictionary";
 
@@ -11,26 +12,21 @@ type FeaturedCompanionsProps = {
 
 const HOMEPAGE_COMPANION_COUNT = 12;
 
-const PRIORITY_NAMES = [
-  "NAMI",
-  "SAKI",
-  "SUZU",
-  "NAOMI",
-  "RISA",
-  "MOE",
-  "YUKA",
-];
-
-function priorityRank(name: string): number {
-  const index = PRIORITY_NAMES.indexOf(name.toUpperCase());
-  return index === -1 ? PRIORITY_NAMES.length : index;
+function hasFiniteHomepageOrder(
+  companion: Companion,
+): companion is Companion & { homepage_order: number } {
+  return (
+    typeof companion.homepage_order === "number" &&
+    Number.isFinite(companion.homepage_order)
+  );
 }
 
 export async function FeaturedCompanions({ dict, lang }: FeaturedCompanionsProps) {
   const companions = await getFeaturedCompanions();
 
-  const displayedCompanions = [...companions]
-    .sort((a, b) => priorityRank(a.name) - priorityRank(b.name))
+  const displayedCompanions = companions
+    .filter(hasFiniteHomepageOrder)
+    .sort((a, b) => a.homepage_order - b.homepage_order)
     .slice(0, HOMEPAGE_COMPANION_COUNT);
 
   return (

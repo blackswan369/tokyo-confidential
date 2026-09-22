@@ -13,6 +13,7 @@ type MicroCMSCompanion = {
   age: number;
   location: string;
   is_available: boolean;
+  homepage_order?: number;
   image: MicroCMSImage;
   gallery?: MicroCMSImage[];
   introduction?: string;
@@ -35,6 +36,10 @@ function mapCompanion(companion: MicroCMSCompanion): Companion {
     image: companion.image.url,
     available: companion.is_available,
     area: companion.location,
+    ...(typeof companion.homepage_order === "number" &&
+    Number.isFinite(companion.homepage_order)
+      ? { homepage_order: companion.homepage_order }
+      : {}),
   };
 }
 
