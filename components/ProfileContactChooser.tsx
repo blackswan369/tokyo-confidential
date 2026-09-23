@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 import type { CompanionProfileDictionary } from "@/types/dictionary";
@@ -10,6 +11,7 @@ const LINE_HREF = "https://line.me/ti/p/DUj4HSqfK2";
 const PHONE_HREF = "tel:0362659181";
 
 type ProfileContactChooserProps = {
+  companionId: string;
   companionName: string;
   companionImage: string;
   dict: CompanionProfileDictionary;
@@ -134,6 +136,7 @@ function ChevronRightIcon() {
 }
 
 export function ProfileContactChooser({
+  companionId,
   companionName,
   companionImage,
   dict,
@@ -181,6 +184,7 @@ export function ProfileContactChooser({
 
   const channels = [
     {
+      event: "whatsapp_click" as const,
       label: "WhatsApp",
       href: whatsappHref,
       external: true,
@@ -188,6 +192,7 @@ export function ProfileContactChooser({
       iconClassName: "text-[#25D366]",
     },
     {
+      event: "telegram_click" as const,
       label: "Telegram",
       href: TELEGRAM_HREF,
       external: true,
@@ -195,6 +200,7 @@ export function ProfileContactChooser({
       iconClassName: "text-[#2AABEE]",
     },
     {
+      event: "line_click" as const,
       label: "LINE",
       href: LINE_HREF,
       external: true,
@@ -202,6 +208,7 @@ export function ProfileContactChooser({
       iconClassName: "text-[#06C755]",
     },
     {
+      event: "phone_click" as const,
       label: dict.chooser_call,
       href: PHONE_HREF,
       external: false,
@@ -215,7 +222,10 @@ export function ProfileContactChooser({
       <button
         ref={triggerRef}
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          track("book_companion_click", { companion_id: companionId });
+          setOpen(true);
+        }}
         className="inline-flex h-[52px] items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#FFE58A_0%,#F6D365_45%,#E8B936_100%)] px-8 font-body text-sm font-medium text-[#0B0B0B] transition-opacity hover:opacity-90"
       >
         {dict.book_companion}
@@ -295,6 +305,9 @@ export function ProfileContactChooser({
                       key={channel.href}
                       href={channel.href}
                       className="flex min-h-[52px] w-full items-center gap-4 border-b border-[#2A2A2A] px-1 transition-colors last:border-b-0 hover:bg-white/5"
+                      onClick={() => {
+                        track(channel.event, { companion_id: companionId });
+                      }}
                       {...(channel.external
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : {})}

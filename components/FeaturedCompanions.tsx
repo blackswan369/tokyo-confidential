@@ -52,7 +52,12 @@ export async function FeaturedCompanions({ dict, lang }: FeaturedCompanionsProps
                   key={companion.id}
                   className={`min-w-0 col-span-1 w-full${centersFinalRow ? " lg:col-start-2" : ""}`}
                 >
-                  <CompanionCard companion={companion} dict={dict} lang={lang} />
+                  <CompanionCard
+                    companion={companion}
+                    dict={dict}
+                    lang={lang}
+                    source="home"
+                  />
                 </div>
               );
             })}

@@ -120,6 +120,7 @@ export function CompanionProfileView({
               </p>
               <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                 <ProfileContactChooser
+                  companionId={companion.id}
                   companionName={companion.name}
                   companionImage={companion.image}
                   dict={dict}

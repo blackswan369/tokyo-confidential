@@ -33,7 +33,12 @@ function EmblaCompanionCarousel({
       <div className="flex">
         {loopData.map((companion, index) => (
           <div key={`${companion.id}-${index}`} className={SLIDE_CLASS}>
-            <CompanionCard companion={companion} dict={dict} lang={lang} />
+            <CompanionCard
+              companion={companion}
+              dict={dict}
+              lang={lang}
+              source="home"
+            />
           </div>
         ))}
       </div>

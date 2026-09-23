@@ -73,6 +73,7 @@ export default async function AllCompanionsPage({ params }: PageProps) {
                     companion={companion}
                     dict={dictionary.featured_companions}
                     lang={locale}
+                    source="listing"
                   />
                 </div>
               ))}
