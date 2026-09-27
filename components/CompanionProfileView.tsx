@@ -53,9 +53,12 @@ export function CompanionProfileView({
             <CompanionGallery
               mainImage={companion.image}
               gallery={companion.gallery}
+              profileVideo={companion.profileVideo}
+              videoThumbnail={companion.videoThumbnail}
               name={companion.name}
               portraitAltSuffix={dict.portrait_alt_suffix}
               galleryAriaLabel={dict.gallery_aria_label}
+              profileVideoLabel={dict.profile_video_label}
             />
           </div>
 

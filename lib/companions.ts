@@ -7,6 +7,11 @@ type MicroCMSImage = {
   width: number;
 };
 
+type MicroCMSFile = {
+  url: string;
+  fileSize: number;
+};
+
 type MicroCMSCompanion = {
   id: string;
   name: string;
@@ -16,6 +21,8 @@ type MicroCMSCompanion = {
   homepage_order?: number;
   image: MicroCMSImage;
   gallery?: MicroCMSImage[];
+  profile_video?: MicroCMSFile;
+  video_thumbnail?: MicroCMSImage;
   introduction?: string;
   height?: string;
   languages?: string;
@@ -63,12 +70,28 @@ function extractGalleryUrls(gallery: MicroCMSCompanion["gallery"]): string[] {
     .filter((url): url is string => Boolean(url));
 }
 
+function extractHttpsUrl(file: { url: string } | undefined): string | undefined {
+  if (!file || typeof file.url !== "string") {
+    return undefined;
+  }
+
+  try {
+    return new URL(file.url).protocol === "https:" ? file.url : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 function mapCompanionProfile(companion: MicroCMSCompanion): CompanionProfile {
   const galleryImages = extractGalleryUrls(companion.gallery);
+  const profileVideo = extractHttpsUrl(companion.profile_video);
+  const videoThumbnail = extractHttpsUrl(companion.video_thumbnail);
 
   return {
     ...mapCompanion(companion),
     gallery: galleryImages,
+    ...(profileVideo ? { profileVideo } : {}),
+    ...(videoThumbnail ? { videoThumbnail } : {}),
     introduction: companion.introduction,
     height: companion.height,
     languages: companion.languages,
@@ -94,7 +117,7 @@ export async function getCompanionById(id: string): Promise<CompanionProfile | n
       contentId: id,
       queries: {
         fields:
-          "id,name,age,location,is_available,image,gallery,introduction,height,languages,interests,personality,services",
+          "id,name,age,location,is_available,image,gallery,profile_video,video_thumbnail,introduction,height,languages,interests,personality,services",
       },
     });
 

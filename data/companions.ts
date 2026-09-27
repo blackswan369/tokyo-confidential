@@ -10,6 +10,8 @@ export type Companion = {
 
 export type CompanionProfile = Companion & {
   gallery: string[];
+  profileVideo?: string;
+  videoThumbnail?: string;
   introduction?: string;
   height?: string;
   languages?: string;
