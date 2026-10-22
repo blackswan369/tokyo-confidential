@@ -1,3 +1,7 @@
+import {
+  AdditionalOptions,
+  type AdditionalOptionItem,
+} from "@/components/AdditionalOptions";
 import type { PricingDictionary } from "@/types/dictionary";
 
 type CourseRate = {
@@ -30,6 +34,34 @@ const GOLD_GRADIENT =
 
 const GOLD_PRICES = ["¥27,000", "¥40,000", "¥54,000", "¥16,000"] as const;
 const DIAMOND_PRICES = ["¥32,000", "¥45,000", "¥60,000", "¥20,000"] as const;
+
+type OptionId = keyof PricingDictionary["option_items"];
+
+const OPTION_PRICES: ReadonlyArray<{ id: OptionId; price: number }> = [
+  { id: "golden_shower", price: 2000 },
+  { id: "anilingus", price: 3000 },
+  { id: "bullet_vibrator", price: 3000 },
+  { id: "cosplay", price: 3000 },
+  { id: "solo_observation", price: 4000 },
+  { id: "vibrator", price: 5000 },
+  { id: "sensual_massage", price: 5000 },
+  { id: "immediate_oral", price: 6000 },
+  { id: "wand_massager", price: 6000 },
+  { id: "facial", price: 8000 },
+  { id: "swallowing", price: 9000 },
+  { id: "deep_throat", price: 10000 },
+  { id: "photo_session", price: 10000 },
+  { id: "video_recording", price: 15000 },
+  { id: "anal", price: 20000 },
+];
+
+function buildOptionItems(dict: PricingDictionary): AdditionalOptionItem[] {
+  return OPTION_PRICES.map(({ id, price }) => ({
+    id,
+    name: dict.option_items[id],
+    price: `¥${price.toLocaleString("en-US")}`,
+  }));
+}
 
 function buildCourseTiers(dict: PricingDictionary): CourseTier[] {
   const durations = [
@@ -174,6 +206,17 @@ export function Pricing({ dict }: PricingProps) {
             <p className="mx-auto mt-5 max-w-[720px] text-center font-body text-sm leading-[160%] text-[#A0A0A0] md:mt-8 md:text-base">
               {dict.tiers_note}
             </p>
+          </div>
+
+          <div className="mt-10 md:mt-20">
+            <AdditionalOptions
+              title={dict.options_title}
+              viewAllLabel={dict.options_view_all}
+              hideLabel={dict.options_hide}
+              disclaimer={dict.options_disclaimer}
+              consentNote={dict.options_consent_note}
+              items={buildOptionItems(dict)}
+            />
           </div>
 
           <div className="mt-10 md:mt-20">
