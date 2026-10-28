@@ -10,7 +10,7 @@ type FeaturedCompanionsProps = {
   lang: Locale;
 };
 
-const HOMEPAGE_COMPANION_COUNT = 16;
+const HOMEPAGE_COMPANION_COUNT = 20;
 
 function hasFiniteHomepageOrder(
   companion: Companion,
