@@ -10,6 +10,13 @@ export type AdditionalOptionItem = {
   price: string;
 };
 
+type FantasyExperience = {
+  title: string;
+  price: string;
+  body: string;
+  note: string;
+};
+
 type AdditionalOptionsProps = {
   title: string;
   viewAllLabel: string;
@@ -17,6 +24,7 @@ type AdditionalOptionsProps = {
   disclaimer: string;
   consentNote: string;
   items: AdditionalOptionItem[];
+  fantasy: FantasyExperience;
 };
 
 function ChevronIcon({ className }: { className?: string }) {
@@ -48,6 +56,7 @@ export function AdditionalOptions({
   disclaimer,
   consentNote,
   items,
+  fantasy,
 }: AdditionalOptionsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const baseId = useId();
@@ -105,6 +114,22 @@ export function AdditionalOptions({
                 </li>
               ))}
             </ul>
+            <div className="mt-4 rounded-sm border border-white/10 bg-[#0A0A0A] p-4 md:p-6">
+              <div className="flex items-center justify-between gap-4">
+                <span className="min-w-0 font-body text-sm font-medium leading-snug text-white md:text-base">
+                  {fantasy.title}
+                </span>
+                <span className="shrink-0 whitespace-nowrap font-body text-sm font-medium text-[#E8B936] md:text-base">
+                  {fantasy.price}
+                </span>
+              </div>
+              <p className="mt-3 font-body text-sm leading-[160%] text-[#A0A0A0] md:text-base">
+                {fantasy.body}
+              </p>
+              <p className="mt-2 font-body text-xs leading-[160%] text-[#A0A0A0] md:text-sm">
+                {fantasy.note}
+              </p>
+            </div>
             <p className="mx-auto mt-5 max-w-[720px] text-center font-body text-sm leading-[160%] text-[#A0A0A0] md:mt-8 md:text-base">
               {disclaimer}
             </p>

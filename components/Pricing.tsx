@@ -37,29 +37,31 @@ const DIAMOND_PRICES = ["¥32,000", "¥45,000", "¥60,000", "¥20,000"] as const
 
 type OptionId = keyof PricingDictionary["option_items"];
 
-const OPTION_PRICES: ReadonlyArray<{ id: OptionId; price: number }> = [
+const OPTION_PRICES: ReadonlyArray<{
+  id: OptionId;
+  price: number | "on_request";
+}> = [
   { id: "golden_shower", price: 2000 },
   { id: "anilingus", price: 3000 },
-  { id: "bullet_vibrator", price: 3000 },
-  { id: "cosplay", price: 3000 },
-  { id: "solo_observation", price: 4000 },
-  { id: "vibrator", price: 5000 },
-  { id: "sensual_massage", price: 5000 },
-  { id: "immediate_oral", price: 6000 },
-  { id: "wand_massager", price: 6000 },
+  { id: "cosplay_own", price: 3000 },
+  { id: "vibrator", price: 6000 },
+  { id: "cosplay_included", price: 6000 },
+  { id: "take_home_panties", price: 7000 },
   { id: "facial", price: 8000 },
   { id: "swallowing", price: 9000 },
   { id: "deep_throat", price: 10000 },
-  { id: "photo_session", price: 10000 },
   { id: "video_recording", price: 15000 },
-  { id: "anal", price: 20000 },
+  { id: "threesome", price: "on_request" },
 ];
 
 function buildOptionItems(dict: PricingDictionary): AdditionalOptionItem[] {
   return OPTION_PRICES.map(({ id, price }) => ({
     id,
     name: dict.option_items[id],
-    price: `¥${price.toLocaleString("en-US")}`,
+    price:
+      price === "on_request"
+        ? dict.options_price_on_request
+        : `¥${price.toLocaleString("en-US")}`,
   }));
 }
 
@@ -216,6 +218,12 @@ export function Pricing({ dict }: PricingProps) {
               disclaimer={dict.options_disclaimer}
               consentNote={dict.options_consent_note}
               items={buildOptionItems(dict)}
+              fantasy={{
+                title: dict.fantasy_title,
+                price: dict.options_price_on_request,
+                body: dict.fantasy_body,
+                note: dict.fantasy_note,
+              }}
             />
           </div>
 
